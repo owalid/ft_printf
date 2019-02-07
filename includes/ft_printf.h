@@ -26,13 +26,8 @@ static typedef struct 	s_ptrbuff
 int			ft_printf(const char *format, ...);
 
 /*
-**	ft_printnbr.c
+**	ft_operations.c
 */
 void		ft_printnbr(void *nbr);
-
-/*
-**	ft_printstr.c
-*/
-void		ft_printstr(void *str);
 
 #endif
