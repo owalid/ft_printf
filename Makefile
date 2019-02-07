@@ -6,13 +6,14 @@
 #    By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 20:29:21 by oel-ayad          #+#    #+#              #
-#    Updated: 2019/02/07 12:41:41 by oel-ayad         ###   ########.fr        #
+#    Updated: 2019/02/07 13:15:31 by oel-ayad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=  libftprintf.a
 
-SRC		= \
+SRC		=  parser.c \
+		   ft_printf.c \
 
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 
@@ -31,7 +32,7 @@ OBJDIR	= ./obj/
 all: $(NAME)
 
 $(OBJDIR)%.o:$(SRCDIR)%.c
-	mkdir - p $(OBJDIR)
+	mkdir -p $(OBJDIR)
 	$(CC) $(CFLAGS) $(FT_INC) -o $@ -c $< -I $(INCDIR)
 
 $(NAME): $(OBJ)
