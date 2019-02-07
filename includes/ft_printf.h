@@ -5,8 +5,18 @@
 #include <stdio.h>
 ////////////////////
 
+#include <stdarg.h>
 
 
+typedef struct 		t_prtfop
+{
+	char 	id;
+	void	(*ft_transform)(void *argv);
+}
+
+/*
+**	ft_printf.c
+*/
 int			ft_printf(const char *format, ...);
 
 #endif
