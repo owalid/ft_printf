@@ -8,15 +8,31 @@
 #include <stdarg.h>
 
 
-typedef struct 		t_prtfop
+typedef struct 		s_prtfop
 {
 	char 	id;
 	void	(*ft_transform)(void *argv);
-}
+}					t_prtfop;
+
+static typedef struct 	s_ptrbuff
+{
+	static char		str[1024];
+	static int		size;
+}						t_ptrbuff;
 
 /*
 **	ft_printf.c
 */
 int			ft_printf(const char *format, ...);
+
+/*
+**	ft_printnbr.c
+*/
+void		ft_printnbr(void *nbr);
+
+/*
+**	ft_printstr.c
+*/
+void		ft_printstr(void *str);
 
 #endif

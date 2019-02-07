@@ -6,7 +6,7 @@
 #    By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 20:29:21 by oel-ayad          #+#    #+#              #
-#    Updated: 2019/02/07 13:15:31 by oel-ayad         ###   ########.fr        #
+#    Updated: 2019/02/07 16:01:10 by oel-ayad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME	=  libftprintf.a
 
 SRC		=  parser.c \
 		   ft_printf.c \
+		   ft_operations.c \
 
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 
@@ -43,7 +44,6 @@ $(NAME): $(OBJ)
 clean:
 	rm -rf $(OBJDIR)
 	make -C $(FT) clean
-	make -C $(MLX) clean
 
 fclean: clean
 	rm -rf $(NAME)

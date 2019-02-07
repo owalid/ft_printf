@@ -5,9 +5,9 @@
 
 static t_prtfop g_prtfop[] =
 {
-	{'', },
-	{'', },
-	{'', },
-}
+	{'d', &ft_printnbr},
+	{'s', &ft_printstr},
+	{'\0', &ft_printnbr},
+};
 
 # endif
