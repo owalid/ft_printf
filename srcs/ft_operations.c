@@ -34,7 +34,7 @@ void		ft_printf_p(void *ptr)
 	int		i;
 
 	i = -1;
-	str = &ptr;
+	str = ft_strdup(&ptr);
 	while (str[i++])
 		add_char(str[i], 0);
 }
