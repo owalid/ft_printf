@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-void		ft_printnbr(void *nbr)
+void		ft_printf_i_d(void *nbr)
 {
 	char	*str;
 	int		i;
@@ -12,7 +12,7 @@ void		ft_printnbr(void *nbr)
 		add_char(str[i], 0);
 }
 
-void		ft_printstr(void *str)
+void		ft_printf_s(void *str)
 {
 	int	i;
 
@@ -21,3 +21,22 @@ void		ft_printstr(void *str)
 	while (str[++i])
 		add_char(str[i], 0);
 }
+
+void		ft_print_c(void *nbr)
+{
+	(unsigned char)nbr;
+	add_char((char)nbr, 0);
+}
+
+void		ft_printf_p(void *ptr)
+{
+	char 	*str;
+	int		i;
+
+	i = -1;
+	str = &ptr;
+	while (str[i++])
+		add_char(str[i], 0);
+}
+
+

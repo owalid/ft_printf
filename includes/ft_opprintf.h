@@ -5,18 +5,17 @@
 
 static t_prtfop g_prtfop[] =
 {
-	{'d', &ft_printnbr},
-	{'i', &ft_printnbr},
+	{'d', &ft_printf_i_d},
+	{'i', &ft_printf_i_d},
 	{'o',
 	{'u',
 	{'x',
 	{'X',
-	{'c', &
+	{'c', &ft_printf_c};
 	{'s',
-	{'p',
-
-	{'s', &ft_printstr},
-	{'\0', &ft_printnbr},
+	{'p', &ft_printf_p};
+	{'s', &ft_printf_s};
+	{'\0', &ft_printnbr};
 };
 
 # endif
