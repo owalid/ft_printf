@@ -6,13 +6,13 @@
 #    By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 20:29:21 by oel-ayad          #+#    #+#              #
-#    Updated: 2019/02/06 20:34:28 by oel-ayad         ###   ########.fr        #
+#    Updated: 2019/02/07 12:41:41 by oel-ayad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= fractol
+NAME	=  libftprintf.a
 
-SRC		= 
+SRC		= \
 
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 
@@ -31,12 +31,13 @@ OBJDIR	= ./obj/
 all: $(NAME)
 
 $(OBJDIR)%.o:$(SRCDIR)%.c
-	mkdir -p $(OBJDIR)
-	$(CC) $(CFLAGS) $(MLX_INC) $(FT_INC) -o $@ -c $< -I $(INCDIR)
+	mkdir - p $(OBJDIR)
+	$(CC) $(CFLAGS) $(FT_INC) -o $@ -c $< -I $(INCDIR)
 
 $(NAME): $(OBJ)
 	make -C $(FT)
-	$(CC) $(OBJ) $(MLX_LNK) $(FT_LNK) -lm -o $(NAME)
+	ar rc $(NAME) $(OBJ)
+	ranlib $(NAME)
 
 clean:
 	rm -rf $(OBJDIR)
