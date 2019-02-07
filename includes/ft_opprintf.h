@@ -7,14 +7,15 @@ static t_prtfop g_prtfop[] =
 {
 	{'d', &ft_printf_i_d},
 	{'i', &ft_printf_i_d},
-	{'o',
-	{'u',
-	{'x',
-	{'X',
-	{'c', &ft_printf_c};
-	{'s',
-	{'p', &ft_printf_p};
-	{'s', &ft_printf_s};
+	{'o', &ft_printf_o},
+	{'u', &ft_printf_u},
+	{'x', &ft_printf_xX},
+	{'X', &ft_printf_xX},
+	{'c', &ft_printf_c},
+	{'s', &ft_printf_s},
+	{'p', &ft_printf_p},
+	{'s', &ft_printf_s},
+	{'%', &ft_printf_percent},
 	{'\0', &ft_printnbr};
 };
 

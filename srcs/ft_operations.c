@@ -34,9 +34,49 @@ void		ft_printf_p(void *ptr)
 	int		i;
 
 	i = -1;
-	str = &ptr;
+	str = ft_strdup(&ptr);
+	while (str[i++])
+		add_char(str[i], 0);
+	ft_strdel(&str);
+}
+
+void		ft_printf_o(void *nbr)
+{
+	char	*str;
+	int		i;
+
+	i = -1;
+	(unsigned int)nbr;
+	str = ft_itoa_base(nbr, 8);
 	while (str[i++])
 		add_char(str[i], 0);
 }
 
+void		ft_printf_u(void *nbr)
+{
+	char	*str;
+	int		i;
 
+	i = -1;
+	(unsigned int)nbr;
+	str = ft_itoa(nbr);
+	while (str[i++])
+		add_char(str[i], 0);
+}
+
+void		ft_printf_xX(void *nbr)
+{
+	char	*str;
+	int		i;
+
+	i = -1;
+	(unsigned int)nbr;
+	str = ft_itoa_base(nbr, 16);
+	while (str[i++])
+		add_char(str[i], 0);
+}
+
+void		ft_printf_percent(void *per)
+{
+	add_char('%', 0);
+}
