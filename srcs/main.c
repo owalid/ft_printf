@@ -1,7 +1,7 @@
 
-#include "libftprintf.a"
+#include "ft_printf.h"
 
 int		main(int ac, char **av)
 {
-	ft_printf(av[1], av[2]);
+	ft_printf(av[1], 'c');
 }

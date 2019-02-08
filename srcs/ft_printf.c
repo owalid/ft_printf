@@ -4,7 +4,7 @@ int         ft_printf(const char *format, ...)
 {
 	va_list		ap;
 	int     	o;
-	int     	i;
+	size_t     	i;
 
 	i = -1;
 	va_start(ap, format);
@@ -17,7 +17,7 @@ int         ft_printf(const char *format, ...)
 			{
 				if (g_prtfop[o].id == format[i + 1])
 				{
-					g_prtfop[o].ft_transform(va_arg(ap, format));
+					g_prtfop[o].ft_transform(ap);
 					i += 2;
 					break;
 				}
@@ -25,8 +25,9 @@ int         ft_printf(const char *format, ...)
 		}
 		else
 			add_char(format[i], 0);
-		if (i == ft_strlen(format))
+		if (i == ft_strlen(format) - 1)
 			add_char(format[i], 1);
 	}
 	va_end(ap);
+	return (1);
 }

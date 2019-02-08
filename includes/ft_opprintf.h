@@ -15,8 +15,7 @@ static t_prtfop g_prtfop[] =
 	{'s', &ft_printf_s},
 	{'p', &ft_printf_p},
 	{'s', &ft_printf_s},
-	{'%', &ft_printf_percent},
-	{'\0', &ft_printnbr};
+	{'\0', &ft_printf_i_d}
 };
 
 # endif

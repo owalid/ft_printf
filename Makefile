@@ -6,13 +6,13 @@
 #    By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 20:29:21 by oel-ayad          #+#    #+#              #
-#    Updated: 2019/02/07 16:01:10 by oel-ayad         ###   ########.fr        #
+#    Updated: 2019/02/08 14:15:25 by oel-ayad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=  libftprintf.a
 
-SRC		=  parser.c \
+SRC		=  ft_print.c \
 		   ft_printf.c \
 		   ft_operations.c \
 
@@ -32,7 +32,7 @@ OBJDIR	= ./obj/
 
 all: $(NAME)
 
-$(OBJDIR)%.o:$(SRCDIR)%.c
+$(OBJDIR)%.o:$(SRCDIR)%.c $(INCDIR)/ft_printf.h
 	mkdir -p $(OBJDIR)
 	$(CC) $(CFLAGS) $(FT_INC) -o $@ -c $< -I $(INCDIR)
 
