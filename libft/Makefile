@@ -6,7 +6,7 @@
 #    By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/30 15:43:53 by oel-ayad          #+#    #+#              #
-#    Updated: 2019/02/07 12:41:44 by oel-ayad         ###   ########.fr        #
+#    Updated: 2019/02/08 17:28:40 by oel-ayad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -103,7 +103,9 @@ SRCS =	ft_memset.c \
 		ft_swap.c \
 		ft_del_tab.c \
 		ft_split_whitespaces.c \
-		ft_tab_len.c
+		ft_tab_len.c \
+		ft_ftoa.c \
+		ft_pow.c \
 
 OBJ = $(SRCS:.c=.o)
 

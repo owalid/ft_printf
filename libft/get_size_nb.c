@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   get_size_nb.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/09 13:18:58 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/02/08 17:15:34 by oel-ayad         ###   ########.fr       */
+/*   Created: 2019/02/08 17:36:49 by oel-ayad          #+#    #+#             */
+/*   Updated: 2019/02/08 17:41:23 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char		*ft_strnew(size_t size)
+int			get_size_nb(int nb)
 {
-	return ((char*)ft_memalloc(size + 1));
+	int		size;
+
+	size = 0;
+	if (nb == 0)
+		return (1);
+	while (nb > 0)
+	{
+		nb /= 10;
+		size++;
+	}
+	return (size);
 }

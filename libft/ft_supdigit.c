@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_supdigit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/09 13:18:58 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/02/08 17:15:34 by oel-ayad         ###   ########.fr       */
+/*   Created: 2019/02/08 17:26:18 by oel-ayad          #+#    #+#             */
+/*   Updated: 2019/02/08 17:42:21 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strnew(size_t size)
+int			ft_supdigit_at(int nb, int rank)
 {
-	return ((char*)ft_memalloc(size + 1));
+	nb -= ft_pow(get_digit_at(nb, rank), rank);
+	return (nb);	
 }

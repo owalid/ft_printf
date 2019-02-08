@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_pow.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/09 13:18:58 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/02/08 17:15:34 by oel-ayad         ###   ########.fr       */
+/*   Created: 2019/02/08 17:20:18 by oel-ayad          #+#    #+#             */
+/*   Updated: 2019/02/08 17:21:09 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char		*ft_strnew(size_t size)
+unsigned long long		ft_pow(int nb, int power)
 {
-	return ((char*)ft_memalloc(size + 1));
+	unsigned long long		result;
+
+	result = nb;
+	while (power > 0)
+	{
+		result *= nb;
+		power--;
+	}
+	return (result);
 }

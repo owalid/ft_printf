@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 11:12:24 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/01/16 18:54:18 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/02/08 17:43:42 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,4 +118,10 @@ void				ft_swap(int *a, int *b);
 void				ft_del_tab(char ***tab);
 char				**ft_split_whitespaces(char *str);
 size_t				ft_tab_len(char **str);
+unsigned long long	ft_pow(int nb, int power);
+char				*ft_ftoa(float f);
+int					get_size_nb(int nb);
+int					supdigit_at(int nb, int rank);
+int					ft_supzero(int nb);
+int					get_digit_at(int nb, int rank);
 #endif

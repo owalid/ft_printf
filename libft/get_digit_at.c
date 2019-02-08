@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   get_digit_at.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/09 13:18:58 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/02/08 17:15:34 by oel-ayad         ###   ########.fr       */
+/*   Created: 2019/02/08 17:28:50 by oel-ayad          #+#    #+#             */
+/*   Updated: 2019/02/08 17:48:08 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char		*ft_strnew(size_t size)
+int				get_digit_at(int nb, int rank)
 {
-	return ((char*)ft_memalloc(size + 1));
+	int			result;
+
+	result = nb;
+	while (rank)
+	{
+		result /= 10;
+		rank--;
+	}
+	return (result);
 }
