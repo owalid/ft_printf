@@ -6,7 +6,7 @@
 /*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 17:33:52 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/02/08 17:51:15 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/02/11 14:59:47 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int				ft_supzero(int nb)
 	int		size;
 
 	size = get_size_nb(nb);
-	while (get_digit_at(nb, size) == 0 && size)
+	while ((nb % 10) == 0 && size > 0)
 	{
 		nb /= 10;
 		size--;
