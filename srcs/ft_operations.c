@@ -1,16 +1,24 @@
 #include "ft_printf.h"
 
-void		ft_printf_i_d(va_list ap)
+int			ft_printf_minsize(char *str)
 {
-	char	*str;
+	int		minsize;
+
+	minsize = ft_atoi(str);
+	return (minsize);
+}
+
+void		ft_printf_i_d(va_list ap, t_output *out)
+{
 	int		i;
 	int		nbr;
 
 	i = -1;
 	nbr = va_arg(ap, int);
-	str = ft_itoa(nbr);
-	while (str[++i])
-		add_char(str[i], 0);
+	out->str = ft_itoa(nbr);
+	ft_print(out);
+	/*while (str[++i])
+		add_char(str[i], 0);*/
 }
 
 void		ft_printf_s(va_list ap)

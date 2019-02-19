@@ -14,6 +14,14 @@ typedef struct 		s_prtfop
 	void	(*ft_transform)(va_list argv);
 }					t_prtfop;
 
+typedef struct		s_output
+{
+	char	*taille;
+	char	*str;
+	char	option;
+	int		minsize;
+	int		precision;
+}					t_output;
 
 /*
 **	ft_printf.c
