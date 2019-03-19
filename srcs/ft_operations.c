@@ -16,31 +16,28 @@ void		ft_printf_i_d(va_list ap, t_output *out)
 	i = -1;
 	nbr = va_arg(ap, int);
 	out->str = ft_itoa(nbr);
-	ft_print(out);
-	/*while (str[++i])
-		add_char(str[i], 0);*/
+	ft_print(out->str);
 }
 
-void		ft_printf_s(va_list ap)
+void		ft_printf_s(va_list ap, t_output *out)
 {
 	int		i;
 	char	*str;
 
-	str = va_arg(ap, char*);
+	out->str = va_arg(ap, char*);
 	i = -1;
-	while (str[++i])
-		add_char(str[i], 0);
+	ft_print(out->str);
 }
 
-void		ft_printf_c(va_list ap)
+void		ft_printf_c(va_list ap, t_output *out)
 {
-	char 	nbr;
+	char 	cara;
 
-	nbr = va_arg(ap, int);
-	add_char((char)nbr, 0);
+	out->str = va_arg(ap, int);
+	ft_print(out->str);
 }
 
-void		ft_printf_p(va_list ap)
+void		ft_printf_p(va_list ap, t_output *out)
 {
 	char			*result;
 	char			*add;
@@ -50,19 +47,18 @@ void		ft_printf_p(va_list ap)
 
 	i = -1;
 	ptr = va_arg(ap, unsigned int);
-	str = ft_strnew(2);
-	str[0] = '0';
-	str[1] = 'x';
+	out->str = ft_strnew(2);
+	out->str[0] = '0';
+	out->str[1] = 'x';
 	add = ft_itoa_base(ptr, 16);
-	result = ft_strjoin(str, add);
-	while (result[++i])
-		add_char(result[i], 0);
-	ft_strdel(&str);
+	result = ft_strjoin(out->str, add);
+	ft_print(out->str)
+	ft_strdel(&out->str);
 	ft_strdel(&add);
 	ft_strdel(&result);
 }
 
-void		ft_printf_o(va_list ap)
+void		ft_printf_o(va_list ap, t_output *out)
 {	
 	char			*str;
 	int				i;
