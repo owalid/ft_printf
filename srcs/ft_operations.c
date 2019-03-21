@@ -52,7 +52,7 @@ void		ft_printf_p(va_list ap, t_output *out)
 	out->str[1] = 'x';
 	add = ft_itoa_base(ptr, 16);
 	result = ft_strjoin(out->str, add);
-	ft_print(out->str)
+	ft_print(result);
 	ft_strdel(&out->str);
 	ft_strdel(&add);
 	ft_strdel(&result);
@@ -67,12 +67,11 @@ void		ft_printf_o(va_list ap, t_output *out)
 
 	i = -1;
 	nbr = va_arg(ap, unsigned int);	
-	str = ft_itoa_base(nbr, 8);
-	while (str[++i])
-		add_char(str[i], 0);
+	out->str = ft_itoa_base(nbr, 8);
+	ft_print(out->str);
 }
 
-void		ft_printf_u(va_list ap)
+void		ft_printf_u(va_list ap, t_output *out)
 {
 	char			*str;
 	int				i;
@@ -80,12 +79,11 @@ void		ft_printf_u(va_list ap)
 
 	i = -1;
 	nbr = va_arg(ap, unsigned int);
-	str = ft_itoa(nbr);
-	while (str[i++])
-		add_char(str[i], 0);
+	out->str = ft_itoa(nbr);
+	ft_print(out->str);
 }
 
-void		ft_printf_xX(va_list ap)
+void		ft_printf_xX(va_list ap, t_output *out)
 {
 	char			*str;
 	int				i;
@@ -93,7 +91,6 @@ void		ft_printf_xX(va_list ap)
 
 	i = -1;
 	nbr = va_arg(ap, unsigned int);
-	str = ft_itoa_base(nbr, 16);
-	while (str[i++])
-		add_char(str[i], 0);
+	out->str = ft_itoa_base(nbr, 16);
+	ft_print(out->str);
 }
