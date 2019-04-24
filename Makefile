@@ -15,6 +15,9 @@ NAME	=  libftprintf.a
 SRC		=  ft_print.c \
 		   ft_printf.c \
 		   ft_operations.c \
+		   options.c \
+		   conf_output.c \
+		   ft_get_type.c \
 
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 
