@@ -8,26 +8,27 @@
 #include <stdarg.h>
 #include "libft.h"
 
-typedef struct 		s_prtfop
-{
-	char 	id;
-	void	(*ft_transform)(va_list argv);
-}					t_prtfop;
 
 typedef struct		s_output
 {
 	char	*taille;
 	char	*str;
-	char	option;
-	int		minsize;
+	char	*option;
+	char 	conv_type;
+	size_t	minsize;
 	int		precision;
 }					t_output;
 
+typedef struct 		s_prtfop
+{
+	char 	id;
+	char	*(*ft_transform)(va_list argv);
+}					t_prtfop;
 /*
 **	ft_printf.c
 */
 int			ft_printf(const char *format, ...);
-
+void		ft_formater(t_output *output, int opt);
 /*
 **	ft_print.c
 */
@@ -36,13 +37,13 @@ void		add_char(char c, int opt);
 /*
 **	ft_operations.c
 */
-void		ft_printf_i_d(va_list nbr);
-void		ft_printf_s(va_list str);
-void		ft_printf_c(va_list nbr);
-void		ft_printf_p(va_list ptr);
-void		ft_printf_o(va_list nbr);
-void		ft_printf_u(va_list nbr);
-void		ft_printf_xX(va_list nbr);
+char		*ft_printf_i_d(va_list nbr);
+char		*ft_printf_s(va_list str);
+char		*ft_printf_c(va_list nbr);
+char		*ft_printf_p(va_list ptr);
+char		*ft_printf_o(va_list nbr);
+char		*ft_printf_u(va_list nbr);
+char		*ft_printf_xX(va_list nbr);
 
 /*
 **	ft_get_type.c
@@ -52,5 +53,10 @@ int			is_str(char c);
 int			is_integer(char c);
 int			is_float(char c);
 
+/*
+**	options.c
+*/
+void	ft_is_option(char c, t_output *output);
+int		ft_is_conv(char c);
 
 #endif
