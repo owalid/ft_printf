@@ -4,11 +4,11 @@ void	ft_is_option(char c, t_output *output)
 {
 	if (c == '#' || c == '0' || c == '-' || c == '+' || c == ' ')
 	{
-		if (ft_strchr(output->options, c) == NULL)
-			output->options = ft_strjoin(output->options, c);//todo protect
+		if (ft_strchr(output->option, c) == NULL)
+			output->option = ft_strjoin(output->option, &c);//todo protect
 	}
 	else if (ft_isdigit(c))
-		output->minsize = (size_t)ft_atoi(c);
+		output->minsize = (size_t)ft_atoi(&c);
 }
 
 int		ft_is_conv(char c)

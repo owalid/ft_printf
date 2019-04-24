@@ -28,6 +28,7 @@ int         ft_printf(const char *format, ...)
 	i = -1;
 	while (format[i++])
 	{
+		printf("ici\n");
 		if (format[i] == '%')
 		{
 			while (!ft_is_conv(format[i++]))

@@ -66,8 +66,8 @@ void	ft_formater(t_output *output, int opt)
 			if (output->conv_type == 'o')
 				result[i] = '0';
 		}
-		
 	}
+	printf("coucou\n");
 	result = ft_strjoin(result, output->str);
 	i = -1;
 	while (result[++i])
