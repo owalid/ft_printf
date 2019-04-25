@@ -8,6 +8,15 @@
 #include <stdarg.h>
 #include "libft.h"
 
+
+typedef struct 		s_sizeflag
+{
+	short		h;
+	short		hh;
+	short		l;
+	short		ll;
+}					t_sizeflag;
+
 typedef struct 		s_option
 {
 	short		hash;
@@ -23,6 +32,7 @@ typedef struct		s_output
 	char		*taille;
 	char		*str;
 	t_option	*option;
+	t_sizeflag 	*size_flag;
 	char 		conv_type;
 	size_t		minsize;
 	int			precision;
@@ -65,8 +75,8 @@ int			is_float(char c);
 /*
 **	options.c
 */
-void	ft_is_option(char c, t_output *output);
-int		ft_is_conv(char c);
+void		ft_is_option(char c, t_output *output);
+int			ft_is_conv(char c);
 
 /*
 **	clean.c

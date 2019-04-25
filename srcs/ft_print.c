@@ -26,11 +26,11 @@ void	ft_formater(t_output *output, int opt)
 	size_t	i;
 
 
-	
-	if (ft_strlen(output->str) < output->minsize)
+// printf("%d\n", output->option->plus);
+	if (ft_strlen(output->str) > output->minsize)
 	{
-
 		result = ft_strnew(ft_strlen(output->str));
+
 	}
 	else
 	{
@@ -76,4 +76,5 @@ void	ft_formater(t_output *output, int opt)
 	i = -1;
 	while (result[++i])
 		add_char(result[i], opt);
+	ft_strdel(&result);
 }

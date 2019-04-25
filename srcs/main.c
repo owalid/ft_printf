@@ -3,5 +3,5 @@
 
 int		main(int ac, char **av)
 {
-	ft_printf("%d\n", 9);
+	ft_printf("501\t");
 }
