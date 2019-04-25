@@ -26,11 +26,11 @@ void	ft_formater(t_output *output, int opt)
 	size_t	i;
 
 
-	if (ft_strlen(output->str) > output->minsize)
-	{
-		result = ft_strnew(ft_strlen(output->str));
-	}
-	else
+	// if (ft_strlen(output->str) > output->minsize)
+	// {
+	// 	result = ft_strnew(ft_strlen(output->str));
+	// }
+	if (ft_strlen(output->str) < output->minsize)
 	{
 		result = ft_strnew(output->minsize);
 		if (output->option->min == 1)
@@ -75,10 +75,13 @@ void	ft_formater(t_output *output, int opt)
 			while (i < output->minsize - ft_strlen(output->str))
 				result[i++] = ' ';
 		}
+		result = ft_strjoin(result, output->str);
 	}
-	result = ft_strjoin(result, output->str);
+	else
+		result = ft_strdup(output->str);
 	i = -1;
-	while (result[++i])
+	// printf("%d\n", result[0]);
+	while (i++ < ft_strlen(result))
 		add_char(result[i], opt);
 	ft_strdel(&result);
 }
