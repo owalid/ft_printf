@@ -18,7 +18,6 @@ char		*ft_converter(va_list ap, int *i, const char *format)
 int         ft_printf(const char *format, ...)
 {
 	t_output 	output[1];
-	t_option	option[1];
 	va_list		ap;
 	int 		i;
 	int			t;
@@ -26,8 +25,7 @@ int         ft_printf(const char *format, ...)
 	va_start(ap, format);
 	t = -1;
 	i = -1;
-	ft_init_option(option);
-	output->option = option;
+	ft_init_output(output);
 	while (format[++i])
 	{
 		printf("%d\n", i);
@@ -41,7 +39,6 @@ int         ft_printf(const char *format, ...)
 					ft_is_option(format[i], output);
 			}
 			output->conv_type = format[i];
-			printf("%c\n", output->conv_type);
 			output->str = ft_converter(ap, &i, format);
 		}
 		if ((size_t)i == ft_strlen(format) - 1)

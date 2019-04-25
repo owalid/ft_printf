@@ -9,6 +9,17 @@ void        ft_init_option(t_option *option)
     option->plus = 0;
 }
 
+void        ft_init_output(t_output *out)
+{
+    t_option    option[1];
+
+    out->minsize = 0;
+    out->precision = 0;
+    out->conv_type = 0;
+    ft_init_option(option);
+    out->option = option;
+}
+
 void        ft_clean_output(t_output *out)
 {
     ft_init_option(out->option);
@@ -16,5 +27,5 @@ void        ft_clean_output(t_output *out)
     out->precision = 0;
     out->conv_type = 0;
     ft_strdel(&out->str);
-    ft_strdel(&out->taille);
+    // ft_strdel(&out->taille);
 }

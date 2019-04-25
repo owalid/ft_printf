@@ -73,6 +73,7 @@ int		ft_is_conv(char c);
 */
 void        ft_init_option(t_option *option);
 void        ft_clean_output(t_output *out);
+void        ft_init_output(t_output *out);
 
 
 #endif

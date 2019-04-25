@@ -124,4 +124,5 @@ int					get_size_nb(int nb);
 int					supdigit_at(int nb, int rank);
 int					ft_supzero(int nb);
 int					get_digit_at(int nb, int rank);
+char 				*ft_str_from_char(char c);
 #endif

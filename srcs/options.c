@@ -2,18 +2,21 @@
 
 void	ft_is_option(char c, t_output *output)
 {
-	if (c == '#')
+	char	*str;
+
+	str = ft_str_from_char(c);
+	if (str[0] == '#')
 		output->option->hash = 1;
-	else if (c == '0') 
+	else if (str[0] == '0') 
 		output->option->zero = 1;
-	else if (c == '-')
+	else if (str[0] == '-')
 		output->option->min = 1;
-	else if (c == '+')
+	else if (str[0] == '+')
 		output->option->plus = 1;
-	else if (c == ' ')
+	else if (str[0] == ' ')
 		output->option->space = 1;
-	else if (ft_isdigit(c))
-		output->minsize = (size_t)ft_atoi(&c);
+	else if (ft_isdigit(str[0]))
+		output->minsize = (size_t)ft_atoi(str);
 }
 
 int		ft_is_conv(char c)

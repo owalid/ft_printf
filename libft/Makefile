@@ -106,6 +106,7 @@ SRCS =	ft_memset.c \
 		ft_tab_len.c \
 		ft_ftoa.c \
 		ft_pow.c \
+		ft_str_from_char.c \
 
 OBJ = $(SRCS:.c=.o)
 
