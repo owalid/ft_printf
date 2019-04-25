@@ -8,15 +8,24 @@
 #include <stdarg.h>
 #include "libft.h"
 
+typedef struct 		s_option
+{
+	short		hash;
+	short		space;
+	short		zero;
+	short		min;
+	short		plus;
+}					t_option;
+
 
 typedef struct		s_output
 {
-	char	*taille;
-	char	*str;
-	char	*option;
-	char 	conv_type;
-	size_t	minsize;
-	int		precision;
+	char		*taille;
+	char		*str;
+	t_option	*option;
+	char 		conv_type;
+	size_t		minsize;
+	int			precision;
 }					t_output;
 
 typedef struct 		s_prtfop
@@ -58,5 +67,12 @@ int			is_float(char c);
 */
 void	ft_is_option(char c, t_output *output);
 int		ft_is_conv(char c);
+
+/*
+**	clean.c
+*/
+void        ft_init_option(t_option *option);
+void        ft_clean_output(t_output *out);
+
 
 #endif

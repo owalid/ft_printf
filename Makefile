@@ -18,6 +18,7 @@ SRC		=  ft_print.c \
 		   options.c \
 		   conf_output.c \
 		   ft_get_type.c \
+		   clean.c \
 		   
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 
