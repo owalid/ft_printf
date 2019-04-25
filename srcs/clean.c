@@ -19,20 +19,13 @@ void        ft_init_sizeflag(t_sizeflag *flag)
 
 void        ft_init_output(t_output *out)
 {
-    t_option    option[1];
-    t_sizeflag  flag[1];
-
     out->minsize = 0;
     out->precision = 0;
     out->conv_type = 0;
-    ft_init_option(option);
-    out->option = option;
-    ft_init_sizeflag(flag);
-    out->size_flag = flag;
 }
 
 void        ft_clean_output(t_output *out)
 {
-    ft_init_output(out);
-    ft_strdel(&out->str);
+    out->precision = 0;
+    out->conv_type = 0;
 }

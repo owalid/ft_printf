@@ -33,13 +33,13 @@ void	ft_formater(t_output *output, int opt)
 	else
 	{
 		result = ft_strnew(output->minsize);
-		if (output->option->min)
+		if (output->option->min == 1)
 		{
 			i = ft_strlen(output->str);
 			while (i < output->minsize)
 				result[i++] = ' ';
 		}
-		if (output->option->plus)
+		if (output->option->plus == 1)
 		{
 			i = 0;
 			while (i < output->minsize - ft_strlen(output->str))
@@ -47,19 +47,19 @@ void	ft_formater(t_output *output, int opt)
 			if (output->str[0] != '-' && !(output->option->space))
 				result[i] = '+';
 		}
-		if (output->option->zero)
+		if (output->option->zero == 1)
 		{
 			i = 0;
 			while (i < output->minsize - ft_strlen(output->str))
 				result[i++] = '0';
 		}
-		if (output->option->space)
+		if (output->option->space == 1)
 		{
 			i = 0;
 			while (i < output->minsize - ft_strlen(output->str))
 				result[i++] = ' ';
 		}
-		if (output->option->hash)
+		if (output->option->hash == 1)
 		{
 			if (output->conv_type == 'x' || output->conv_type == 'X')
 			{
@@ -68,6 +68,12 @@ void	ft_formater(t_output *output, int opt)
 			}
 			if (output->conv_type == 'o')
 				result[i] = '0';
+		}
+		else
+		{
+			i = 0;
+			while (i < output->minsize - ft_strlen(output->str))
+				result[i++] = ' ';
 		}
 	}
 	result = ft_strjoin(result, output->str);
