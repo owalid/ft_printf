@@ -80,7 +80,7 @@ void	ft_formater(t_output *output, int opt)
 	else
 		result = ft_strdup(output->str);
 	i = -1;
-	// printf("%d\n", result[0]);
+	printf("%zu\n", ft_strlen(result));
 	while (i++ < ft_strlen(result))
 		add_char(result[i], opt);
 	ft_strdel(&result);
