@@ -17,7 +17,6 @@ void	ft_is_option(char c, t_output *output)
 		output->option->space = 1;
 	else if (ft_isdigit(str[0]))
 		output->minsize = (size_t)ft_atoi(str);
-	// printf("plus %d\n", output->option->plus);
 	ft_strdel(&str);
 }
 
