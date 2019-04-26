@@ -19,6 +19,8 @@ void        ft_init_sizeflag(t_sizeflag *flag)
 
 void        ft_init_output(t_output *out)
 {
+    ft_init_option(out->option);
+    ft_init_sizeflag(out->size_flag);
     out->minsize = 0;
     out->precision = 0;
     out->conv_type = 0;

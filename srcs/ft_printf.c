@@ -9,6 +9,7 @@ char		*ft_converter(va_list ap, int *i, const char *format)
 	{
 		if (g_prtfop[o].id == format[*i])
 		{
+			// *i += 1;
 			return (g_prtfop[o].ft_transform(ap));
 		}
 	}
@@ -22,19 +23,16 @@ int         ft_printf(const char *format, ...)
     t_sizeflag  flag[1];
 	va_list		ap;
 	int 		i;
+	int			j;
 	char		*tmp;
 
 	va_start(ap, format);
 	i = -1;
-	ft_init_option(option);
-	ft_init_sizeflag(flag);
-	ft_init_output(output);
 	output->option = option;
     output->size_flag = flag;
 	while (format[++i])
 	{
-		ft_init_option(output->option);
-		ft_init_sizeflag(output->size_flag);
+		ft_init_output(output);
 		if (format[i] == '%')
 		{
 			i++;
@@ -44,6 +42,16 @@ int         ft_printf(const char *format, ...)
 				{
 					tmp = ft_str_from_char(format[i]);
 					output->precision = ft_atoi(tmp);
+					ft_strdel(&tmp);
+				}
+				else if (ft_isdigit(format[i]))
+				{
+					j = i;
+					while (ft_isdigit(format[j]))
+						j++;
+					tmp = ft_strsub(format, i, j);
+					output->minsize = (size_t)ft_atoi(tmp);
+					i = j - 1;
 					ft_strdel(&tmp);
 				}
 				else
@@ -56,10 +64,10 @@ int         ft_printf(const char *format, ...)
 		else
 			output->str = ft_str_from_char(format[i]);
 		ft_formater(output, 0);
-		ft_clean_output(output);
+		// ft_clean_output(output);
+		// ft_strdel(&(output->str));
 	}
-	ft_init_option(output->option);
-	ft_init_sizeflag(output->size_flag);
+	ft_init_output(output);
 	output->str = ft_str_from_char(format[i]);
 	ft_formater(output, 1);
 	va_end(ap);

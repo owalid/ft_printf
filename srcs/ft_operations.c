@@ -2,12 +2,10 @@
 
 char		*ft_printf_i_d(va_list ap)
 {
-	int		i;
-	int		nbr;
+	char	*result;
 
-	i = -1;
-	nbr = va_arg(ap, int);
-	return (ft_itoa(nbr));
+	result = ft_itoa(va_arg(ap, int));
+	return (result);
 }
 
 char		*ft_printf_s(va_list ap)
