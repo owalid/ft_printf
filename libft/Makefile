@@ -91,7 +91,6 @@ SRCS =	ft_memset.c \
 		ft_strupcase.c \
 		ft_islower.c \
 		ft_strncasecmp.c \
-		ft_strlowcase.c \
 		ft_strnlowcase.c \
 		ft_strndup.c \
 		ft_lst_pushback.c \

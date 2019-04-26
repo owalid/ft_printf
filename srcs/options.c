@@ -34,6 +34,7 @@ void	ft_is_option(char c, t_output *output)
 	}
 	else if (c == 'L')
 		output->size_flag->bigl = 1;
+	printf("%d\n", output->option->zero);
 }
 
 int		ft_is_conv(char c)

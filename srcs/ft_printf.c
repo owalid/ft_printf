@@ -46,7 +46,7 @@ int         ft_printf(const char *format, ...)
 					output->precision = ft_atoi(tmp);
 					ft_strdel(&tmp);
 				}
-				else if (ft_isdigit(format[i]))
+				else if (ft_isdigit(format[i]) && format[i] != '0')
 				{
 					j = i;
 					while (ft_isdigit(format[j]))
