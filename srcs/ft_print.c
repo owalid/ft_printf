@@ -20,41 +20,36 @@ void		add_char(char c, int opt)
 	}
 }
 
-char	*ft_formater_with_option(t_output *output)
+char	*ft_formater_with_option(t_output *output, size_t size)
 {
 	char 	*result;
 	size_t	i;
 
-	result = ft_strnew(output->minsize);
+	i = 0;
+	result = ft_strnew(size);
 	if (output->option->min == 1)
 	{
-		i = ft_strlen(output->str);
-		while (i < output->minsize)
+		while (i < size)
 			result[i++] = ' ';
 		result = ft_strjoin(output->str, result);
+		return (result);
 	}
 	if (output->option->plus == 1)
 	{
-		i = 0;
-		while (i < output->minsize - ft_strlen(output->str))
+		while (i < size - ft_strlen(output->str))
 			result[i++] = ' ';
 		if (output->str[0] != '-' && !(output->option->space))
 			result[i] = '+';
-		result = ft_strjoin(result, output->str);
 	}
 	if (output->option->zero == 1)
 	{
-		i = 0;
-		while (i < output->minsize - ft_strlen(output->str))
+		while (i < size - ft_strlen(output->str))
 			result[i++] = '0';
-		result = ft_strjoin(result, output->str);
 	}
 	if (output->option->space == 1)
 	{
-		i = 0;
-		while (i < output->minsize - ft_strlen(output->str))
+		while (i < size - ft_strlen(output->str))
 			result[i++] = ' ';
-		result = ft_strjoin(result, output->str);
 	}
 	if (output->option->hash == 1)
 	{
@@ -65,15 +60,13 @@ char	*ft_formater_with_option(t_output *output)
 		}
 		if (output->conv_type == 'o')
 			result[i] = '0';
-		result = ft_strjoin(result, output->str);
 	}
 	else
 	{
-		i = 0;
-		while (i < output->minsize - ft_strlen(output->str))
+		while (i < size - ft_strlen(output->str))
 			result[i++] = ' ';
-		result = ft_strjoin(result, output->str);
 	}
+	result = ft_strjoin(result, output->str);
 	return (result);
 }
 
@@ -83,9 +76,9 @@ void	ft_formater(t_output *output, int opt)
 	size_t	i;
 
 	if (ft_strlen(output->str) < output->minsize)
-		result = ft_formater_with_option(output);		
+		result = ft_formater_with_option(output, output->minsize);		
 	else
-		result = ft_strdup(output->str);
+		result = ft_formater_with_option(output, ft_strlen(output->str));
 	i = -1;
 	if (opt == 1 && !result[0])
 		add_char(0, opt);

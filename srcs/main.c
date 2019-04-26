@@ -3,5 +3,5 @@
 
 int		main(int ac, char **av)
 {
-	ft_printf("heloooo %+d %s", 90, "coucou");
+	ft_printf("heloooo %-10d %s", 90, "coucou");
 }

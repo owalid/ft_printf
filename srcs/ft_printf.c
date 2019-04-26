@@ -2,18 +2,20 @@
 
 char		*ft_converter(va_list ap, int *i, const char *format)
 {
-	int	o;
+	int		o;
+	char	*result;
 	
 	o = -1;
 	while (g_prtfop[++o].id)
 	{
 		if (g_prtfop[o].id == format[*i])
 		{
-			// *i += 1;
-			return (g_prtfop[o].ft_transform(ap));
+			result = g_prtfop[o].ft_transform(ap);
+			return (result);
 		}
 	}
-	return (NULL);
+	result = ft_str_from_char(format[*i]);
+	return (result);
 }
 
 int         ft_printf(const char *format, ...)
