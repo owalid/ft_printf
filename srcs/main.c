@@ -4,5 +4,6 @@
 
 int		main(int ac, char **av)
 {
-	ft_printf("heloooo %010d %s", 90, "coucou");
+	unsigned char a = 10;
+	ft_printf("heloooo %#4x %s", a, "coucou");
 }
