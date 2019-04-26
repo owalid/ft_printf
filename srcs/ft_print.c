@@ -79,9 +79,9 @@ void	ft_formater(t_output *output, int opt)
 		result = ft_formater_with_option(output, output->minsize);		
 	else
 		result = ft_formater_with_option(output, ft_strlen(output->str));
-	i = -1;
 	if (opt == 1 && !result[0])
 		add_char(0, opt);
+	i = -1;
 	while (result[++i])
 		add_char(result[i], opt);
 	ft_strdel(&result);

@@ -1,28 +1,33 @@
 #include "ft_printf.h"
 
-char		*ft_printf_i_d(va_list ap)
+char		*ft_printf_i_d(va_list ap, t_sizeflag *flag)
 {
 	char	*result;
 
-	result = ft_itoa(va_arg(ap, int));
+	if (flag->h)
+		result = ft_itoa(va_arg(ap, short));
+	else
+		result = ft_itoa(va_arg(ap, int));
 	return (result);
 }
 
-char		*ft_printf_s(va_list ap)
+char		*ft_printf_s(va_list ap, t_sizeflag *flag)
 {
+	(void)flag;
 	return (va_arg(ap, char*));
 }
 
-char		*ft_printf_c(va_list ap)
+char		*ft_printf_c(va_list ap, t_sizeflag *flag)
 {
 	char	*result;
 	
+	(void)flag;
 	result = ft_strnew(2);
 	result[0] = va_arg(ap, int);
 	return (result);
 }
 
-char		*ft_printf_p(va_list ap)
+char		*ft_printf_p(va_list ap, t_sizeflag *flag)
 {
 	char			*result;
 	char			*add;
@@ -30,6 +35,7 @@ char		*ft_printf_p(va_list ap)
 	int				i;
 	int				ptr;
 
+	(void)flag;
 	i = -1;
 	ptr = va_arg(ap, unsigned int);
 	str = ft_strnew(2);
@@ -40,31 +46,53 @@ char		*ft_printf_p(va_list ap)
 	return(result);
 }
 
-char		*ft_printf_o(va_list ap)
+char		*ft_printf_o(va_list ap, t_sizeflag *flag)
 {	
-	int				i;
 	unsigned int	nbr;
+	char			*result;
 
-
-	i = -1;
-	nbr = va_arg(ap, unsigned int);	
-	return(ft_itoa_base(nbr, 8));
+	if (flag->l)
+		nbr = va_arg(ap, wint_t);
+	else	
+		nbr = va_arg(ap, unsigned int);
+	result = ft_itoa_base(nbr, 8);
+	return(result);
 }
 
-char		*ft_printf_u(va_list ap)
+char		*ft_printf_u(va_list ap, t_sizeflag *flag)
 {
-	int				i;
 	unsigned int	nbr;
+	char			*result;
 
-	i = -1;
+	(void)flag;
 	nbr = va_arg(ap, unsigned int);
-	return (ft_itoa(nbr));
+	result = ft_itoa(nbr);
+	return (result);
 }
 
-char		*ft_printf_xX(va_list ap)
+char		*ft_printf_X(va_list ap, t_sizeflag *flag)
 {
 	unsigned int	nbr;
+	char			*result;
 
-	nbr = va_arg(ap, unsigned int);
-	return (ft_itoa_base(nbr, 16));
+	if (flag->l)
+		nbr = va_arg(ap, wint_t);
+	else	
+		nbr = va_arg(ap, unsigned int);
+	result = ft_itoa_base(nbr, 16);
+	return (result);
+}
+
+char		*ft_printf_x(va_list ap, t_sizeflag *flag)
+{
+	unsigned int	nbr;
+	char			*result;
+
+	if (flag->l)
+		nbr = va_arg(ap, wint_t);
+	else	
+		nbr = va_arg(ap, unsigned int);
+	result = ft_itoa_base(nbr, 16);
+	result = ft_strtolower(result);
+	return (result);
 }

@@ -1,6 +1,6 @@
 #include "ft_opprintf.h"
 
-char		*ft_converter(va_list ap, int *i, const char *format)
+char		*ft_converter(va_list ap, int *i, const char *format, t_sizeflag *flag)
 {
 	int		o;
 	char	*result;
@@ -10,7 +10,7 @@ char		*ft_converter(va_list ap, int *i, const char *format)
 	{
 		if (g_prtfop[o].id == format[*i])
 		{
-			result = g_prtfop[o].ft_transform(ap);
+			result = g_prtfop[o].ft_transform(ap, flag);
 			return (result);
 		}
 	}
@@ -61,13 +61,11 @@ int         ft_printf(const char *format, ...)
 				i++;
 			}
 			output->conv_type = format[i];
-			output->str = ft_converter(ap, &i, format);
+			output->str = ft_converter(ap, &i, format, output->size_flag);
 		}
 		else
 			output->str = ft_str_from_char(format[i]);
 		ft_formater(output, 0);
-		// ft_clean_output(output);
-		// ft_strdel(&(output->str));
 	}
 	ft_init_output(output);
 	output->str = ft_str_from_char(format[i]);

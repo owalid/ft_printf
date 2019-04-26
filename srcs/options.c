@@ -12,6 +12,28 @@ void	ft_is_option(char c, t_output *output)
 		output->option->plus = 1;
 	else if (c == ' ')
 		output->option->space = 1;
+	else if (c == 'h')
+	{
+		if (output->size_flag->h)
+		{
+			output->size_flag->hh = 1;
+			output->size_flag->h = 0;
+		}
+		else
+			output->size_flag->h = 1;
+	}
+	else if (c == 'l')
+	{
+		if (output->size_flag->l)
+		{
+			output->size_flag->ll = 1;
+			output->size_flag->l = 0;
+		}
+		else
+			output->size_flag->l = 1;
+	}
+	else if (c == 'L')
+		output->size_flag->bigl = 1;
 }
 
 int		ft_is_conv(char c)
