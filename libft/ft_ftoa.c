@@ -13,12 +13,13 @@
 #include "libft.h"
 #include <stdio.h>
 
-long			ft_cast_double_to_long(double nbr)
+long			ft_cast_double_to_long(double nbr, int precision)
 {
 	long		cast_long;
 
 	cast_long = (long)nbr;
-	if (cast_long % 10 <= 5 && cast_long % 10 != 0)
+	if ((cast_long % 10 <= 5 && cast_long % 10 != 0)
+			|| precision == get_size_nb(cast_long))
 		return (cast_long + 1);
 	else
 		return (cast_long);
@@ -39,7 +40,7 @@ char			*ft_ftoa(double f, int precision)
 	strfir_part = ft_strnew(get_size_nb(power_part) + 1);
 	strfir_part = ft_itoa(power_part);
 	strfir_part[get_size_nb(power_part)] = '.';
-	strsec_part = ft_itoa(ft_cast_double_to_long(second_part));
+	strsec_part = ft_itoa(ft_cast_double_to_long(second_part, precision));
 	result = ft_strjoin(strfir_part, strsec_part);
 	return (result);
 }
