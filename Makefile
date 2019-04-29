@@ -6,7 +6,7 @@
 #    By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 20:29:21 by oel-ayad          #+#    #+#              #
-#    Updated: 2019/02/08 14:15:25 by oel-ayad         ###   ########.fr        #
+#    Updated: 2019/04/29 20:28:08 by oel-ayad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ $(OBJDIR)%.o:$(SRCDIR)%.c $(INCDIR)/ft_printf.h
 
 $(NAME): $(OBJ)
 	make -C $(FT)
-	ar rc $(NAME) $(OBJ)
+	ar rc $(NAME) $(OBJ) libft/libft.a
 	ranlib $(NAME)
 
 clean:
