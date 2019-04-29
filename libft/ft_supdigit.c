@@ -1,19 +1,15 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_supdigit.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/08 17:26:18 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/02/11 15:04:09 by oel-ayad         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
-int			ft_supdigit_at(int nb, int rank)
+int			ft_supdigit(int nb, int size)
 {
-	nb -= ft_pow(get_digit_at(nb, rank), rank);
+    int		size_nb;
+
+	size_nb = get_size_nb(nb);
+    while (size && size_nb)
+    {
+        nb /= 10;
+		size--;
+        size_nb--;
+    }
 	return (nb);
 }

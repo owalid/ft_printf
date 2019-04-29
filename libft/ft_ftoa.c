@@ -11,38 +11,35 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-int				get_spart(int nb, int size, int power)
+long			ft_cast_double_to_long(double nbr)
 {
-	unsigned long long		tmp;
+	long		cast_long;
 
-	while (size)
-	{
-		tmp = (get_digit_at(nb, power - 1) * ft_pow(10, power - 2));
-		nb -= tmp;
-		power--;
-		size--;
-	}
-	return (nb);
+	cast_long = (long)nbr;
+	if (cast_long % 10 <= 5 && cast_long % 10 != 0)
+		return (cast_long + 1);
+	else
+		return (cast_long);
 }
 
-char			*ft_ftoa(float f)
+char			*ft_ftoa(double f, int precision)
 {
-	int		second_part;
+	double	second_part;
 	int		power_part;
 	char	*strfir_part;
 	char	*strsec_part;
 	char	*result;
 
-	power_part = (int)(f * ft_pow(10, 6));
-	second_part = get_spart(power_part,
-			get_size_nb((int)f), get_size_nb(power_part));
-	second_part = ft_supzero(second_part);
-	result = ft_strnew(get_size_nb((int)f) + get_size_nb(second_part) + 1);
-	strfir_part = ft_strnew(get_size_nb((int)f) + 1);
-	strfir_part = ft_itoa((int)f);
-	strfir_part[get_size_nb((int)f)] = ',';
-	strsec_part = ft_itoa(second_part);
+	power_part = (int)f;
+	second_part = f - (double)power_part;
+	second_part = second_part * ft_pow(10, precision - 1);
+	result = ft_strnew(get_size_nb(power_part) + get_size_nb(second_part) + 1);
+	strfir_part = ft_strnew(get_size_nb(power_part) + 1);
+	strfir_part = ft_itoa(power_part);
+	strfir_part[get_size_nb(power_part)] = '.';
+	strsec_part = ft_itoa(ft_cast_double_to_long(second_part));
 	result = ft_strjoin(strfir_part, strsec_part);
 	return (result);
 }

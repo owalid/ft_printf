@@ -17,6 +17,7 @@ typedef struct 		s_sizeflag
 	short		l;
 	short		ll;
 	short		bigl;
+	int			precision;
 }					t_sizeflag;
 
 typedef struct 		s_option
@@ -37,7 +38,6 @@ typedef struct		s_output
 	t_sizeflag 	*size_flag;
 	char 		conv_type;
 	size_t		minsize;
-	int			precision;
 }					t_output;
 
 typedef struct 		s_prtfop
@@ -66,6 +66,7 @@ char		*ft_printf_o(va_list nbr, t_sizeflag *flag);
 char		*ft_printf_u(va_list nbr, t_sizeflag *flag);
 char		*ft_printf_X(va_list nbr, t_sizeflag *flag);
 char		*ft_printf_x(va_list nbr, t_sizeflag *flag);
+char		*ft_printf_f(va_list nbr, t_sizeflag *flag);
 
 /*
 **	ft_get_type.c

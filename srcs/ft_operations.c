@@ -103,3 +103,16 @@ char		*ft_printf_x(va_list ap, t_sizeflag *flag)
 	result = ft_strlowcase(result);
 	return (result);
 }
+
+char		*ft_printf_f(va_list ap, t_sizeflag *flag)
+{
+	char		*result;
+	double		nbr;
+
+	nbr = va_arg(ap, double);
+	if (flag->precision)
+		result = ft_ftoa(nbr, flag->precision);
+	else
+		result = ft_ftoa(nbr, 6);
+	return (result);
+}

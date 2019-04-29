@@ -81,7 +81,7 @@ char				*ft_strnlowcase(char *str, size_t n);
 char				*ft_strndup(const char *str, size_t size);
 char				*ft_strrev(char *str);
 char 				*ft_str_from_char(char c);
-char				*ft_ftoa(float f);
+char				*ft_ftoa(double f, int precision);
 
 char				**ft_strsplit(char const *s, char c);
 char				**ft_strsplit(char const *s, char c);
@@ -121,6 +121,8 @@ int					get_size_nb(int nb);
 int					supdigit_at(int nb, int rank);
 int					ft_supzero(int nb);
 int					get_digit_at(int nb, int rank);
+int					ft_supdigit(int nb, int size);
+
 
 size_t				ft_strlen(const char *str);
 size_t				ft_strlcat(char *dst, const char *src, size_t size);

@@ -34,11 +34,11 @@ void	ft_is_option(char c, t_output *output)
 	}
 	else if (c == 'L')
 		output->size_flag->bigl = 1;
-	
 }
 
 int		ft_is_conv(char c)
 {
 	return ((c == 'd' || c == 'i' || c == 'o' || c == 'u' || c == 'x'
-	|| c == 'X' || c == 'c' || c == 's' || c == 'p' || c == '\0'));
+				|| c == 'X' || c == 'c' || c == 's'
+					|| c == 'p' ||  c == 'f' || c == '\0'));
 }

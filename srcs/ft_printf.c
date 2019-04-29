@@ -42,8 +42,11 @@ int         ft_printf(const char *format, ...)
 			{
 				if (format[i] == '.')
 				{
-					tmp = ft_str_from_char(format[i]);
-					output->precision = ft_atoi(tmp);
+					j = i++;
+					while (ft_isdigit(format[j++]));
+					tmp = ft_strsub(format, i, j);
+					output->size_flag->precision = ft_atoi(tmp);
+					i = j - 1;
 					ft_strdel(&tmp);
 				}
 				else if (ft_isdigit(format[i]) && format[i] != '0')

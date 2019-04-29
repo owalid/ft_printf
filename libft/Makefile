@@ -106,6 +106,11 @@ SRCS =	ft_memset.c \
 		ft_ftoa.c \
 		ft_pow.c \
 		ft_str_from_char.c \
+		ft_supzero.c \
+		get_digit_at.c \
+		get_size_nb.c \
+		ft_supdigit_at.c \
+		ft_supdigit.c \
 
 OBJ = $(SRCS:.c=.o)
 
