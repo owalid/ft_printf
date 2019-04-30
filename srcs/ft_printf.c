@@ -1,10 +1,11 @@
 #include "ft_opprintf.h"
 
-char		*ft_converter(va_list ap, int *i, const char *format, t_sizeflag *flag)
+char		*ft_converter(va_list ap, int *i, const char *format
+									, t_sizeflag *flag)
 {
 	int		o;
 	char	*result;
-	
+
 	o = -1;
 	while (g_prtfop[++o].id)
 	{
@@ -22,16 +23,18 @@ int         ft_printf(const char *format, ...)
 {
 	t_output 	output[1];
 	t_option    option[1];
-    t_sizeflag  flag[1];
+    t_sizeflag	flag[1];
 	va_list		ap;
 	int 		i;
 	int			j;
+	int			result;
 	char		*tmp;
 
 	va_start(ap, format);
 	i = -1;
 	output->option = option;
     output->size_flag = flag;
+	result = 0;
 	while (format[++i])
 	{
 		ft_init_output(output);
@@ -43,7 +46,8 @@ int         ft_printf(const char *format, ...)
 				if (format[i] == '.')
 				{
 					j = i++;
-					while (ft_isdigit(format[j++]));
+					while (ft_isdigit(format[j++]))
+						;
 					tmp = ft_strsub(format, i, j);
 					output->size_flag->precision = ft_atoi(tmp);
 					i = j - 1;
@@ -68,12 +72,13 @@ int         ft_printf(const char *format, ...)
 		}
 		else
 			output->str = ft_str_from_char(format[i]);
-		ft_formater(output, 0);
+		result += ft_formater(output, 0);
+		output->minsize = 0;
 	}
 	ft_init_output(output);
 	output->str = ft_str_from_char(format[i]);
-	ft_formater(output, 1);
+	result += ft_formater(output, 1);
 	va_end(ap);
-	return (0);
+	return (result);
 
 }

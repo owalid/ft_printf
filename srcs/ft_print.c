@@ -27,7 +27,7 @@ char	*ft_formater_with_option(t_output *output, size_t size)
 
 	i = 0;
 	result = ft_strnew(size);
-	if (output->option->min == 1)
+	if (output->option->min == 1 && ft_strlen(output->str) < size)
 	{
 		while (i < size)
 			result[i++] = ' ';
@@ -36,22 +36,25 @@ char	*ft_formater_with_option(t_output *output, size_t size)
 	}
 	if (output->option->plus == 1)
 	{
-		while (i < size - ft_strlen(output->str))
-			result[i++] = ' ';
+		if (ft_strlen(output->str) < size)
+		{
+			while (i < size - ft_strlen(output->str))
+				result[i++] = ' ';
+		}
 		if (output->str[0] != '-' && !(output->option->space))
 			result[i] = '+';
 	}
-	if (output->option->zero == 1)
+	if (output->option->zero == 1 && ft_strlen(output->str) < size)
 	{
 		while (i < size - ft_strlen(output->str))
 			result[i++] = '0';
 	}
-	if (output->option->space == 1)
+	if (output->option->space == 1 && ft_strlen(output->str) < size)
 	{
 		while (i < size - ft_strlen(output->str))
 			result[i++] = ' ';
 	}
-	if (output->option->hash == 1)
+	if (output->option->hash == 1 && ft_strlen(output->str) < size)
 	{
 		if (output->conv_type == 'x' || output->conv_type == 'X')
 		{
@@ -78,7 +81,7 @@ char	*ft_formater_with_option(t_output *output, size_t size)
 	return (result);
 }
 
-void	ft_formater(t_output *output, int opt)
+int		ft_formater(t_output *output, int opt)
 {
 	char 	*result;
 	size_t	i;
@@ -93,4 +96,5 @@ void	ft_formater(t_output *output, int opt)
 	while (result[++i])
 		add_char(result[i], opt);
 	ft_strdel(&result);
+	return (i);
 }

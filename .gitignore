@@ -4,3 +4,5 @@ libftprintf.a
 **.a
 **/*.a
 **/*.o
+./a.out.dSYM
+**/*.gch

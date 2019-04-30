@@ -2,6 +2,7 @@
 # define FT_OPPRINTF_H
 
 # include "ft_printf.h"
+# include "libft.h"
 
 static t_prtfop g_prtfop[] =
 {

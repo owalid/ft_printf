@@ -3,47 +3,46 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 20:29:21 by oel-ayad          #+#    #+#              #
-#    Updated: 2019/04/29 20:28:08 by oel-ayad         ###   ########.fr        #
+#    Updated: 2019/04/30 13:34:14 by oel-ayad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=  libftprintf.a
 
-SRC		=  ft_print.c \
-		   ft_printf.c \
-		   ft_operations.c \
-		   options.c \
-		   conf_output.c \
-		   ft_get_type.c \
-		   clean.c \
-		   
+SRC		=  	ft_print.c \
+			ft_printf.c \
+			ft_operations.c \
+			options.c \
+			ft_get_type.c \
+			clean.c \
+
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 
-CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror
 
-FT		= ./libft/
+FT		= libft/
 FT_LIB	= $(addprefix $(FT),libft.a)
-FT_INC	= -I ./libft
-FT_LNK	= -L ./libft -l ft
+FT_INC	= libft/
 
-SRCDIR	= ./srcs/
-INCDIR	= ./includes/
-OBJDIR	= ./obj/
+SRCDIR	= srcs/
+INCDIR	= includes/
+OBJDIR	= objs/
+
+CC		= gcc
+CFLAGS	= -I $(INCDIR) -I $(FT_INC) -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(OBJDIR)%.o:$(SRCDIR)%.c $(INCDIR)/ft_printf.h
+$(OBJDIR)%.o:$(SRCDIR)%.c $(INCDIR)/ft_printf.h $(INCDIR)/ft_opprintf.h
 	mkdir -p $(OBJDIR)
-	$(CC) $(CFLAGS) $(FT_INC) -o $@ -c $< -I $(INCDIR)
+	$(CC) $(CFLAGS) -c $< -o $@ 
 
 $(NAME): $(OBJ)
 	make -C $(FT)
-	ar rc $(NAME) $(OBJ) libft/libft.a
-	ranlib $(NAME)
+	cp $(FT_INC)libft.a $(NAME)
+	ar rc $(NAME) $(OBJ)
 
 clean:
 	rm -rf $(OBJDIR)

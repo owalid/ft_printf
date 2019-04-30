@@ -2,12 +2,12 @@
 # define FT_PRINTF_H
 
 /////////////////////
-#include <stdio.h>
+# include <stdio.h>
 ////////////////////
 
-#include <stdarg.h>
-#include <wchar.h>
-#include "libft.h"
+# include <stdarg.h>
+# include <wchar.h>
+# include "libft.h"
 
 
 typedef struct 		s_sizeflag
@@ -49,7 +49,7 @@ typedef struct 		s_prtfop
 **	ft_printf.c
 */
 int			ft_printf(const char *format, ...);
-void		ft_formater(t_output *output, int opt);
+int		ft_formater(t_output *output, int opt);
 /*
 **	ft_print.c
 */
