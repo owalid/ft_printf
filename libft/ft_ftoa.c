@@ -6,7 +6,7 @@
 /*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 17:20:54 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/04/30 12:14:12 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/01 18:35:56 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ long			ft_cast_double_to_long(double nbr, int precision)
 		return (cast_long);
 }
 
-char			*ft_ftoa(double f, int precision)
+char			*ft_ftoa(double f, size_t precision)
 {
 	double	second_part;
 	long	power_part;

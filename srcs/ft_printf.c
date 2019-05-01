@@ -49,8 +49,16 @@ int         ft_printf(const char *format, ...)
 					while (ft_isdigit(format[j++]))
 						;
 					tmp = ft_strsub(format, i, j);
-					output->size_flag->precision = ft_atoi(tmp);
-					i = j - 1;
+					output->size_flag->precision = (size_t)ft_atoi(tmp);
+					if (format[j + 1] != 'f')
+					{
+						output->option->point = 1;
+						if (output->minsize < output->size_flag->precision)
+						{
+							output->minsize = output->size_flag->precision;
+						}
+					}
+					i = j;
 					ft_strdel(&tmp);
 				}
 				else if (ft_isdigit(format[i]) && format[i] != '0')

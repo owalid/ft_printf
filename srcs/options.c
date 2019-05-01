@@ -4,14 +4,24 @@ void	ft_is_option(char c, t_output *output)
 {
 	if (c == '#')
 		output->option->hash = 1;
-	else if (c == '0') 
+	else if (c == '0')
+	{
+
+		// output->option->min = 0;
 		output->option->zero = 1;
+	}
 	else if (c == '-')
+	{
 		output->option->min = 1;
+		output->option->zero = 0;
+	}
 	else if (c == '+')
 		output->option->plus = 1;
 	else if (c == ' ')
+	{
+		output->option->min = 0;
 		output->option->space = 1;
+	}
 	else if (c == 'h')
 	{
 		if (output->size_flag->h)

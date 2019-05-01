@@ -7,6 +7,7 @@ void        ft_init_option(t_option *option)
     option->zero = 0;
     option->min = 0;
     option->plus = 0;
+    option->point = 0;
 }
 
 void        ft_init_sizeflag(t_sizeflag *flag)

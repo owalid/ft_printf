@@ -17,7 +17,7 @@ typedef struct 		s_sizeflag
 	short		l;
 	short		ll;
 	short		bigl;
-	int			precision;
+	size_t		precision;
 }					t_sizeflag;
 
 typedef struct 		s_option
@@ -27,6 +27,7 @@ typedef struct 		s_option
 	short		zero;
 	short		min;
 	short		plus;
+	short		point;
 }					t_option;
 
 
