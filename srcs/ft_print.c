@@ -46,9 +46,9 @@ char	*ft_formater_with_option(t_output *output, size_t size)
 	{
 		if (output->str[0] == '-')
 		{
-			tmp = ft_strnew(output->size_flag->precision);
+			tmp = ft_strnew(output->minsize);
 			result[i++] = '-';
-			while (i <= size - ft_strlen(output->str))
+			while (i <= output->minsize - ft_strlen(output->str) + 1)
 				result[i++] = '0';
 			tmp = ft_itoa(ft_atoi(output->str) * -1);
 			result = ft_strjoin(result, tmp);
@@ -62,14 +62,18 @@ char	*ft_formater_with_option(t_output *output, size_t size)
 		}
 	}
 	
-	if (output->option->point && ft_strlen(output->str) < output->size_flag->precision)
+	if (output->option->point && ft_strlen(output->str) <= output->size_flag->precision)
 	{
 		if (output->str[0] == '-')
 		{
 			tmp = ft_strnew(output->size_flag->precision);
 			result[i++] = '-';
-			while (i <= output->size_flag->precision - ft_strlen(output->str) + 1)
+			while (i <= output->size_flag->precision - ft_strlen(output->str))
 				result[i++] = '0';
+			if (output->option->space && i < output->minsize)
+			{
+				result[i++] = '0';
+			}
 			tmp = ft_itoa(ft_atoi(output->str) * -1);
 			result = ft_strjoin(result, tmp);
 			ft_strdel(&tmp);
@@ -82,19 +86,6 @@ char	*ft_formater_with_option(t_output *output, size_t size)
 				result[i++] = '0';
 		}
 	}
-	// if (output->option->min == 1)
-	// {
-	// 	tmp = i;
-	// 	while (i < size - ft_strlen(output->str))
-	// 	{
-	// 		result[i++] = ' ';
-	// 	}
-	// 	if (tmp != i)
-	// 	{
-	// 		result = ft_strjoin(output->str, result);
-	// 		return (result);
-	// 	}
-	// }
 	if (output->option->hash == 1 && ft_strlen(output->str) < size)
 	{
 		if (output->conv_type == 'x' || output->conv_type == 'X')
@@ -143,19 +134,16 @@ int		ft_formater(t_output *output, int opt)
 	}
 	else
 		result = ft_formater_with_option(output, ft_strlen(output->str));
-	if (output->option->space == 1 && (result[0] != '-'))
+	if (output->option->space == 1 && !output->option->plus && (!output->option->min || output->option->point))
 	{
-		tmp = ft_str_from_char(' ');
-		result = ft_strjoin(tmp, result);
-		ft_strdel(&tmp);
+		if (result[0] != '-')
+		{
+			tmp = ft_str_from_char(' ');
+			result = ft_strjoin(tmp, result);
+			ft_strdel(&tmp);
+
+		}
 	}
-	// if (output->option->space == 1)
-	// {
-	// 	tmp 
-	// 		result[i++] = ' ';
-	// }
-	// if (output->option->space == 1)
-	// 	result = ft_strjoin(" ", result);
 	if (opt == 1 && !result[0])
 		add_char(0, opt);
 	i = -1;
