@@ -36,7 +36,10 @@ char	*ft_formater_with_option(t_output *output, size_t size)
 				result[i++] = ' ';
 		}
 		if (output->str[0] != '-' && !(output->option->space))
+		{
 			result[i++] = '+';
+			output->size_flag->precision += output->option->point;
+		}
 	}
 	if (output->option->zero && (ft_strlen(output->str) < size || output->minsize > ft_strlen(output->str)))
 	{
