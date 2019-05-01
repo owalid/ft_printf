@@ -23,6 +23,7 @@ void		add_char(char c, int opt)
 char	*ft_formater_with_option(t_output *output, size_t size)
 {
 	char 	*result;
+	char	*tmp;
 	size_t	i;
 	// size_t	tmp;
 
@@ -35,7 +36,7 @@ char	*ft_formater_with_option(t_output *output, size_t size)
 			while (i < size - ft_strlen(output->str))
 				result[i++] = ' ';
 		}
-		if (output->str[0] != '-' && !(output->option->space))
+		if (output->str[0] != '-')
 		{
 			result[i++] = '+';
 			output->size_flag->precision += output->option->point;
@@ -43,21 +44,43 @@ char	*ft_formater_with_option(t_output *output, size_t size)
 	}
 	if (output->option->zero && (ft_strlen(output->str) < size || output->minsize > ft_strlen(output->str)))
 	{
-		while (i < size - ft_strlen(output->str))
-			result[i++] = '0';
+		if (output->str[0] == '-')
+		{
+			tmp = ft_strnew(output->size_flag->precision);
+			result[i++] = '-';
+			while (i <= size - ft_strlen(output->str))
+				result[i++] = '0';
+			tmp = ft_itoa(ft_atoi(output->str) * -1);
+			result = ft_strjoin(result, tmp);
+			ft_strdel(&tmp);
+			return(result);
+		}
+		else
+		{
+			while (i < size - ft_strlen(output->str))
+				result[i++] = '0';
+		}
 	}
-	if (output->option->space == 1)
-	{
-			result[i++] = ' ';
-			output->size_flag->precision += output->option->point;
-	}
+	
 	if (output->option->point && ft_strlen(output->str) < output->size_flag->precision)
 	{
-		// printf("%zu\n", output->size_flag->precision - ft_strlen(output->str));
-		while (i < output->size_flag->precision - ft_strlen(output->str))
-			result[i++] = '0';
-		// result = ft_strjoin(output->str, result);
-		// return (result);
+		if (output->str[0] == '-')
+		{
+			tmp = ft_strnew(output->size_flag->precision);
+			result[i++] = '-';
+			while (i <= output->size_flag->precision - ft_strlen(output->str) + 1)
+				result[i++] = '0';
+			tmp = ft_itoa(ft_atoi(output->str) * -1);
+			result = ft_strjoin(result, tmp);
+			ft_strdel(&tmp);
+			return(result);
+			// output->str[0] = '0';
+		}
+		else
+		{
+			while (i < output->size_flag->precision - ft_strlen(output->str))
+				result[i++] = '0';
+		}
 	}
 	// if (output->option->min == 1)
 	// {
@@ -90,11 +113,8 @@ char	*ft_formater_with_option(t_output *output, size_t size)
 		}
 		return (result);
 	}
-	// if (ft_strlen(output->str) < size && i < size)
-	// {
-	// 	while (i < size - ft_strlen(output->str))
-	// 		result[i++] = ' ';
-	// }
+	if (!result)
+		return (output->str);
 	result = ft_strjoin(result, output->str);
 	return (result);
 }
@@ -111,7 +131,7 @@ int		ft_formater(t_output *output, int opt)
 	if (ft_strlen(output->str) < output->minsize)
 	{
 		result = ft_formater_with_option(output, size);		
-		if (output->option->min == 1)
+		if (output->option->min == 1 && output->minsize > ft_strlen(result))
 		{
 			tmp = ft_strnew(output->minsize - ft_strlen(result));
 			while (i < output->minsize - ft_strlen(result))
@@ -123,6 +143,12 @@ int		ft_formater(t_output *output, int opt)
 	}
 	else
 		result = ft_formater_with_option(output, ft_strlen(output->str));
+	if (output->option->space == 1 && (result[0] != '-'))
+	{
+		tmp = ft_str_from_char(' ');
+		result = ft_strjoin(tmp, result);
+		ft_strdel(&tmp);
+	}
 	// if (output->option->space == 1)
 	// {
 	// 	tmp 
