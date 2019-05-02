@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ftoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: owalid <owalid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 17:20:54 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/01 18:35:56 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/03 00:01:03 by owalid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,15 @@ long long		ft_cast_double_to_long(double nbr, int precision)
 
 char			*ft_ftoa(double f, size_t precision)
 {
-	double	second_part;
-	long	power_part;
-	char	*strfir_part;
-	char	*strsec_part;
-	char	*result;
-	int		is_neg;
+	long double	second_part;
+	long long	power_part;
+	char		*strfir_part;
+	char		*strsec_part;
+	char		*result;
+	int			is_neg;
 
 	is_neg = (f < 0) ? 1 : 0;
-	power_part = (long)f;
+	power_part = (long long)f;
 	if (precision <= 0)
 	{
 		strfir_part = ft_itoa(power_part);
@@ -49,7 +49,13 @@ char			*ft_ftoa(double f, size_t precision)
 												+ is_neg);
 	strfir_part = ft_itoa(power_part);
 	strfir_part[get_size_nb(power_part)] = '.';
-	strsec_part = ft_itoa(ft_cast_double_to_long(second_part, precision));
+	if (ft_cast_double_to_long(second_part, precision) == 0)
+	{
+		strsec_part = ft_strdup("000000");
+		strsec_part = ft_strsub(strsec_part,  6 - precision, 6);
+	}
+	else
+		strsec_part = ft_itoa(ft_cast_double_to_long(second_part, precision));
 	result = ft_strjoin(strfir_part, strsec_part);
 	return (result);
 }

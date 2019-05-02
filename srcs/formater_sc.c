@@ -19,7 +19,6 @@ char	*ft_formater_with_option_sc(t_output *output, size_t size)
 	return (result);
 }
 
-
 int		ft_formater_sc(t_output *output, int opt)
 {
 	char 	*result;
