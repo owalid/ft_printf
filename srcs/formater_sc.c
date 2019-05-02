@@ -70,7 +70,7 @@ int		ft_formater_sc(t_output *output, int opt)
 		}
 	}
 	if (output->minsize > ft_strlen(result) && !output->option->min
-			&& (output->minsize > output->size_flag->precision))
+			)
 	{
 		i = 0;
 		tmp = ft_strnew(output->minsize  - ft_strlen(result));

@@ -50,13 +50,11 @@ int         ft_printf(const char *format, ...)
 						;
 					tmp = ft_strsub(format, i, j);
 					output->size_flag->precision = (size_t)ft_atoi(tmp);
-					if (format[j + 1] != 'f' && ft_is_conv(format[j + 1]))
+					output->option->point = 1;
+					if (format[j + 1] != 'f' && format[j + 1] != 's' && ft_is_conv(format[j + 1]))
 					{
-						output->option->point = 1;
 						if (output->minsize < output->size_flag->precision)
-						{
 							output->minsize = output->size_flag->precision;
-						}
 					}
 					i = j;
 					ft_strdel(&tmp);
