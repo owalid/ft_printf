@@ -42,38 +42,20 @@ char	*ft_formater_with_option(t_output *output, size_t size)
 			output->size_flag->precision += output->option->point;
 		}
 	}
-	if (output->option->zero && (ft_strlen(output->str) < size || output->minsize > ft_strlen(output->str)))
-	{
-		if (output->str[0] == '-')
-		{
-			tmp = ft_strnew(output->minsize);
-			result[i++] = '-';
-			while (i <= output->minsize - ft_strlen(output->str) + 1)
-				result[i++] = '0';
-			tmp = ft_itoa(ft_atoi(output->str) * -1);
-			result = ft_strjoin(result, tmp);
-			ft_strdel(&tmp);
-			return(result);
-		}
-		else
-		{
-			while (i < size - ft_strlen(output->str))
-				result[i++] = '0';
-		}
-	}
-	
+
 	if (output->option->point && ft_strlen(output->str) <= output->size_flag->precision)
 	{
 		if (output->str[0] == '-')
 		{
 			tmp = ft_strnew(output->size_flag->precision);
-			result[i++] = '-';
-			while (i <= output->size_flag->precision - ft_strlen(output->str))
+			// result[i++] = '-';
+			while (i < output->size_flag->precision - (ft_strlen(output->str) - 1))
 				result[i++] = '0';
-			if (output->option->space && i < output->minsize)
-			{
-				result[i++] = '0';
-			}
+			// if ((output->option->plus || output->option->space) && i <= output->minsize)
+			// {
+			// 	result[i++] = '0';
+			// }
+			result = ft_strjoin("-", result);
 			tmp = ft_itoa(ft_atoi(output->str) * -1);
 			result = ft_strjoin(result, tmp);
 			ft_strdel(&tmp);
@@ -86,6 +68,28 @@ char	*ft_formater_with_option(t_output *output, size_t size)
 				result[i++] = '0';
 		}
 	}
+	
+	if (output->option->zero && (ft_strlen(output->str) < size || output->minsize > ft_strlen(output->str)))
+	{
+		if (output->str[0] == '-')
+		{
+			tmp = ft_strnew(output->minsize);
+			// result[i++] = '-';
+			while (i < output->minsize - (ft_strlen(output->str)))
+				result[i++] = '0';
+			result = ft_strjoin("-", result);
+			tmp = ft_itoa(ft_atoi(output->str) * -1);
+			result = ft_strjoin(result, tmp);
+			ft_strdel(&tmp);
+			return(result);
+		}
+		else
+		{
+			while (i < size - ft_strlen(output->str))
+				result[i++] = '0';
+		}
+	}
+	
 	if (output->option->hash == 1 && ft_strlen(output->str) < size)
 	{
 		if (output->conv_type == 'x' || output->conv_type == 'X')
@@ -110,7 +114,7 @@ char	*ft_formater_with_option(t_output *output, size_t size)
 	return (result);
 }
 
-int		ft_formater(t_output *output, int opt)
+int		ft_formater_df(t_output *output, int opt)
 {
 	char 	*result;
 	char	*tmp;
@@ -136,7 +140,7 @@ int		ft_formater(t_output *output, int opt)
 		result = ft_formater_with_option(output, ft_strlen(output->str));
 	if (output->option->space == 1 && !output->option->plus && (!output->option->min || output->option->point))
 	{
-		if (result[0] != '-')
+		if (result[0] != '-' || output->minsize > ft_strlen(result))
 		{
 			tmp = ft_str_from_char(' ');
 			result = ft_strjoin(tmp, result);
@@ -151,4 +155,39 @@ int		ft_formater(t_output *output, int opt)
 		add_char(result[i], opt);
 	ft_strdel(&result);
 	return (i);
+}
+
+// int		ft_formater_sc(t_output *output, int opt)
+// {
+// 	char 	*result;
+// 	char	*tmp;
+// 	size_t	i;
+// 	int		size;
+
+// 	size = output->minsize + output->option->space + output->option->plus;
+// 	i = 0;
+// 	if (ft_strlen(output->str) < output->minsize)
+// 	{
+// 		result = ft_formater_with_option(output, size);		
+// 		if (output->option->min == 1 && output->minsize > ft_strlen(result))
+// 		{
+// 			tmp = ft_strnew(output->minsize - ft_strlen(result));
+// 			while (i < output->minsize - ft_strlen(result))
+// 				tmp[i++] = ' ';
+// 			if (i != 0)
+// 				result = ft_strjoin(result, tmp);
+// 			ft_strdel(&tmp);
+// 		}
+// 	}
+// 	else
+// 		result = ft_formater_with_option(output, ft_strlen(output->str));
+// }
+
+
+int		ft_formater(t_output *output, int opt)
+{
+	// if (output->conv_type == 'd')
+		return (ft_formater_df(output, opt));
+	// else if (output->conv_type == 's')
+	// 	return (ft_formater_sc(output, opt));
 }

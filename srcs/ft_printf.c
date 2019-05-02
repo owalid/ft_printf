@@ -75,8 +75,13 @@ int         ft_printf(const char *format, ...)
 					ft_is_option(format[i], output);
 				i++;
 			}
-			output->conv_type = format[i];
-			output->str = ft_converter(ap, &i, format, output->size_flag);
+			if (format[i] == '%')
+				output->str = ft_str_from_char(format[i]);
+			else
+			{
+				output->conv_type = format[i];
+				output->str = ft_converter(ap, &i, format, output->size_flag);
+			}
 		}
 		else
 			output->str = ft_str_from_char(format[i]);
