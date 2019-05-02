@@ -15,13 +15,12 @@
 #include <stdio.h>
 //////////////////////
 
-long			ft_cast_double_to_long(double nbr, int precision)
+long long		ft_cast_double_to_long(double nbr, int precision)
 {
-	long		cast_long;
+	long long	cast_long;
 
-	cast_long = (long)nbr;
-	if ((cast_long % 10 <= 5 && cast_long % 10 != 0)
-			|| precision == get_size_nb(cast_long))
+	cast_long = (long long)nbr;
+	if (((nbr - (long long)cast_long) * 10) > 5)
 		return (cast_long + 1);
 	else
 		return (cast_long);
@@ -38,6 +37,11 @@ char			*ft_ftoa(double f, size_t precision)
 
 	is_neg = (f < 0) ? 1 : 0;
 	power_part = (long)f;
+	if (precision <= 0)
+	{
+		strfir_part = ft_itoa(power_part);
+		return (strfir_part);
+	}
 	second_part = (is_neg) ? f * -1 - (double)power_part * -1
 							: f - (double)power_part;
 	second_part = second_part * ft_pow(10, precision - 1);

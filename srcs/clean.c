@@ -17,6 +17,7 @@ void        ft_init_sizeflag(t_sizeflag *flag)
     flag->l = 0;
     flag->ll = 0;
     flag->precision = 0;
+    flag->no_prec = 0;
 }
 
 void        ft_init_output(t_output *out)

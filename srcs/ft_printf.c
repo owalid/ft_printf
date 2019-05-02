@@ -43,21 +43,29 @@ int         ft_printf(const char *format, ...)
 			i++;
 			while (!ft_is_conv(format[i]))
 			{
-				if (format[i] == '.' && ft_isdigit(format[i + 1]))
+				if (format[i] == '.')
 				{
-					j = i++;
-					while (ft_isdigit(format[j++]))
-						;
-					tmp = ft_strsub(format, i, j);
-					output->size_flag->precision = (size_t)ft_atoi(tmp);
-					output->option->point = 1;
-					if (format[j + 1] != 'f' && format[j + 1] != 's' && ft_is_conv(format[j + 1]))
+					if (!ft_isdigit(format[i + 1]) && format[i + 1] == 'f')
 					{
-						if (output->minsize < output->size_flag->precision)
-							output->minsize = output->size_flag->precision;
+						output->size_flag->no_prec = 1;
 					}
-					i = j;
-					ft_strdel(&tmp);
+					else
+					{
+						j = i++;
+						while (ft_isdigit(format[j++]))
+							;
+						tmp = ft_strsub(format, i, j);
+						output->size_flag->precision = (size_t)ft_atoi(tmp);
+						output->option->point = 1;
+						if (format[j + 1] != 'f' && format[j + 1] != 's' && ft_is_conv(format[j + 1]))
+						{
+							if (output->minsize < output->size_flag->precision)
+								output->minsize = output->size_flag->precision;
+						}
+						i = j;
+						ft_strdel(&tmp);
+
+					}
 				}
 				else if (ft_isdigit(format[i]) && format[i] != '0')
 				{

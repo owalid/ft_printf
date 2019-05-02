@@ -5,5 +5,5 @@ int			ft_printf(const char *format, ...);
 int		main(int ac, char **av)
 {
 	unsigned char a = 10;
-	ft_printf("%.d\n", 1232);
+	ft_printf("%f\n", 1232,3);
 }

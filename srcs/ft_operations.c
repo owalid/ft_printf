@@ -110,7 +110,9 @@ char		*ft_printf_f(va_list ap, t_sizeflag *flag)
 	double		nbr;
 
 	nbr = va_arg(ap, double);
-	if (flag->precision)
+	if (flag->no_prec == 1)
+		result = ft_ftoa(nbr, 0);	
+	else if (flag->precision)
 		result = ft_ftoa(nbr, flag->precision);
 	else
 		result = ft_ftoa(nbr, 6);
