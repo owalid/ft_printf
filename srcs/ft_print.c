@@ -68,7 +68,7 @@ char	*ft_formater_with_option(t_output *output, size_t size)
 				result[i++] = '0';
 		}
 	}
-	
+
 	if (output->option->zero && (ft_strlen(output->str) < size || output->minsize > ft_strlen(output->str)))
 	{
 		if (output->str[0] == '-')
@@ -142,10 +142,23 @@ int		ft_formater_df(t_output *output, int opt)
 	{
 		if (result[0] != '-' || output->minsize > ft_strlen(result))
 		{
-			tmp = ft_str_from_char(' ');
-			result = ft_strjoin(tmp, result);
-			ft_strdel(&tmp);
-
+			if (output->minsize > ft_strlen(result))
+			{
+				i = 0;
+				tmp = ft_strnew(output->minsize - ft_strlen(result));
+				while (i < output->minsize - ft_strlen(result))
+					tmp[i++] = ' ';
+				if (i != 0)
+					result = ft_strjoin(tmp, result);
+				ft_strdel(&tmp);
+			}
+			else
+			{
+				tmp = ft_str_from_char(' ');
+				result = ft_strjoin(tmp, result);
+				ft_strdel(&tmp);
+			}
+			
 		}
 	}
 	if (opt == 1 && !result[0])
