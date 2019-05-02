@@ -158,7 +158,6 @@ int		ft_formater_df(t_output *output, int opt)
 				result = ft_strjoin(tmp, result);
 				ft_strdel(&tmp);
 			}
-			
 		}
 	}
 	if (opt == 1 && !result[0])

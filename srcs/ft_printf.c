@@ -43,7 +43,7 @@ int         ft_printf(const char *format, ...)
 			i++;
 			while (!ft_is_conv(format[i]))
 			{
-				if (format[i] == '.')
+				if (format[i] == '.' && ft_isdigit(format[i + 1]))
 				{
 					j = i++;
 					while (ft_isdigit(format[j++]))
