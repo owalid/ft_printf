@@ -38,6 +38,7 @@ typedef struct		s_output
 	t_option	*option;
 	t_sizeflag 	*size_flag;
 	char 		conv_type;
+	int			is_null;
 	size_t		minsize;
 }					t_output;
 
@@ -91,5 +92,16 @@ void        ft_clean_output(t_output *out);
 void        ft_init_output(t_output *out);
 void        ft_init_sizeflag(t_sizeflag *flag);
 
+/*
+**	formater_df.c
+*/
+char	*ft_formater_with_option_df(t_output *output, size_t size);
+int		ft_formater_df(t_output *output, int opt);
+
+/*
+**	formater_sc.c
+*/
+char	*ft_formater_with_option_sc(t_output *output, size_t size);
+int		ft_formater_sc(t_output *output, int opt);
 
 #endif

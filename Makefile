@@ -18,6 +18,8 @@ SRC		=  	ft_print.c \
 			options.c \
 			ft_get_type.c \
 			clean.c \
+			formater_df.c \
+			formater_sc.c \
 
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 
