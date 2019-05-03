@@ -64,7 +64,6 @@ int         ft_printf(const char *format, ...)
 						}
 						i = j;
 						ft_strdel(&tmp);
-
 					}
 				}
 				else if (ft_isdigit(format[i]) && format[i] != '0')
@@ -92,14 +91,10 @@ int         ft_printf(const char *format, ...)
 		else
 			output->str = ft_str_from_char(format[i]);
 		result += ft_formater(output, 0);
-		output->minsize = 0;
-	ft_init_output(output);
-	if (output->option->plus)
-				printf("ici\n");
-
+		// if (output->option->plus)
 	}
-	ft_init_output(output);
 	output->str = ft_str_from_char(format[i]);
+	ft_init_output(output);
 	result += ft_formater(output, 1);
 	va_end(ap);
 	return (result);

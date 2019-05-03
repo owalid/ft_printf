@@ -102,7 +102,8 @@ int		ft_formater_df(t_output *output, int opt);
 /*
 **	formater_sc.c
 */
-char	*ft_formater_with_option_sc(t_output *output, size_t size);
+char	*ft_formater_with_option_c(t_output *output, size_t size);
+char	*ft_formater_with_option_s(t_output *output, size_t size);
 int		ft_formater_sc(t_output *output, int opt);
 
 #endif
