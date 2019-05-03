@@ -37,7 +37,7 @@ int			ft_formater(t_output *output, int opt)
 	if (output->conv_type == 'd' || output->conv_type == 'f'
 			|| output->conv_type == 'i')
 		return (ft_formater_df(output, opt));
-	else if (output->conv_type == 's')
+	else if (output->conv_type == 's' || output->conv_type == 'c')
 		return (ft_formater_sc(output, opt));
 	else if (output->conv_type == 'x' || output->conv_type == 'X')
 		return (ft_formater_xx(output, opt));
