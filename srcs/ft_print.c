@@ -26,6 +26,8 @@ int		ft_formater(t_output *output, int opt)
 		return (ft_formater_df(output, opt));
 	else if (output->conv_type == 's')
 		return (ft_formater_sc(output, opt));
+	else if (output->conv_type == 'x' || output->conv_type == 'X')
+		return (ft_formater_xX(output, opt));
 	else
 		return (ft_formater_df(output, opt));
 }

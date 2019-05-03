@@ -105,4 +105,11 @@ int		ft_formater_df(t_output *output, int opt);
 char	*ft_formater_with_option_sc(t_output *output, size_t size);
 int		ft_formater_sc(t_output *output, int opt);
 
+
+/*
+**	formater_xX.c
+*/
+char	*ft_formater_with_option_xX(t_output *output, size_t size);
+int		ft_formater_xX(t_output *output, int opt);
+
 #endif

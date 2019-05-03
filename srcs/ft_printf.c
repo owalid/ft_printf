@@ -45,7 +45,8 @@ int         ft_printf(const char *format, ...)
 			{
 				if (format[i] == '.')
 				{
-					if (!ft_isdigit(format[i + 1]) && format[i + 1] == 'f')
+					if (!ft_isdigit(format[i + 1]) && (format[i + 1] == 'f'
+				|| format[i + 1] == 'x' || format[i + 1] == 'X'))
 					{
 						output->size_flag->no_prec = 1;
 					}
@@ -64,7 +65,6 @@ int         ft_printf(const char *format, ...)
 						}
 						i = j;
 						ft_strdel(&tmp);
-
 					}
 				}
 				else if (ft_isdigit(format[i]) && format[i] != '0')
