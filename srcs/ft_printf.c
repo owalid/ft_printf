@@ -49,7 +49,7 @@ int         ft_printf(const char *format, ...)
 					{
 						output->size_flag->no_prec = 1;
 					}
-					else
+					else if (ft_isdigit(format[i + 1]))
 					{
 						j = i++;
 						while (ft_isdigit(format[j++]))
