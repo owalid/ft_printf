@@ -6,7 +6,7 @@
 /*   By: owalid <owalid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 17:20:54 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/03 00:01:03 by owalid           ###   ########.fr       */
+/*   Updated: 2019/05/03 16:23:08 by owalid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ char			*ft_ftoa(double f, size_t precision)
 	if (precision <= 0)
 	{
 		strfir_part = ft_itoa(power_part);
+		if (is_neg && power_part == 0)
+			strfir_part = ft_strjoin("-", strfir_part);;
 		return (strfir_part);
 	}
 	second_part = (is_neg) ? f * -1 - (double)power_part * -1
@@ -50,12 +52,17 @@ char			*ft_ftoa(double f, size_t precision)
 	strfir_part = ft_itoa(power_part);
 	strfir_part[get_size_nb(power_part)] = '.';
 	if (ft_cast_double_to_long(second_part, precision) == 0)
-	{
-		strsec_part = ft_strdup("000000");
-		strsec_part = ft_strsub(strsec_part,  6 - precision, 6);
-	}
+		strsec_part = ft_strsub("000000",  6 - precision, 6);
 	else
 		strsec_part = ft_itoa(ft_cast_double_to_long(second_part, precision));
-	result = ft_strjoin(strfir_part, strsec_part);
+	if (is_neg && power_part == 0)
+	{
+		result = ft_strjoin("-", strfir_part);
+		result = ft_strjoin(result, strsec_part);
+	}
+	else
+		result = ft_strjoin(strfir_part, strsec_part);
+	ft_strdel(&strfir_part);
+	ft_strdel(&strsec_part);
 	return (result);
 }

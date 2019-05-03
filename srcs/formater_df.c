@@ -9,6 +9,7 @@ char	*ft_formater_with_option_df(t_output *output, size_t size)
 
 	i = 0;
 	result = ft_strnew(size);
+	// printf("\ns => %s\n\n", output->str);
 	if (output->option->plus)
 	{
 		if (ft_strlen(output->str) < size && !output->option->min)
