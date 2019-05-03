@@ -68,8 +68,7 @@ int		ft_formater_sc(t_output *output, int opt)
 			ft_strdel(&tmp);
 		}
 	}
-	if (output->minsize > ft_strlen(result) && !output->option->min
-			)
+	if (output->minsize > ft_strlen(result) && !output->option->min)
 	{
 		i = 0;
 		tmp = ft_strnew(output->minsize  - ft_strlen(result));

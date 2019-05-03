@@ -9,21 +9,6 @@ char	*ft_formater_with_option_xX(t_output *output, size_t size)
 
 	i = 0;
 	result = ft_strnew(size);
-	// printf("\ns => %s\n\n", output->str);
-	// if (output->option->plus)
-	// {
-	// 	if (ft_strlen(output->str) < size && !output->option->min)
-	// 	{
-	// 		while (i < size - ft_strlen(output->str))
-	// 			result[i++] = ' ';
-	// 	}
-	// 	if (output->str[0] != '-')
-	// 	{
-	// 		result[i++] = '+';
-	// 		output->size_flag->precision += output->option->point;
-	// 	}
-	// }
-
 	if (output->option->point && ft_strlen(output->str) <= output->size_flag->precision)
 	{
 		if (output->str[0] == '-')
@@ -43,27 +28,6 @@ char	*ft_formater_with_option_xX(t_output *output, size_t size)
 				result[i++] = '0';
 		}
 	}
-
-	// if (output->option->zero && (ft_strlen(output->str) < size || output->minsize > ft_strlen(output->str)))
-	// {
-	// 	if (output->str[0] == '-')
-	// 	{
-	// 		tmp = ft_strnew(output->minsize);
-	// 		while (i < output->minsize - (ft_strlen(output->str)))
-	// 			result[i++] = '0';
-	// 		result = ft_strjoin("-", result);
-	// 		tmp = ft_itoa(ft_atoi(output->str) * -1);
-	// 		result = ft_strjoin(result, tmp);
-	// 		ft_strdel(&tmp);
-	// 		return(result);
-	// 	}
-	// 	else
-	// 	{
-	// 		while (i < size - ft_strlen(output->str))
-	// 			result[i++] = '0';
-	// 	}
-	// }
-	
 	if (output->option->hash && ft_strlen(output->str) < size)
 	{
 		if (output->conv_type == 'x' || output->conv_type == 'X')
@@ -98,7 +62,10 @@ int		ft_formater_xX(t_output *output, int opt)
 	if (ft_strcmp(output->str, "0") == 0 && output->size_flag->no_prec == 1)
 	{
 		output->is_null = 1;
-		output->str = ft_strdup("(null)");
+		if (!output->option->plus && !output->option->min)
+			output->str = ft_strdup("(null)");
+		else
+			output->str = ft_strdup("");
 	}
 	size = output->minsize + output->option->space + output->option->plus;
 	i = 0;
@@ -117,8 +84,7 @@ int		ft_formater_xX(t_output *output, int opt)
 	}
 	else
 		result = ft_formater_with_option_xX(output, ft_strlen(output->str));
-	if (output->minsize > ft_strlen(result) && !output->option->min
-			)
+	if (output->minsize > ft_strlen(result) && !output->option->min)
 	{
 		i = 0;
 		tmp = ft_strnew(output->minsize  - ft_strlen(result));
@@ -134,5 +100,6 @@ int		ft_formater_xX(t_output *output, int opt)
 	while (result[++i])
 		add_char(result[i], opt);
 	ft_strdel(&result);
-	return (i);
+	return ((!output->is_null || output->option->plus || output->option->min)
+				? i : 0);
 }
