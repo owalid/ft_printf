@@ -32,18 +32,14 @@ char		*ft_printf_p(va_list ap, t_sizeflag *flag)
 {
 	char			*result;
 	char			*add;
-	char			*str;
 	int				i;
-	int				ptr;
+	unsigned long				ptr;
 
 	(void)flag;
 	i = -1;
-	ptr = va_arg(ap, unsigned int);
-	str = ft_strnew(2);
-	str[0] = '0';
-	str[1] = 'x';
+	ptr = va_arg(ap, unsigned long long);
 	add = ft_itoa_base(ptr, 16);
-	result = ft_strjoin(str, add);
+	result = ft_strlowcase(add);
 	return(result);
 }
 
