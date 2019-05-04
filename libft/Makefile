@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+         #
+#    By: owalid <owalid@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/30 15:43:53 by oel-ayad          #+#    #+#              #
-#    Updated: 2019/04/30 13:24:02 by oel-ayad         ###   ########.fr        #
+#    Updated: 2019/05/04 03:31:31 by owalid           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -111,6 +111,7 @@ SRCS =	ft_memset.c \
 		get_size_nb.c \
 		ft_supdigit_at.c \
 		ft_supdigit.c \
+		ft_utoa_base.c \
 
 OBJ = $(SRCS:.c=.o)
 

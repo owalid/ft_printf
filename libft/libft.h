@@ -6,7 +6,7 @@
 /*   By: owalid <owalid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 11:12:24 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/04 02:39:16 by owalid           ###   ########.fr       */
+/*   Updated: 2019/05/04 03:18:09 by owalid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ char				*ft_strndup(const char *str, size_t size);
 char				*ft_strrev(char *str);
 char 				*ft_str_from_char(char c);
 char				*ft_ftoa(double f, size_t precision);
+char				*utoa_base(unsigned long long n, int b);
 
 char				**ft_strsplit(char const *s, char c);
 char				**ft_strsplit(char const *s, char c);

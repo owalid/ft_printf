@@ -65,7 +65,7 @@ char		*ft_printf_u(va_list ap, t_sizeflag *flag)
 
 	(void)flag;
 	nbr = va_arg(ap, unsigned int);
-	result = ft_itoa(nbr);
+	result = utoa_base(nbr, 10);
 	return (result);
 }
 

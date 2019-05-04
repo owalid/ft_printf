@@ -82,7 +82,10 @@ int         ft_printf(const char *format, ...)
 				i++;
 			}
 			if (format[i] == '%')
+			{
+				output->conv_type = 's';
 				output->str = ft_str_from_char(format[i]);
+			}
 			else
 			{
 				output->conv_type = format[i];
