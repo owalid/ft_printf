@@ -28,7 +28,7 @@ char	*ft_formater_with_option_xX(t_output *output, size_t size)
 				result[i++] = '0';
 		}
 	}
-	if (output->option->hash && ft_strlen(output->str) < size)
+	if (output->option->hash && ft_strcmp(output->str, "0") != 0)
 	{
 		if (output->conv_type == 'x' || output->conv_type == 'X')
 		{

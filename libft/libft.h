@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: owalid <owalid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 11:12:24 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/01 18:35:46 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/04 02:39:16 by owalid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char				*ft_strtolower(char *str);
 char				*ft_strntolower(char *str, size_t n);
 char				*ft_strupcase(char *str);
 char				*ft_strcapitalize(char *str);
-char				*ft_itoa_base(int nb, int base);
+char				*ft_itoa_base(long long nb, int base);
 char				*ft_strlowcase(char *str);
 char				*ft_strnlowcase(char *str, size_t n);
 char				*ft_strndup(const char *str, size_t size);
