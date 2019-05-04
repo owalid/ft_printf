@@ -6,7 +6,7 @@
 /*   By: owalid <owalid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 17:20:54 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/04 03:46:35 by owalid           ###   ########.fr       */
+/*   Updated: 2019/05/04 04:15:40 by owalid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,10 @@ char			*ft_ftoa(double f, size_t precision)
 	strfir_part[get_size_nb(power_part)] = '.';
 	if (ft_cast_double_to_long(second_part, precision) == 0)
 	{
-		strsec_part = ft_strdup("000000");
-		strsec_part = ft_strsub(strsec_part, 6 - precision, 6);
+		strsec_part = ft_strnew(precision);
+		while (precision--)
+			strsec_part[precision] = '0';
+		// strsec_part = ft_strsub("000000",  6 - precision, 6);
 	}
 	else
 		strsec_part = ft_itoa(ft_cast_double_to_long(second_part, precision));
