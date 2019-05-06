@@ -77,6 +77,8 @@ int         ft_printf(const char *format, ...)
 					i = j - 1;
 					ft_strdel(&tmp);
 				}
+				else if (format[i] == '%')
+					break;
 				else
 					ft_is_option(format[i], output);
 				i++;

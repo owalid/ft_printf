@@ -28,6 +28,27 @@ char	*ft_formater_with_option_xX(t_output *output, size_t size)
 				result[i++] = '0';
 		}
 	}
+
+	if (output->option->zero && (ft_strlen(output->str) < size || output->minsize > ft_strlen(output->str)))
+	{
+		if (output->str[0] == '-')
+		{
+			tmp = ft_strnew(output->minsize);
+			while (i < output->minsize - (ft_strlen(output->str)))
+				result[i++] = '0';
+			result = ft_strjoin("-", result);
+			tmp = ft_itoa(ft_atoi(output->str) * -1);
+			result = ft_strjoin(result, tmp);
+			ft_strdel(&tmp);
+			return(result);
+		}
+		else
+		{
+			while (i < size - ft_strlen(output->str))
+				result[i++] = '0';
+		}
+	}
+
 	if (output->option->hash && ft_strcmp(output->str, "0") != 0)
 	{
 		if (output->conv_type == 'x' || output->conv_type == 'X')

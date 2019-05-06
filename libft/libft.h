@@ -6,7 +6,7 @@
 /*   By: owalid <owalid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 11:12:24 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/04 03:18:09 by owalid           ###   ########.fr       */
+/*   Updated: 2019/05/06 19:22:03 by owalid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ char				*ft_strsub(char const *s, size_t start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				*ft_itoa(int nb);
+char				*ft_itoa_base(intmax_t nb, int base);
 char				*ft_strdup(const char *src);
 char				*ft_strcpy(char *dest, const char *src);
 char				*ft_strncpy(char *dest, const char *src, size_t n);
@@ -75,7 +76,6 @@ char				*ft_strtolower(char *str);
 char				*ft_strntolower(char *str, size_t n);
 char				*ft_strupcase(char *str);
 char				*ft_strcapitalize(char *str);
-char				*ft_itoa_base(long long nb, int base);
 char				*ft_strlowcase(char *str);
 char				*ft_strnlowcase(char *str, size_t n);
 char				*ft_strndup(const char *str, size_t size);

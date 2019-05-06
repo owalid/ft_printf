@@ -22,7 +22,7 @@ void		add_char(char c, int opt)
 
 int		ft_formater(t_output *output, int opt)
 {
-	if (output->conv_type == 'd')
+	if (output->conv_type == 'd' || output->conv_type == 'f')
 		return (ft_formater_df(output, opt));
 	else if (output->conv_type == 's')
 		return (ft_formater_sc(output, opt));
