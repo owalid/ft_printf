@@ -9,8 +9,6 @@ char	*ft_formater_with_option_o(t_output *output, size_t size)
 
 	i = 0;
 	result = ft_strnew(size);
-	// printf("size=> %zu\n", size);
-	// printf("\nminsize=> %zu\n", output->minsize);
 
 	if (output->option->point && ft_strlen(output->str) < output->size_flag->precision)
 	{
@@ -27,13 +25,8 @@ char	*ft_formater_with_option_o(t_output *output, size_t size)
 		}
 		else
 		{
-		//  printf("ici i=> %zu\n", output->size_flag->precision);
-		//  printf("ici i=> %s\n", output->str);
 			while (i < output->size_flag->precision - ft_strlen(output->str))
-			{
 				result[i++] = '0';
-				// printf("i => %zu", i);
-			}
 		}
 	}
 
