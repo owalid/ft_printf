@@ -124,4 +124,10 @@ int		ft_formater_p(t_output *output, int opt);
 char	*ft_formater_with_option_u(t_output *output, size_t size);
 int		ft_formater_u(t_output *output, int opt);
 
+/*
+**	formater_o.c
+*/
+char	*ft_formater_with_option_o(t_output *output, size_t size);
+int		ft_formater_o(t_output *output, int opt);
+
 #endif
