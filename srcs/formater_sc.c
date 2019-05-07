@@ -15,6 +15,11 @@ char	*ft_formater_with_option_sc(t_output *output, size_t size)
 			return (result);
 		}
 	}
+	if (output->option->zero && output->minsize > ft_strlen(output->str))
+	{
+		while (i < output->minsize - ft_strlen(output->str))
+			result[i++] = '0';
+	}
 	result = ft_strjoin(result, output->str);
 	return (result);
 }
@@ -61,12 +66,12 @@ int		ft_formater_sc(t_output *output, int opt)
 				result = ft_strjoin(tmp, result);
 			ft_strdel(&tmp);
 		}
-		else
-		{
-			tmp = ft_str_from_char(' ');
-			result = ft_strjoin(tmp, result);
-			ft_strdel(&tmp);
-		}
+		// else
+		// {
+		// 	tmp = ft_str_from_char(' ');
+		// 	result = ft_strjoin(tmp, result);
+		// 	ft_strdel(&tmp);
+		// }
 	}
 	if (output->minsize > ft_strlen(result) && !output->option->min)
 	{

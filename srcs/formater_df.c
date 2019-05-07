@@ -134,6 +134,16 @@ int		ft_formater_df(t_output *output, int opt)
 			}
 		}
 	}
+	if (output->minsize > ft_strlen(result))
+	{
+		i = 0;
+		tmp = ft_strnew(output->minsize - ft_strlen(result));
+		while (i < output->minsize - ft_strlen(result))
+			tmp[i++] = ' ';
+		if (i != 0)
+			result = ft_strjoin(tmp, result);
+		ft_strdel(&tmp);
+	}
 	if (opt == 1 && !result[0])
 		add_char(0, opt);
 	i = -1;
