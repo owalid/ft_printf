@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+         #
+#    By: owalid <owalid@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 20:29:21 by oel-ayad          #+#    #+#              #
-#    Updated: 2019/05/07 06:29:00 by oel-ayad         ###   ########.fr        #
+#    Updated: 2019/05/07 22:39:25 by owalid           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ SRC		=  	ft_print.c \
 			options.c \
 			ft_get_type.c \
 			clean.c \
+			ft_utils.c \
 			formater_df.c \
+			ft_utils_df.c \
 			formater_sc.c \
 			formater_xX.c \
 			formater_p.c \

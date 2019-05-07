@@ -96,10 +96,23 @@ void        ft_init_output(t_output *out);
 void        ft_init_sizeflag(t_sizeflag *flag);
 
 /*
+**	ft_utils.c
+*/
+char        *ft_add_blank(t_output *output, char *result, int opt);
+
+/*
 **	formater_df.c
 */
 char	*ft_formater_with_option_df(t_output *output, size_t size);
 int		ft_formater_df(t_output *output, int opt);
+
+/*
+**	ft_utils_df.c
+*/
+char        *option_plus_df(t_output *output, size_t size, char *result, size_t *i);
+char        *option_point_df(t_output *output, char *result, size_t *i);
+char        *option_zero_df(t_output *output, size_t size, char *result, size_t *i);
+char        *option_space_df(t_output *output, char *result);
 
 /*
 **	formater_sc.c
