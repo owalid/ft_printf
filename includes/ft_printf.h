@@ -17,6 +17,8 @@ typedef struct 		s_sizeflag
 	short		l;
 	short		ll;
 	short		bigl;
+	short		j;
+	short		z;
 	short		no_prec;
 	size_t		precision;
 }					t_sizeflag;

@@ -40,6 +40,10 @@ void	ft_is_option(char c, t_output *output)
 	}
 	else if (c == 'L')
 		output->size_flag->bigl = 1;
+	else if (c == 'j')
+		output->size_flag->j = 1;
+	else
+		output->str = ft_str_from_char(c);
 }
 
 int		ft_is_conv(char c)

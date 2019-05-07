@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: owalid <owalid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 14:40:42 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/06 19:21:36 by owalid           ###   ########.fr       */
+/*   Updated: 2019/05/07 07:04:12 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ static int				ft_verif_base(int base)
 	return (0);
 }
 
-static int				get_second_nb(intmax_t a)
+static int				get_second_nb(long long a)
 {
 	return (a % 10);
 }
 
-static int				nb_ofnb(intmax_t nb, int base)
+static int				nb_ofnb(long long nb, int base)
 {
 	int		i;
 
@@ -39,7 +39,7 @@ static int				nb_ofnb(intmax_t nb, int base)
 	return (i);
 }
 
-static void				is_neg(intmax_t *nb, int *neg, int *size, int base)
+static void				is_neg(long long *nb, int *neg, int *size, int base)
 {
 	if (*nb < 0)
 	{
@@ -53,7 +53,7 @@ static void				is_neg(intmax_t *nb, int *neg, int *size, int base)
 	*size += nb_ofnb(*nb, base) + 1;
 }
 
-char					*ft_itoa_base(intmax_t nb, int base)
+char					*ft_itoa_base(long long nb, int base)
 {
 	char				*result;
 	int					size;
@@ -63,7 +63,7 @@ char					*ft_itoa_base(intmax_t nb, int base)
 	size = 0;
 	if (!ft_verif_base(base))
 		return (ft_strdup(""));
-	if (nb == -9223372036854775808)
+	if (nb == LONG_MIN)
 		return (strdup("-9223372036854775808"));
 	is_neg(&nb, &neg, &size, base);
 	if ((result = (char*)malloc(sizeof(char) * size)) == NULL)

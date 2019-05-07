@@ -41,7 +41,6 @@ int		ft_formater_sc(t_output *output, int opt)
 	if (ft_strlen(output->str) < output->minsize)
 	{
 		result = ft_formater_with_option_sc(output, size);
-		// printf("%zu\n", ft_strlen(result));
 		if (output->option->min == 1 && output->minsize > ft_strlen(result))
 		{
 			tmp = ft_strnew(output->minsize - ft_strlen(result));
@@ -66,12 +65,6 @@ int		ft_formater_sc(t_output *output, int opt)
 				result = ft_strjoin(tmp, result);
 			ft_strdel(&tmp);
 		}
-		// else
-		// {
-		// 	tmp = ft_str_from_char(' ');
-		// 	result = ft_strjoin(tmp, result);
-		// 	ft_strdel(&tmp);
-		// }
 	}
 	if (output->minsize > ft_strlen(result) && !output->option->min)
 	{
