@@ -4,7 +4,6 @@ char	*ft_formater_with_option_p(t_output *output, size_t size)
 {
 	char 	*result;
 	
-
 	result = ft_strnew(size);
 	if (output->option->point && ft_strlen(output->str) <= output->size_flag->precision)
 	{
