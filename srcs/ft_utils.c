@@ -14,3 +14,13 @@ char        *ft_add_blank(t_output *output, char *result, int opt)
     ft_strdel(&tmp);
     return (result);
 }
+
+void        send_char(char *result, int opt, size_t *i)
+{
+    if (opt == 1 && !result[0])
+		add_char(0, opt);
+	*i = -1;
+	while (result[++(*i)])
+		add_char(result[*i], opt);
+	ft_strdel(&result);
+}

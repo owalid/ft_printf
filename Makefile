@@ -6,7 +6,7 @@
 #    By: owalid <owalid@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 20:29:21 by oel-ayad          #+#    #+#              #
-#    Updated: 2019/05/07 22:39:25 by owalid           ###   ########.fr        #
+#    Updated: 2019/05/07 23:50:29 by owalid           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,8 @@ SRC		=  	ft_print.c \
 			formater_p.c \
 			formater_u.c \
 			formater_o.c \
+			ft_utils_o.c \
+			ft_utils_p.c \
 
 
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))

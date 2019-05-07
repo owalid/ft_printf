@@ -4,7 +4,6 @@ char	*ft_formater_with_option_df(t_output *output, size_t size)
 {
 	char 	*result;
 	size_t	i;
-	// size_t	tmp;
 
 	i = 0;
 	result = ft_strnew(size);
@@ -48,11 +47,6 @@ int		ft_formater_df(t_output *output, int opt)
 		result = option_space_df(output, result);
 	if (output->minsize > ft_strlen(result))
 		result = ft_add_blank(output, result, 0);
-	if (opt == 1 && !result[0])
-		add_char(0, opt);
-	i = -1;
-	while (result[++i])
-		add_char(result[i], opt);
-	ft_strdel(&result);
+	send_char(result, opt, &i);
 	return (i);
 }

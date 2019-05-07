@@ -99,6 +99,7 @@ void        ft_init_sizeflag(t_sizeflag *flag);
 **	ft_utils.c
 */
 char        *ft_add_blank(t_output *output, char *result, int opt);
+void        send_char(char *result, int opt, size_t *i);
 
 /*
 **	formater_df.c
@@ -144,5 +145,15 @@ int		ft_formater_u(t_output *output, int opt);
 */
 char	*ft_formater_with_option_o(t_output *output, size_t size);
 int		ft_formater_o(t_output *output, int opt);
+
+/*
+**	ft_utils_o.c
+*/
+char        *option_hash_o(t_output *output, size_t size, char *result, size_t *i);
+
+/*
+**	ft_utils_p.c
+*/
+char        *option_point_p(t_output *output, char *result);
 
 #endif
