@@ -41,7 +41,7 @@ int         ft_printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			while (!ft_is_conv(format[i]))
+			while (!ft_is_conv(format[i]) && format[i])
 			{
 				if (format[i] == '.')
 				{
@@ -85,16 +85,19 @@ int         ft_printf(const char *format, ...)
 					i = j - 1;
 					ft_strdel(&tmp);
 				}
-				else if (format[i] == '%')
-					break;
 				else
 					ft_is_option(format[i], output);
 				i++;
 			}
 			if (format[i] == '%')
 			{
-				output->conv_type = 's';
-				output->str = ft_str_from_char(format[i]);
+				if (format[i + 1] == '\0')
+				{
+					output->conv_type = 's';
+					output->str = ft_str_from_char(format[i]);
+				}
+				else
+				i++;
 			}
 			else
 			{
@@ -107,13 +110,11 @@ int         ft_printf(const char *format, ...)
 		result += ft_formater(output, 0);
 		output->minsize = 0;
 	ft_init_output(output);
-	if (output->option->plus)
-				printf("ici\n");
-
 	}
 	ft_init_output(output);
 	output->str = ft_str_from_char(format[i]);
 	result += ft_formater(output, 1);
 	va_end(ap);
 	return (result);
+
 }
