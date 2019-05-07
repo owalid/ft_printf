@@ -17,6 +17,8 @@ typedef struct 		s_sizeflag
 	short		l;
 	short		ll;
 	short		bigl;
+	short		j;
+	short		z;
 	short		no_prec;
 	size_t		precision;
 }					t_sizeflag;
@@ -105,5 +107,30 @@ int		ft_formater_df(t_output *output, int opt);
 char	*ft_formater_with_option_c(t_output *output, size_t size);
 char	*ft_formater_with_option_s(t_output *output, size_t size);
 int		ft_formater_sc(t_output *output, int opt);
+
+
+/*
+**	formater_xX.c
+*/
+char	*ft_formater_with_option_xX(t_output *output, size_t size);
+int		ft_formater_xX(t_output *output, int opt);
+
+/*
+**	formater_p.c
+*/
+char	*ft_formater_with_option_p(t_output *output, size_t size);
+int		ft_formater_p(t_output *output, int opt);
+
+/*
+**	formater_p.c
+*/
+char	*ft_formater_with_option_u(t_output *output, size_t size);
+int		ft_formater_u(t_output *output, int opt);
+
+/*
+**	formater_o.c
+*/
+char	*ft_formater_with_option_o(t_output *output, size_t size);
+int		ft_formater_o(t_output *output, int opt);
 
 #endif

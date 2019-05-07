@@ -6,7 +6,7 @@
 #    By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 20:29:21 by oel-ayad          #+#    #+#              #
-#    Updated: 2019/04/30 13:34:14 by oel-ayad         ###   ########.fr        #
+#    Updated: 2019/05/07 06:29:00 by oel-ayad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,14 @@ SRC		=  	ft_print.c \
 			clean.c \
 			formater_df.c \
 			formater_sc.c \
+			formater_xX.c \
+			formater_p.c \
+			formater_u.c \
+			formater_o.c \
+
 
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))
 
-
-FT		= libft/
 FT_LIB	= $(addprefix $(FT),libft.a)
 FT_INC	= libft/
 
@@ -42,17 +45,17 @@ $(OBJDIR)%.o:$(SRCDIR)%.c $(INCDIR)/ft_printf.h $(INCDIR)/ft_opprintf.h
 	$(CC) $(CFLAGS) -c $< -o $@ 
 
 $(NAME): $(OBJ)
-	make -C $(FT)
+	make -C $(FT_INC)
 	cp $(FT_INC)libft.a $(NAME)
 	ar rc $(NAME) $(OBJ)
 
 clean:
 	rm -rf $(OBJDIR)
-	make -C $(FT) clean
+	make -C $(FT_INC) clean
 
 fclean: clean
 	rm -rf $(NAME)
-	make -C $(FT) fclean
+	make -C $(FT_INC) fclean
 
 re: fclean all
 

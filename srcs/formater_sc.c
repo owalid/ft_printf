@@ -36,6 +36,11 @@ char	*ft_formater_with_option_s(t_output *output, size_t size)
 			return (result);
 		}
 	}
+	if (output->option->zero && output->minsize > ft_strlen(output->str))
+	{
+		while (i < output->minsize - ft_strlen(output->str))
+			result[i++] = '0';
+	}
 	result = ft_strjoin(result, output->str);
 	return (result);
 }
@@ -58,12 +63,7 @@ int		ft_formater_sc(t_output *output, int opt)
 	i = 0;
 	if (output->conv_type == 'c')
 	{
-		result = ft_formater_with_option_c(output, size);
-		i = ft_strlen(result);
-	}
-	if (ft_strlen(output->str) < output->minsize && output->conv_type != 'c')
-	{
-		result = ft_formater_with_option_s(output, size);
+		result = ft_formater_with_option_sc(output, size);
 		if (output->option->min == 1 && output->minsize > ft_strlen(result))
 		{
 			tmp = ft_strnew(output->minsize - ft_strlen(result));
@@ -104,13 +104,16 @@ int		ft_formater_sc(t_output *output, int opt)
 				result = ft_strjoin(tmp, result);
 			ft_strdel(&tmp);
 		}
-		if (opt == 1 && !result[0])
-			add_char(0, opt);
-		i = -1;
-		while (result[++i])
-			add_char(result[i], opt);
-		ft_strdel(&result);
-		return (i);
+	}
+	if (output->minsize > ft_strlen(result) && !output->option->min)
+	{
+		i = 0;
+		tmp = ft_strnew(output->minsize  - ft_strlen(result));
+		while (i < output->minsize  - ft_strlen(result))
+			tmp[i++] = ' ';
+		if (i != 0)
+			result = ft_strjoin(tmp, result);
+		ft_strdel(&tmp);
 	}
 	i = -1;
 	while (result[++i])

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 13:07:17 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/14 18:01:43 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/07 06:26:25 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char			*ft_itoa(int nb)
 		return (ft_strdup("2147483647"));
 	is_neg(&nb, &neg, &size);
 	size += nb_ofnb((long)nb) + 1;
-	if (!(result = ft_strnew(sizeof(char) * size - 1)))
+	if (!(result = ft_strnew(sizeof(char) * size)))
 		return (NULL);
 	result[--size] = '\0';
 	while (size--)

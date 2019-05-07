@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 14:40:42 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/14 14:52:24 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/07 07:04:12 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,29 +53,29 @@ static void				is_neg(long long *nb, int *neg, int *size, int base)
 	*size += nb_ofnb(*nb, base) + 1;
 }
 
-char					*ft_itoa_base(int nb, int base)
+char					*ft_itoa_base(long long nb, int base)
 {
 	char				*result;
-	long long			nb_long;
 	int					size;
 	int					neg;
 
 	neg = 0;
 	size = 0;
-	nb_long = (long long)nb;
 	if (!ft_verif_base(base))
 		return (ft_strdup(""));
-	is_neg(&nb_long, &neg, &size, base);
+	if (nb == LONG_MIN)
+		return (strdup("-9223372036854775808"));
+	is_neg(&nb, &neg, &size, base);
 	if ((result = (char*)malloc(sizeof(char) * size)) == NULL)
 		return (NULL);
 	result[--size] = '\0';
 	while (size--)
 	{
-		if (nb_long % base > 9)
-			result[size] = 65 + get_second_nb(nb_long % base);
+		if (nb % base > 9)
+			result[size] = 65 + get_second_nb(nb % base);
 		else
-			result[size] = nb_long % base + '0';
-		nb_long /= base;
+			result[size] = nb % base + '0';
+		nb /= base;
 	}
 	if (neg)
 		result[0] = '-';

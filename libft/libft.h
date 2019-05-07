@@ -6,7 +6,7 @@
 /*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 11:12:24 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/01 18:35:46 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/07 07:04:09 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
+# include <limits.h>
 
 typedef struct		s_list
 {
@@ -62,6 +63,7 @@ char				*ft_strsub(char const *s, size_t start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				*ft_itoa(int nb);
+char				*ft_itoa_base(long long nb, int base);
 char				*ft_strdup(const char *src);
 char				*ft_strcpy(char *dest, const char *src);
 char				*ft_strncpy(char *dest, const char *src, size_t n);
@@ -75,13 +77,13 @@ char				*ft_strtolower(char *str);
 char				*ft_strntolower(char *str, size_t n);
 char				*ft_strupcase(char *str);
 char				*ft_strcapitalize(char *str);
-char				*ft_itoa_base(int nb, int base);
 char				*ft_strlowcase(char *str);
 char				*ft_strnlowcase(char *str, size_t n);
 char				*ft_strndup(const char *str, size_t size);
 char				*ft_strrev(char *str);
 char 				*ft_str_from_char(char c);
 char				*ft_ftoa(double f, size_t precision);
+char				*utoa_base(unsigned long long n, int b);
 
 char				**ft_strsplit(char const *s, char c);
 char				**ft_strsplit(char const *s, char c);

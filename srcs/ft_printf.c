@@ -45,7 +45,16 @@ int         ft_printf(const char *format, ...)
 			{
 				if (format[i] == '.')
 				{
-					if (!ft_isdigit(format[i + 1]) && format[i + 1] == 'f')
+					if ((!ft_isdigit(format[i + 1]) || format[i + 1] == '0')
+							&& (format[i + 1] == 'f'
+								|| format[i + 1] == 'x' || format[i + 1] == 'X'
+								|| format[i + 1]  == 'o'))
+					{
+						output->size_flag->no_prec = 1;
+					}
+					else if (format[i + 1] == '0' && 
+								(format[i + 2] == 'f' || format[i + 2] == 'x'
+								|| format[i + 2] == 'X' || format[i + 2]  == 'o'))
 					{
 						output->size_flag->no_prec = 1;
 					}
@@ -57,7 +66,7 @@ int         ft_printf(const char *format, ...)
 						tmp = ft_strsub(format, i, j);
 						output->size_flag->precision = (size_t)ft_atoi(tmp);
 						output->option->point = 1;
-						if (format[j + 1] != 'f' && format[j + 1] != 's' && ft_is_conv(format[j + 1]))
+						if (format[j + 1] != 'f' && format[j + 1] != 's' && ft_is_conv(format[j + 2]))
 						{
 							if (output->minsize < output->size_flag->precision)
 								output->minsize = output->size_flag->precision;
@@ -76,12 +85,17 @@ int         ft_printf(const char *format, ...)
 					i = j - 1;
 					ft_strdel(&tmp);
 				}
+				else if (format[i] == '%')
+					break;
 				else
 					ft_is_option(format[i], output);
 				i++;
 			}
 			if (format[i] == '%')
+			{
+				output->conv_type = 's';
 				output->str = ft_str_from_char(format[i]);
+			}
 			else
 			{
 				output->conv_type = format[i];
@@ -98,5 +112,4 @@ int         ft_printf(const char *format, ...)
 	result += ft_formater(output, 1);
 	va_end(ap);
 	return (result);
-
 }
