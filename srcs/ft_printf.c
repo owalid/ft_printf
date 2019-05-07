@@ -62,10 +62,7 @@ int         ft_printf(const char *format, ...)
 					{
 						j = i++;
 						while (ft_isdigit(format[j++]))
-						{
-							if (format[j] == '0')
-								i++;
-						}
+							;
 						tmp = ft_strsub(format, i, j);
 						output->size_flag->precision = (size_t)ft_atoi(tmp);
 						output->option->point = 1;
@@ -88,39 +85,35 @@ int         ft_printf(const char *format, ...)
 					i = j - 1;
 					ft_strdel(&tmp);
 				}
+				else if (format[i] == '%')
+					break;
 				else
-				{
 					ft_is_option(format[i], output);
-					printf("\n%s\n", output->str);
-				}
 				i++;
 			}
-			if (format[i] == '%' && format[i + 1] == '\0')
+			if (format[i] == '%')
 			{
 				output->conv_type = 's';
-				if (!output->str)
-					output->str = ft_str_from_char(format[i]);
+				output->str = ft_str_from_char(format[i]);
 			}
-			else if (format[i] != '%')
+			else
 			{
 				output->conv_type = format[i];
-				if (!output->conv_type)
-					output->conv_type = 's';
-				if (!output->str)
-					output->str = ft_converter(ap, &i, format, output->size_flag);
+				output->str = ft_converter(ap, &i, format, output->size_flag);
 			}
 		}
 		else
 			output->str = ft_str_from_char(format[i]);
 		result += ft_formater(output, 0);
-		// printf("\nici => %s\n", output->str);
 		output->minsize = 0;
-		ft_init_output(output);
+	ft_init_output(output);
+	if (output->option->plus)
+				printf("ici\n");
+
 	}
 	ft_init_output(output);
 	output->str = ft_str_from_char(format[i]);
 	result += ft_formater(output, 1);
 	va_end(ap);
 	return (result);
-
 }
