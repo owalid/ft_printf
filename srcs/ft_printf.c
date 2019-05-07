@@ -48,7 +48,13 @@ int         ft_printf(const char *format, ...)
 					if ((!ft_isdigit(format[i + 1]) || format[i + 1] == '0')
 							&& (format[i + 1] == 'f'
 								|| format[i + 1] == 'x' || format[i + 1] == 'X'
-								|| format[i + 1]  == 'o' || format[i + 2] == 'o'))
+								|| format[i + 1]  == 'o'))
+					{
+						output->size_flag->no_prec = 1;
+					}
+					else if (format[i + 1] == '0' && 
+								(format[i + 2] == 'f' || format[i + 2] == 'x'
+								|| format[i + 2] == 'X' || format[i + 2]  == 'o'))
 					{
 						output->size_flag->no_prec = 1;
 					}

@@ -29,7 +29,7 @@ char	*ft_formater_with_option_xX(t_output *output, size_t size)
 		}
 	}
 
-	if (output->option->zero && !output->option->min && (ft_strlen(output->str) < size || output->minsize > ft_strlen(output->str)))
+	if (output->option->zero && !output->option->min && (ft_strlen(output->str) < size || output->minsize > ft_strlen(output->str)) && !output->is_null)
 	{
 		if (output->str[0] == '-')
 		{
@@ -49,7 +49,7 @@ char	*ft_formater_with_option_xX(t_output *output, size_t size)
 		}
 	}
 
-	if (output->option->hash && ft_strcmp(output->str, "0") != 0)
+	if (output->option->hash && ft_strcmp(output->str, "0") != 0 && !output->is_null)
 	{
 		if (output->conv_type == 'x' || output->conv_type == 'X')
 		{
@@ -83,9 +83,7 @@ int		ft_formater_xX(t_output *output, int opt)
 	if (ft_strcmp(output->str, "0") == 0 && output->size_flag->no_prec == 1)
 	{
 		output->is_null = 1;
-		if (!output->option->plus && !output->option->min)
-			output->str = ft_strdup("(null)");
-		else
+		
 			output->str = ft_strdup("");
 	}
 	size = output->minsize + output->option->space + output->option->plus;
