@@ -2,18 +2,19 @@
 
 char        *option_plus_df(t_output *output, size_t size, char *result, size_t *i)
 {
+    (void)size;
     // if (output->str[0] == '-')
     //     size++;
-    if (ft_strlen(output->str) < size && !output->option->min)
-    {
-        while (*i < size - ft_strlen(output->str))
-            result[(*i)++] = ' ';
-    }
     if (output->str[0] != '-')
     {
         result[(*i)++] = '+';
         output->size_flag->precision += output->option->point;
     }
+    // if (ft_strlen(output->str) < size && !output->option->min)
+    // {
+    //     while (*i < size - ft_strlen(output->str))
+    //         result[(*i)++] = ' ';
+    // }
     return (result);
 }
 
@@ -43,6 +44,7 @@ char        *option_point_df(t_output *output, char *result, size_t *i)
 char        *option_zero_df(t_output *output, size_t size, char *result, size_t *i)
 {
     char    *tmp;
+        (void)size;
 
     if (output->str[0] == '-')
     {
@@ -56,7 +58,7 @@ char        *option_zero_df(t_output *output, size_t size, char *result, size_t 
     }
     else
     {
-        while (*i < size - ft_strlen(output->str))
+        while (*i < output->minsize - ft_strlen(output->str))
             result[(*i)++] = '0';
     }
     return (result);

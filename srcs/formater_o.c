@@ -14,7 +14,7 @@ char	*ft_formater_with_option_o(t_output *output, size_t size)
 		if (output->str[0] == '-')
 			return(result);
 	}
-	if (output->option->zero && (ft_strlen(output->str) < size || output->minsize > ft_strlen(output->str)))
+	if (output->option->zero && !output->option->min && (ft_strlen(output->str) < size || output->minsize > ft_strlen(output->str)))
 	{
 		result = option_zero_df(output, size, result, &i);
 		if (output->str[0] == '-')
@@ -40,7 +40,7 @@ int		ft_formater_o(t_output *output, int opt)
 	if (ft_strcmp(output->str, "0") == 0 && output->size_flag->no_prec == 1)
 	{
 		output->is_null = 1;
-		if (!output->option->plus && !output->option->min)
+		if (!output->option->plus && !output->option->min && !output->option->point)
 			output->str = ft_strdup("(null)");
 		else
 			output->str = ft_strdup("");

@@ -45,8 +45,8 @@ int		ft_formater_df(t_output *output, int opt)
 		result = ft_formater_with_option_df(output, ft_strlen(output->str));
 	if (output->option->space == 1 && !output->option->plus && (!output->option->min || output->option->point))
 		result = option_space_df(output, result);
-	// if (output->minsize > ft_strlen(result))
-	// 	result = ft_add_blank(output, result, 0);
+	if (output->minsize > ft_strlen(result))
+		result = ft_add_blank(output, result, 0);
 	send_char(result, opt, &i);
 	return (i);
 }

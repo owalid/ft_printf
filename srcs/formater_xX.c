@@ -15,6 +15,11 @@ char	*ft_formater_with_option_xX(t_output *output, size_t size)
 			return(result);
 	}
 
+	if (output->option->hash && ft_strcmp(output->str, "0") != 0 && !output->is_null)
+	{
+		result = option_hash_o(output, size, result, &i);
+		return (result);
+	}
 	if (output->option->zero && !output->option->min && (ft_strlen(output->str) < size || output->minsize > ft_strlen(output->str)) && !output->is_null)
 	{
 		result = option_zero_df(output, size, result, &i);
@@ -22,14 +27,10 @@ char	*ft_formater_with_option_xX(t_output *output, size_t size)
 			return(result);
 	}
 
-	if (output->option->hash && ft_strcmp(output->str, "0") != 0 && !output->is_null)
-	{
-		result = option_hash_o(output, size, result, &i);
-		return (result);
-	}
 	if (!result)
 		return (output->str);
-	result = ft_strjoin(result, output->str);
+	if (!output->option->hash)
+		result = ft_strjoin(result, output->str);
 	return (result);
 }
 

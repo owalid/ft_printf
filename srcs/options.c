@@ -42,6 +42,8 @@ void	ft_is_option(char c, t_output *output)
 		output->size_flag->bigl = 1;
 	else if (c == 'j')
 		output->size_flag->j = 1;
+	else if (c == 'z')
+		output->size_flag->z = 1;
 	else
 		output->str = ft_str_from_char(c);
 }
@@ -57,5 +59,5 @@ int		ft_is_opt(char c)
 {
 	return (c == '#' || c == '0' || c == ' '
 				|| c == '-' || c == '+' || c == 'h'
-				|| c == 'l' || c == 'j' || c == 'L');
+				|| c == 'l' || c == 'j' || c == 'L' || c == 'z');
 }
