@@ -3,9 +3,7 @@
 char	*ft_formater_with_option_o(t_output *output, size_t size)
 {
 	char 	*result;
-	// char	*tmp;
 	size_t	i;
-	// size_t	tmp;
 
 	i = 0;
 	result = ft_strnew(size);

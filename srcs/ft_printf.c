@@ -41,23 +41,12 @@ int         ft_printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			i++;
-			while (!ft_is_conv(format[i]) && format[i])
+			while (!ft_is_conv(format[i]))
 			{
 				if (format[i] == '.')
 				{
-					if ((!ft_isdigit(format[i + 1]) || format[i + 1] == '0')
-							&& (format[i + 1] == 'f'
-								|| format[i + 1] == 'x' || format[i + 1] == 'X'
-								|| format[i + 1]  == 'o'))
-					{
+					if (is_no_prec(format, i))
 						output->size_flag->no_prec = 1;
-					}
-					else if (format[i + 1] == '0' && 
-								(format[i + 2] == 'f' || format[i + 2] == 'x'
-								|| format[i + 2] == 'X' || format[i + 2]  == 'o'))
-					{
-						output->size_flag->no_prec = 1;
-					}
 					else if (ft_isdigit(format[i + 1]))
 					{
 						j = i++;
@@ -89,15 +78,12 @@ int         ft_printf(const char *format, ...)
 					ft_is_option(format[i], output);
 				i++;
 			}
-			if (format[i] == '%')
+			if (format[i] == '\0')
+				break;
+			else if (format[i] == '%' && format[i + 1] == '\0')
 			{
-				if (format[i + 1] == '\0')
-				{
 					output->conv_type = 's';
 					output->str = ft_str_from_char(format[i]);
-				}
-				else
-				i++;
 			}
 			else
 			{
@@ -107,6 +93,7 @@ int         ft_printf(const char *format, ...)
 		}
 		else
 			output->str = ft_str_from_char(format[i]);
+		// printf("str => %s\n", output->str);
 		result += ft_formater(output, 0);
 		output->minsize = 0;
 	ft_init_output(output);
