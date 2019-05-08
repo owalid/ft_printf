@@ -10,6 +10,7 @@ static t_prtfop g_prtfop[] =
 	{'i', &ft_printf_i_d},
 	{'o', &ft_printf_o},
 	{'u', &ft_printf_u},
+	{'U', &ft_printf_U},
 	{'x', &ft_printf_x},
 	{'X', &ft_printf_X},
 	{'c', &ft_printf_c},

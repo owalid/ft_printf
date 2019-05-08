@@ -69,6 +69,7 @@ char		*ft_printf_c(va_list nbr, t_sizeflag *flag);
 char		*ft_printf_p(va_list ptr, t_sizeflag *flag);
 char		*ft_printf_o(va_list nbr, t_sizeflag *flag);
 char		*ft_printf_u(va_list nbr, t_sizeflag *flag);
+char		*ft_printf_U(va_list ap, t_sizeflag *flag);
 char		*ft_printf_X(va_list nbr, t_sizeflag *flag);
 char		*ft_printf_x(va_list nbr, t_sizeflag *flag);
 char		*ft_printf_f(va_list nbr, t_sizeflag *flag);
@@ -86,6 +87,7 @@ int			is_float(char c);
 */
 void		ft_is_option(char c, t_output *output);
 int			ft_is_conv(char c);
+int		ft_is_opt(char c);
 
 /*
 **	clean.c

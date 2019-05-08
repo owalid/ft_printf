@@ -12,7 +12,7 @@ char	*ft_formater_with_option_sc(t_output *output, size_t size)
 		result = ft_strsub(output->str, 0, output->size_flag->precision);
 		return (result);
 	}
-	if (output->option->zero && output->minsize > ft_strlen(output->str))
+	if (output->option->zero && output->minsize > ft_strlen(output->str) && !output->option->min)
 	{
 		while (i < output->minsize - ft_strlen(output->str))
 			result[i++] = '0';

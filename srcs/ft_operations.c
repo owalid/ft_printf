@@ -86,6 +86,17 @@ char		*ft_printf_u(va_list ap, t_sizeflag *flag)
 	return (result);
 }
 
+char		*ft_printf_U(va_list ap, t_sizeflag *flag)
+{
+	unsigned long long 	nbr;
+	char			*result;
+
+	(void)flag;
+	nbr = va_arg(ap, unsigned long);
+	result = utoa_base(nbr, 10);
+	return (result);
+}
+
 char		*ft_printf_X(va_list ap, t_sizeflag *flag)
 {
 	unsigned long long	nbr;

@@ -2,6 +2,8 @@
 
 char        *option_plus_df(t_output *output, size_t size, char *result, size_t *i)
 {
+    // if (output->str[0] == '-')
+    //     size++;
     if (ft_strlen(output->str) < size && !output->option->min)
     {
         while (*i < size - ft_strlen(output->str))
