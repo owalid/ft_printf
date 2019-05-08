@@ -86,6 +86,9 @@ int         ft_printf(const char *format, ...)
 			{
 				output->conv_type = 's';
 				output->str = ft_str_from_char(format[i]);
+				// printf("str => %s\n", output->str);
+				// result += ft_formater(output, 0);
+				// break;
 			}
 			else if (ft_is_conv(format[i]) && format[i] != '%')
 			{
