@@ -37,7 +37,6 @@ int		ft_formater_df(t_output *output, int opt)
 	
 	if (ft_strcmp(output->str, "0") == 0 && output->size_flag->no_prec)
 	{
-		// printf("ici\n");
 		output->is_null = 1;
 		output->str = ft_strdup("");
 	}
