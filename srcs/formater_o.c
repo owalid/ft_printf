@@ -8,13 +8,13 @@ char	*ft_formater_with_option_o(t_output *output, size_t size)
 	i = 0;
 	result = ft_strnew(size);
 
-	if (output->option->point && ft_strlen(output->str) < output->size_flag->precision)
+	if (output->option->point && ft_strlen(output->str) < output->size_flag->precision && !output->is_null)
 	{
 		result = option_point_df(output, result, &i);
 		if (output->str[0] == '-')
 			return(result);
 	}
-	if (output->option->zero && !output->option->min && (ft_strlen(output->str) < size || output->minsize > ft_strlen(output->str)))
+	if (output->option->zero && !output->option->min && !output->is_null && (ft_strlen(output->str) < size || output->minsize > ft_strlen(output->str)))
 	{
 		result = option_zero_df(output, size, result, &i);
 		if (output->str[0] == '-')
@@ -37,10 +37,10 @@ int		ft_formater_o(t_output *output, int opt)
 	size_t	i;
 	int		size;
 	
-	if (ft_strcmp(output->str, "0") == 0 && output->size_flag->no_prec == 1)
+	if (ft_strcmp(output->str, "0") == 0 && output->size_flag->no_prec && !output->option->hash)
 	{
 		output->is_null = 1;
-		if (!output->option->plus && !output->option->min && !output->option->point)
+		if (!output->option->plus && !output->option->min && !output->option->point && !output->size_flag->no_prec)
 			output->str = ft_strdup("(null)");
 		else
 			output->str = ft_strdup("");
@@ -58,6 +58,5 @@ int		ft_formater_o(t_output *output, int opt)
 	if (output->minsize > ft_strlen(result) && !output->option->min)
 		result = ft_add_blank(output, result, 0);
 	send_char(result, opt, &i);
-	return ((!output->is_null || output->option->plus || output->option->min)
-				? i : 0);
+	return (i);
 }

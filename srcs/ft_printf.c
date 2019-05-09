@@ -46,7 +46,10 @@ int         ft_printf(const char *format, ...)
 				if (format[i] == '.')
 				{
 					if (is_no_prec(format, i))
+					{
 						output->size_flag->no_prec = 1;
+						i = (is_no_prec(format, i) == 2) ? i + 1 : i;
+					}
 					else if (ft_isdigit(format[i + 1]))
 					{
 						j = i++;
@@ -75,7 +78,10 @@ int         ft_printf(const char *format, ...)
 					ft_strdel(&tmp);
 				}
 				else if (ft_is_opt(format[i]))
+				{
+					// printf("ici\n");
 					ft_is_option(format[i], output);
+				}
 				else
 					break;
 				i++;

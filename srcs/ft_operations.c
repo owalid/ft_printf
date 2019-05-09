@@ -3,22 +3,22 @@
 char		*ft_printf_i_d(va_list ap, t_sizeflag *flag)
 {
 	char						*result;
-	unsigned long long 					nbr;
+	unsigned long long 			nbr;
 
 	if (flag->l)
 		nbr = va_arg(ap, long);
 	else if (flag->ll)
 		nbr = va_arg(ap, long long);
+	else if (flag->hh)
+		nbr = (char)va_arg(ap, int);
+	else if (flag->h)
+		nbr = (short)va_arg(ap, int);
 	else if (flag->z)
 		nbr = va_arg(ap, ssize_t);
 	else if (flag->j)
 		nbr = va_arg(ap, intmax_t);
 	else
 		nbr = va_arg(ap, int);
-	if (flag->h)
-		nbr = (short)nbr;
-	else if (flag->hh)
-		nbr = (char)nbr;
 	result = ft_itoa_base(nbr, 10);
 	return (result);
 }

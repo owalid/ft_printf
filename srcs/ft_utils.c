@@ -27,11 +27,15 @@ void        send_char(char *result, int opt, size_t *i)
 
 int        is_no_prec(const char *format, int i)
 {
-    return ((!ft_isdigit(format[i + 1])
-							&& (format[i + 1] == 'f'
+    if ((!ft_isdigit(format[i + 1])
+							&& (format[i + 1] == 'f' || format[i + 1] == 'd'
 								|| format[i + 1] == 'x' || format[i + 1] == 'X'
-								|| format[i + 1]  == 'o'))
-                 || (format[i + 1] == '0' && 
-								(format[i + 2] == 'f' || format[i + 2] == 'x'
-								|| format[i + 2] == 'X' || format[i + 2]  == 'o')));
+								|| format[i + 1]  == 'o')))
+        return (1);
+    else if ((format[i + 1] == '0' && 
+								(format[i + 2] == 'f' || format[i + 2] == 'd'
+                                || format[i + 2] == 'x' || format[i + 2] == 'X'
+                                || format[i + 2]  == 'o')))
+        return (2);
+    return(0);
 }

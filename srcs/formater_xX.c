@@ -4,7 +4,6 @@ char	*ft_formater_with_option_xX(t_output *output, size_t size)
 {
 	char 	*result;
 	size_t	i;
-	// size_t	tmp;
 
 	i = 0;
 	result = ft_strnew(size);
@@ -26,9 +25,10 @@ char	*ft_formater_with_option_xX(t_output *output, size_t size)
 		if (output->str[0] == '-')
 			return(result);
 	}
-
-	if (!result)
-		return (output->str);
+	if (!*result)
+	{
+		return (ft_strdup(output->str));
+	}
 	if (!output->option->hash)
 		result = ft_strjoin(result, output->str);
 	return (result);
@@ -40,7 +40,7 @@ int		ft_formater_xX(t_output *output, int opt)
 	size_t	i;
 	int		size;
 	
-	if (ft_strcmp(output->str, "0") == 0 && output->size_flag->no_prec == 1)
+	if (ft_strcmp(output->str, "0") == 0 && output->size_flag->no_prec)
 	{
 		output->is_null = 1;
 		output->str = ft_strdup("");
@@ -58,6 +58,5 @@ int		ft_formater_xX(t_output *output, int opt)
 	if (output->minsize > ft_strlen(result) && !output->option->min)
 		result = ft_add_blank(output, result, 0);
 	send_char(result, opt, &i);
-	return ((!output->is_null || output->option->plus || output->option->min)
-				? i : 0);
+	return (i);
 }

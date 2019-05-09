@@ -14,11 +14,5 @@ char        *option_hash_o(t_output *output, size_t size, char *result, size_t *
                     || output->minsize > ft_strlen(output->str)) && !output->is_null)
         result = option_zero_df(output, size, result, &(*i));
     result = ft_strjoin(result, output->str);
-    // (*i)++;
-    // if (ft_strlen(output->str) < size)
-    // {
-    //     while (*i < size - ft_strlen(output->str))
-    //         result[++(*i)] = ' ';
-    // }
     return (result);
 }
