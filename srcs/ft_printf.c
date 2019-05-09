@@ -85,14 +85,6 @@ int         ft_printf(const char *format, ...)
 			}
 			if (format[i] == '\0')
 				break;
-			// else if (format[i] == '%' && format[i + 1] == '\0')
-			// {
-			// 	output->conv_type = 's';
-			// 	output->str = ft_str_from_char(format[i]);
-			// 	// printf("str => %s\n", output->str);
-			// 	// result += ft_formater(output, 0);
-			// 	break;
-			// }
 			else if (ft_is_conv(format[i]) && format[i] != '%')
 			{
 				output->conv_type = format[i];
@@ -100,7 +92,6 @@ int         ft_printf(const char *format, ...)
 			}
 			else
 			{
-				// ft_init_output(output);
 				output->option->space = 0;
 				output->str = ft_str_from_char(format[i]);
 			}
@@ -109,7 +100,7 @@ int         ft_printf(const char *format, ...)
 			output->str = ft_str_from_char(format[i]);
 		result += ft_formater(output, 0);
 		output->minsize = 0;
-	ft_init_output(output);
+		ft_init_output(output);
 	}
 	ft_init_output(output);
 	output->str = ft_str_from_char(format[i]);
