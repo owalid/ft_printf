@@ -45,7 +45,7 @@ int		ft_formater_sc(t_output *output, int opt)
 	}
 	else
 		result = ft_formater_with_option_sc(output, ft_strlen(output->str));
-	if (output->option->space == 1)
+	if (output->option->space == 1  && !output->option->plus)
 		result = ft_add_blank(output, result, 0);
 	if (output->minsize > ft_strlen(result))
 		result = ft_add_blank(output, result, 0);

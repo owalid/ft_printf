@@ -45,8 +45,9 @@ int         ft_printf(const char *format, ...)
 			{
 				if (format[i] == '.')
 				{
-					while (format[i + 1] == '0')
-					i++;
+					// i++x;
+					// while (format[i + 1] == '0')
+					// i++;
 					if (is_no_prec(format, i))
 					{
 						output->size_flag->no_prec = 1;
