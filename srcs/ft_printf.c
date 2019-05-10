@@ -45,6 +45,8 @@ int         ft_printf(const char *format, ...)
 			{
 				if (format[i] == '.')
 				{
+					while (format[i + 1] == '0')
+					i++;
 					if (is_no_prec(format, i))
 					{
 						output->size_flag->no_prec = 1;
@@ -52,19 +54,20 @@ int         ft_printf(const char *format, ...)
 					}
 					else if (ft_isdigit(format[i + 1]))
 					{
-						j = i++;
-						while (ft_isdigit(format[j++]))
-							;
+						j = ++i;
+						while (ft_isdigit(format[j]))
+							j++;
 						tmp = ft_strsub(format, i, j);
 						output->size_flag->precision = (size_t)ft_atoi(tmp);
 						output->option->point = 1;
-						if (format[j + 2] != 'f' && format[j + 2] != 's'
-						&& format[j + 2] != '%' && ft_is_conv(format[j + 2])
+						if (format[j] != 'f' && (format[j] != 's')
+						&& format[j] != '%' && ft_is_conv(format[j])
 						&& output->minsize < output->size_flag->precision)
 							output->minsize = output->size_flag->precision;
-						if (format[j + 1] == '%' || format[j + 2] == '%')
+						if (format[j] == '%' || format[j + 1] == '%')
 							output->minsize = 0;
-						i = j;
+
+						i = --j;
 						ft_strdel(&tmp);
 					}
 				}

@@ -17,7 +17,7 @@ char        *ft_add_blank(t_output *output, char *result, int opt)
 
 void        send_char(char *result, int opt, size_t *i)
 {
-    if (opt == 1 && !result)
+    if (opt == 1 || !*result)
 		add_char(0, opt);
 	*i = -1;
 	while (result[++(*i)])
@@ -40,13 +40,15 @@ int        is_no_prec(const char *format, int i)
 							&& (format[i + 1] == 'f' || format[i + 1] == 'd'
                                 || format[i + 1] == 'i' || format[i + 1] == 'u'
                                 || format[i + 1] == 'x' || format[i + 1] == 'X'
-                                || format[i + 1]  == 'o' || format[i + 1] == 'p')))
+                                || format[i + 1]  == 'o' || format[i + 1] == 'p'
+                                || format[i + 1] == 's')))
         return (1);
     else if ((format[i + 1] == '0' && 
 								(format[i + 2] == 'f' || format[i + 2] == 'd'
                                 || format[i + 2] == 'i' || format[i + 2] == 'u'
                                 || format[i + 2] == 'x' || format[i + 2] == 'X'
-                                || format[i + 2]  == 'o' || format[i + 2] == 'p')))
+                                || format[i + 2]  == 'o' || format[i + 2] == 'p'
+                                || format[i + 2] == 's')))
         return (2);
     return(0);
 }
