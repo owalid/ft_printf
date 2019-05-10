@@ -7,7 +7,7 @@ char        *option_hash_o(t_output *output, size_t size, char *result, size_t *
         result[*i] = '0';
         result[++(*i)] = 'x';
     }
-    if (output->conv_type == 'o' && output->minsize >= ft_strlen(output->str) + ft_strlen(result))
+    if (output->conv_type == 'o')
         result[*i] = '0';
         (*i)++;
     if  (output->option->zero && !output->option->min && (ft_strlen(output->str) < size

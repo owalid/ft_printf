@@ -93,6 +93,7 @@ int         ft_printf(const char *format, ...)
 			else
 			{
 				output->option->space = 0;
+				output->option->plus = 0;
 				output->str = ft_str_from_char(format[i]);
 			}
 		}
