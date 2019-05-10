@@ -62,6 +62,8 @@ int         ft_printf(const char *format, ...)
 						&& format[j + 2] != '%' && ft_is_conv(format[j + 2])
 						&& output->minsize < output->size_flag->precision)
 							output->minsize = output->size_flag->precision;
+						if (format[j + 1] == '%' || format[j + 2] == '%')
+							output->minsize = 0;
 						i = j;
 						ft_strdel(&tmp);
 					}
@@ -93,7 +95,7 @@ int         ft_printf(const char *format, ...)
 			{
 				output->option->space = 0;
 				output->option->plus = 0;
-				// output->minsize = 0;
+				output->size_flag->precision = 0;
 				output->conv_type = 'y';
 				output->str = ft_str_from_char(format[i]);
 			}
