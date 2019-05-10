@@ -103,6 +103,7 @@ void        ft_init_sizeflag(t_sizeflag *flag);
 char        *ft_add_blank(t_output *output, char *result, int opt);
 void        send_char(char *result, int opt, size_t *i);
 int        	is_no_prec(const char *format, int i);
+void        ft_is_null(t_output *output);
 
 /*
 **	formater_df.c

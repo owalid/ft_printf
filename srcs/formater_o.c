@@ -38,13 +38,7 @@ int		ft_formater_o(t_output *output, int opt)
 	int		size;
 	
 	if (ft_strcmp(output->str, "0") == 0 && output->size_flag->no_prec && !output->option->hash)
-	{
-		output->is_null = 1;
-		if (!output->option->plus && !output->option->min && !output->option->point && !output->size_flag->no_prec)
-			output->str = ft_strdup("(null)");
-		else
-			output->str = ft_strdup("");
-	}
+		ft_is_null(output);
 	size = output->minsize + output->option->space + output->option->plus;
 	i = 0;
 	if (ft_strlen(output->str) < output->minsize)

@@ -10,7 +10,7 @@ char	*ft_formater_with_option_df(t_output *output, size_t size)
 	if (output->option->plus)
 		result = option_plus_df(output, output->minsize, result, &i);
 	if (output->option->point && ft_strlen(output->str) <= output->size_flag->precision
-						&& (!output->is_null))
+						&& (!output->is_null) && output->conv_type != 'y')
 	{
 		result = option_point_df(output, result, &i);
 		if (output->str[0] == '-')
@@ -35,11 +35,8 @@ int		ft_formater_df(t_output *output, int opt)
 	size_t	i;
 	int		size;
 	
-	if (ft_strcmp(output->str, "0") == 0 && output->size_flag->no_prec)
-	{
-		output->is_null = 1;
-		output->str = ft_strdup("");
-	}
+	if (ft_strcmp(output->str, "0") == 0 && output->size_flag->no_prec && !output->option->hash)
+		ft_is_null(output);
 	size = output->minsize + output->option->space + output->option->plus;
 	i = 0;
 	if (ft_strlen(output->str) < output->minsize)
@@ -50,7 +47,7 @@ int		ft_formater_df(t_output *output, int opt)
 	}
 	else
 		result = ft_formater_with_option_df(output, ft_strlen(output->str));
-	if (output->option->space == 1 && !output->option->plus && (!output->option->min || output->option->point))
+	if (output->option->space == 1 && !output->option->plus)
 		result = option_space_df(output, result);
 	if (output->minsize > ft_strlen(result))
 		result = ft_add_blank(output, result, 0);

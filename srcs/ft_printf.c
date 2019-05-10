@@ -58,11 +58,10 @@ int         ft_printf(const char *format, ...)
 						tmp = ft_strsub(format, i, j);
 						output->size_flag->precision = (size_t)ft_atoi(tmp);
 						output->option->point = 1;
-						if (format[j + 2] != 'f' && format[j + 2] != 's' && ft_is_conv(format[j + 2]))
-						{
-							if (output->minsize < output->size_flag->precision)
-								output->minsize = output->size_flag->precision;
-						}
+						if (format[j + 2] != 'f' && format[j + 2] != 's'
+						&& format[j + 2] != '%' && ft_is_conv(format[j + 2])
+						&& output->minsize < output->size_flag->precision)
+							output->minsize = output->size_flag->precision;
 						i = j;
 						ft_strdel(&tmp);
 					}
@@ -94,6 +93,8 @@ int         ft_printf(const char *format, ...)
 			{
 				output->option->space = 0;
 				output->option->plus = 0;
+				// output->minsize = 0;
+				output->conv_type = 'y';
 				output->str = ft_str_from_char(format[i]);
 			}
 		}

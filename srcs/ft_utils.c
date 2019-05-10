@@ -25,17 +25,28 @@ void        send_char(char *result, int opt, size_t *i)
 	ft_strdel(&result);
 }
 
+void        ft_is_null(t_output *output)
+{
+    output->is_null = 1;
+    if (!output->option->plus && !output->option->min && !output->option->point && !output->size_flag->no_prec)
+        output->str = ft_strdup("(null)");
+    else
+        output->str = ft_strdup("");
+}
+
 int        is_no_prec(const char *format, int i)
 {
     if ((!ft_isdigit(format[i + 1])
 							&& (format[i + 1] == 'f' || format[i + 1] == 'd'
-								|| format[i + 1] == 'x' || format[i + 1] == 'X'
-								|| format[i + 1]  == 'o')))
+                                || format[i + 1] == 'i' || format[i + 1] == 'u'
+                                || format[i + 1] == 'x' || format[i + 1] == 'X'
+                                || format[i + 1]  == 'o' || format[i + 1] == 'p')))
         return (1);
     else if ((format[i + 1] == '0' && 
 								(format[i + 2] == 'f' || format[i + 2] == 'd'
+                                || format[i + 2] == 'i' || format[i + 2] == 'u'
                                 || format[i + 2] == 'x' || format[i + 2] == 'X'
-                                || format[i + 2]  == 'o')))
+                                || format[i + 2]  == 'o' || format[i + 2] == 'p')))
         return (2);
     return(0);
 }

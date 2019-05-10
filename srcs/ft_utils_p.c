@@ -19,7 +19,7 @@ char        *option_point_p(t_output *output, char *result, size_t size)
     }
     else
     {
-        while (i < size - ft_strlen(output->str))
+        while (i < size - (ft_strlen(output->str)))
             result[i++] = '0';
     }
     return (result);
