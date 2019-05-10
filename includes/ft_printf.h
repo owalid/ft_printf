@@ -157,6 +157,6 @@ char        *option_hash_o(t_output *output, size_t size, char *result, size_t *
 /*
 **	ft_utils_p.c
 */
-char        *option_point_p(t_output *output, char *result);
+char        *option_point_p(t_output *output, char *result, size_t size);
 
 #endif
