@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 15:56:34 by oel-ayad          #+#    #+#             */
-/*   Updated: 2018/11/11 17:08:20 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/10 13:07:41 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ size_t		ft_strlen(const char *str)
 	int		i;
 
 	i = -1;
+	if (!str)
+		return(0);
 	while (str[++i])
 		;
 	return (i);

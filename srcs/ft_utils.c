@@ -17,7 +17,7 @@ char        *ft_add_blank(t_output *output, char *result, int opt)
 
 void        send_char(char *result, int opt, size_t *i)
 {
-    if (opt == 1 && !result[0])
+    if (opt == 1 && !result)
 		add_char(0, opt);
 	*i = -1;
 	while (result[++(*i)])

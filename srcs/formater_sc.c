@@ -30,7 +30,7 @@ int		ft_formater_sc(t_output *output, int opt)
 	if (!output->str)
 	{
 		output->is_null = 1;
-		output->str = ft_strdup("(null)");
+		// output->str = ft_strdup("(null)");
 	}
 	size = output->minsize + output->option->space + output->option->plus;
 	i = 0;
