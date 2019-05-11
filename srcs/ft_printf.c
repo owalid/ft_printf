@@ -45,13 +45,11 @@ int         ft_printf(const char *format, ...)
 			{
 				if (format[i] == '.')
 				{
-					// i++x;
-					// while (format[i + 1] == '0')
-					// i++;
 					if (is_no_prec(format, i))
 					{
 						output->size_flag->no_prec = 1;
 						i = (is_no_prec(format, i) == 2) ? i + 1 : i;
+						// printf("ici\n");
 					}
 					else if (ft_isdigit(format[i + 1]))
 					{
@@ -67,7 +65,6 @@ int         ft_printf(const char *format, ...)
 							output->minsize = output->size_flag->precision;
 						if (format[j] == '%' || format[j + 1] == '%')
 							output->minsize = 0;
-
 						i = --j;
 						ft_strdel(&tmp);
 					}

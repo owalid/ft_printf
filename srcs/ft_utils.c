@@ -30,7 +30,7 @@ void        ft_is_null(t_output *output)
     output->is_null = 1;
     if (!output->option->plus && !output->option->min && !output->option->point && !output->size_flag->no_prec)
         output->str = ft_strdup("(null)");
-    else
+    else if (output->conv_type != 'f' && output->conv_type != 'x')
         output->str = ft_strdup("");
 }
 
