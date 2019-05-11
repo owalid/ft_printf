@@ -6,7 +6,7 @@
 /*   By: owalid <owalid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 14:40:42 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/09 23:36:03 by owalid           ###   ########.fr       */
+/*   Updated: 2019/05/11 22:57:39 by owalid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,6 @@ char					*ft_itoa_base(long long nb, int base)
 	size = 0;
 	if (!ft_verif_base(base))
 		return (ft_strdup(""));
-	// if (nb == LONG_MIN)
-	// 	return (strdup("-9223372036854775808"));
 	nbr = is_neg(&nb, &neg, &size, base);
 	if ((result = (char*)malloc(sizeof(char) * size)) == NULL)
 		return (NULL);

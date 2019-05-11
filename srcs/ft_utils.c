@@ -17,7 +17,7 @@ char        *ft_add_blank(t_output *output, char *result, int opt)
 
 void        send_char(char *result, int opt, size_t *i)
 {
-    if (opt == 1 || !*result)
+    if (opt == 1 && !*result)
 		add_char(0, opt);
 	*i = -1;
 	while (result[++(*i)])
@@ -31,7 +31,7 @@ void        ft_is_null(t_output *output)
     if (!output->option->plus && !output->option->min && !output->option->point && !output->size_flag->no_prec)
         output->str = ft_strdup("(null)");
     else if (output->conv_type != 'f' && output->conv_type != 'x')
-        output->str = ft_strdup("");
+        ft_strclr(output->str);
 }
 
 int        is_no_prec(const char *format, int i)

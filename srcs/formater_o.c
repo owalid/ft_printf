@@ -8,13 +8,16 @@ char	*ft_formater_with_option_o(t_output *output, size_t size)
 	i = 0;
 	result = ft_strnew(size);
 
-	if (output->option->point && ft_strlen(output->str) < output->size_flag->precision && !output->is_null)
+	if (output->option->point
+			&& ft_strlen(output->str) < output->size_flag->precision
+			&& !output->is_null)
 	{
 		result = option_point_df(output, result, &i);
 		if (output->str[0] == '-')
 			return(result);
 	}
-	if (output->option->zero && !output->option->min && !output->is_null && (ft_strlen(output->str) < size || output->minsize > ft_strlen(output->str)))
+	if (output->option->zero && !output->option->min && !output->is_null
+		&& (ft_strlen(output->str) < size || output->minsize > ft_strlen(output->str)))
 	{
 		result = option_zero_df(output, size, result, &i);
 		if (output->str[0] == '-')
@@ -24,6 +27,11 @@ char	*ft_formater_with_option_o(t_output *output, size_t size)
 	{
 		result = option_hash_o(output, size, result, &i);
 		return (result);
+	}
+	if (!result)
+	{
+		ft_strdel(&result);
+		return (output->str);
 	}
 	if (!result)
 		return (output->str);
@@ -39,6 +47,7 @@ int		ft_formater_o(t_output *output, int opt)
 	
 	if (ft_strcmp(output->str, "0") == 0 && output->size_flag->no_prec && !output->option->hash)
 		ft_is_null(output);
+	
 	size = output->minsize + output->option->space + output->option->plus;
 	i = 0;
 	if (ft_strlen(output->str) < output->minsize)

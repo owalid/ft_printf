@@ -21,12 +21,7 @@ char	*ft_formater_with_option_xX(t_output *output, size_t size)
 	}
 	if (output->option->zero && !output->option->min && (ft_strlen(output->str) < size || output->minsize > ft_strlen(output->str)) && !output->is_null)
 	{
-		// printf("result %s|\n", result);
 		result = option_zero_df(output, size, result, &i);
-		// printf("result=|%s|\n", result);
-		// printf("result=|%s|\n", result);
-		// printf("i=|%zu|\n", i);
-		// printf("size=|%zu|\n", size);
 		if (output->str[0] == '-')
 			return(result);
 	}

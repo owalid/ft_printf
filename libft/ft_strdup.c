@@ -6,7 +6,7 @@
 /*   By: owalid <owalid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/09 01:05:00 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/11 20:32:09 by owalid           ###   ########.fr       */
+/*   Updated: 2019/05/11 23:40:08 by owalid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,12 @@ char	*ft_strdup(const char *src)
 {
 	char	*str;
 	int		i;
-	int		size_src;
 
-	size_src = 0;
-	i = 0;
-	size_src = ft_strlen(src);
-	if ((str = (char*)malloc((sizeof(char) * size_src) + 1)) == NULL)
+	i = -1;
+	if (!(str = ft_strnew(ft_strlen(src))))
 		return (NULL);
-	while (src[i] != '\0')
-	{
+	while (src[++i] != '\0')
 		str[i] = src[i];
-		i++;
-	}
 	str[i] = '\0';
 	return (str);
 }

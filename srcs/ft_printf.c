@@ -49,7 +49,6 @@ int         ft_printf(const char *format, ...)
 					{
 						output->size_flag->no_prec = 1;
 						i = (is_no_prec(format, i) == 2) ? i + 1 : i;
-						// printf("ici\n");
 					}
 					else if (ft_isdigit(format[i + 1]))
 					{
@@ -112,5 +111,4 @@ int         ft_printf(const char *format, ...)
 	result += ft_formater(output, 1);
 	va_end(ap);
 	return (result);
-
 }
