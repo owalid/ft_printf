@@ -35,8 +35,7 @@ char		*ft_printf_c(va_list ap, t_sizeflag *flag)
 	char	*result;
 	
 	(void)flag;
-	result = ft_strnew(2);
-	result[0] = va_arg(ap, int);
+	result = ft_str_from_char(va_arg(ap, int));
 	return (result);
 }
 
