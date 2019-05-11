@@ -3,30 +3,31 @@
 char		*ft_printf_i_d(va_list ap, t_sizeflag *flag)
 {
 	char						*result;
-	unsigned long long 					nbr;
 
-	if (flag->l)
-		nbr = va_arg(ap, long);
-	else if (flag->ll)
-		nbr = va_arg(ap, long long);
+	if (flag->ll)
+		result =  ft_itoa_base(va_arg(ap, long long), 10);
+	else if (flag->l)
+		result =  ft_itoa_base(va_arg(ap, long), 10);
 	else if (flag->z)
-		nbr = va_arg(ap, ssize_t);
+		result =  ft_itoa_base(va_arg(ap, ssize_t), 10);
 	else if (flag->j)
-		nbr = va_arg(ap, intmax_t);
-	else
-		nbr = va_arg(ap, int);
-	if (flag->h)
-		nbr = (short)nbr;
+		result =  ft_itoa_base(va_arg(ap, intmax_t), 10);
 	else if (flag->hh)
-		nbr = (char)nbr;
-	result = ft_itoa_base(nbr, 10);
+		result =  ft_itoa_base((char)va_arg(ap, int), 10);
+	else if (flag->h)
+		result =  ft_itoa_base((short)va_arg(ap, int), 10);
+	else
+		result =  ft_itoa_base(va_arg(ap, int), 10);
+	// result = ft_itoa_base(nbr, 10);
 	return (result);
 }
 
 char		*ft_printf_s(va_list ap, t_sizeflag *flag)
 {
+	char	*result;
 	(void)flag;
-	return (va_arg(ap, char*));
+	result = va_arg(ap, char*);
+	return (result);
 }
 
 char		*ft_printf_c(va_list ap, t_sizeflag *flag)
@@ -82,6 +83,17 @@ char		*ft_printf_u(va_list ap, t_sizeflag *flag)
 		nbr = va_arg(ap, intmax_t);
 	else	
 		nbr = va_arg(ap, unsigned int);
+	result = utoa_base(nbr, 10);
+	return (result);
+}
+
+char		*ft_printf_U(va_list ap, t_sizeflag *flag)
+{
+	unsigned long long 	nbr;
+	char			*result;
+
+	(void)flag;
+	nbr = va_arg(ap, unsigned long);
 	result = utoa_base(nbr, 10);
 	return (result);
 }

@@ -2,12 +2,12 @@
 
 void		add_char(char c, int opt)
 {
-	static char		str[1024];
+	static char		str[4096];
 	static int		size;
 
 	if (ft_strlen(str) == 0)
 		size = 0;
-	if (size == 1024 || opt)
+	if (size == 4096 || opt)
 	{
 		write(1, str, size);
 		str[0] = '\0';
@@ -30,7 +30,7 @@ int		ft_formater(t_output *output, int opt)
 		return (ft_formater_xX(output, opt));
 	else if (output->conv_type == 'p')
 		return (ft_formater_p(output, opt));
-	else if (output->conv_type == 'u')
+	else if (output->conv_type == 'u' || output->conv_type == 'U')
 		return (ft_formater_u(output, opt));
 	else if (output->conv_type == 'o')
 		return (ft_formater_o(output, opt));
