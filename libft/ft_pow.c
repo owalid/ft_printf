@@ -3,22 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pow.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-ayad <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: owalid <owalid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 17:20:18 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/02/11 15:03:37 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/12 22:28:24 by owalid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned long long		ft_pow(int nb, int power)
+long long		ft_pow(int nb, int power)
 {
-	unsigned long long		result;
+	long long		result;
 
 	result = nb;
-	while (power > 0)
-	{
+	if (!power)
+		return (1);
+	if (power == 1)
+		return (nb);
+	while (--power)
 		result *= nb;
-		power--;
-	}
 	return (result);
 }

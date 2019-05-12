@@ -124,7 +124,7 @@ char		*ft_printf_x(va_list ap, t_sizeflag *flag)
 		nbr = va_arg(ap, unsigned long long);
 	else if (flag->j)
 		nbr = va_arg(ap, uintmax_t);
-	else	
+	else
 		nbr = va_arg(ap, unsigned int);
 	result = utoa_base(nbr, 16);
 	result = ft_strlowcase(result);
@@ -138,11 +138,12 @@ char		*ft_printf_f(va_list ap, t_sizeflag *flag)
 
 	nbr = va_arg(ap, double);
 	if (flag->no_prec == 1)
-		result = ft_ftoa(nbr, 0);	
+		result = ft_ftoa(nbr, 0);
 	else if (flag->precision)
 		result = ft_ftoa(nbr, flag->precision);
 	else
 		result = ft_ftoa(nbr, 6);
 	flag->precision = 0;
+	// printf("\nresult  =>  %s\n", result);
 	return (result);
 }
