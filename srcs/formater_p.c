@@ -19,7 +19,10 @@ char	*ft_formater_with_option_p(t_output *output, size_t size)
 	}
 	if (output->option->zero && !output->option->min &&(ft_strlen(output->str) < size || output->minsize > ft_strlen(output->str)))
 	{
-		result = option_point_p(output, result, output->minsize - 2);
+		if (ft_strcmp(output->str, "0") == 0)
+			result = option_point_p(output, result, output->minsize - 2);
+		else
+		result = option_point_p(output, result, output->minsize - 1);
 		if (output->str[0] == '-')
 			return (result);
 	}

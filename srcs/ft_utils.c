@@ -43,8 +43,8 @@ int        is_no_prec(const char *format, int i)
                                 || format[i + 1]  == 'o' || format[i + 1] == 'p'
                                 || format[i + 1] == 's')))
         return (1);
-    else if ((format[i + 1] == '0' && 
-								(format[i + 2] == 'f' || format[i + 2] == 'd'
+    else if ((format[i + 1] == '0'
+                            && (format[i + 2] == 'f' || format[i + 2] == 'd'
                                 || format[i + 2] == 'i' || format[i + 2] == 'u'
                                 || format[i + 2] == 'x' || format[i + 2] == 'X'
                                 || format[i + 2]  == 'o' || format[i + 2] == 'p'
