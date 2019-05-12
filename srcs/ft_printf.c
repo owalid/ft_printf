@@ -1,22 +1,21 @@
 #include "ft_opprintf.h"
 
 char		*ft_converter(va_list ap, int *i, const char *format
-									, t_sizeflag *flag)
+									, t_output *out)
 {
 	int		o;
-	char	*result;
 
 	o = -1;
 	while (g_prtfop[++o].id)
 	{
 		if (g_prtfop[o].id == format[*i])
 		{
-			result = g_prtfop[o].ft_transform(ap, flag);
-			return (result);
+			out->str = g_prtfop[o].ft_transform(ap, out->size_flag);
+			return (out->str);
 		}
 	}
-	result = ft_str_from_char(format[*i]);
-	return (result);
+	out->str = ft_str_from_char(format[*i]);
+	return (out->str);
 }
 
 int         ft_printf(const char *format, ...)
@@ -45,9 +44,6 @@ int         ft_printf(const char *format, ...)
 			{
 				if (format[i] == '.')
 				{
-					// i++x;
-					// while (format[i + 1] == '0')
-					// i++;
 					if (is_no_prec(format, i))
 					{
 						output->size_flag->no_prec = 1;
@@ -67,7 +63,6 @@ int         ft_printf(const char *format, ...)
 							output->minsize = output->size_flag->precision;
 						if (format[j] == '%' || format[j + 1] == '%')
 							output->minsize = 0;
-
 						i = --j;
 						ft_strdel(&tmp);
 					}
@@ -93,7 +88,7 @@ int         ft_printf(const char *format, ...)
 			else if (ft_is_conv(format[i]) && format[i] != '%')
 			{
 				output->conv_type = format[i];
-				output->str = ft_converter(ap, &i, format, output->size_flag);
+				output->str = ft_converter(ap, &i, format, output);
 			}
 			else
 			{
@@ -117,7 +112,7 @@ int         ft_printf(const char *format, ...)
 	output->str = ft_str_from_char(format[i]);
 	ft_init_output(output);
 	result += ft_formater(output, 1);
+	// ft_strdel(&(output->str));
 	va_end(ap);
 	return (result);
-
 }

@@ -4,29 +4,33 @@ char	*ft_formater_with_option_p(t_output *output, size_t size)
 {
 	char 	*result;
 	
+	if (!one_option(output))
+	{
+		output->str = ft_strjoin("0x", output->str);
+		return (output->str);
+	}
 	result = ft_strnew(size);
-	if (output->option->point && ft_strlen(output->str) <= output->size_flag->precision)
+	if (output->option->point
+			&& ft_strlen(output->str) <= output->size_flag->precision)
 	{
 		result = option_point_p(output, result, output->size_flag->precision);
 		if (output->str[0] == '-')
-			return(result);
+			return (result);
 	}
 	if (output->option->zero && !output->option->min &&(ft_strlen(output->str) < size || output->minsize > ft_strlen(output->str)))
 	{
 		result = option_point_p(output, result, output->minsize - 2);
 		if (output->str[0] == '-')
-			return(result);
+			return (result);
 	}
 	result = ft_strjoin("0x", result);
-	if (!result)
-		return (output->str);
-	result = ft_strjoin(result, output->str);
-	return (result);
+	output->str = ft_strjoin(result, output->str);
+	ft_strdel(&result);
+	return (output->str);
 }
 
 int		ft_formater_p(t_output *output, int opt)
 {
-	char 	*result;
 	size_t	i;
 	int		size;
 	
@@ -36,14 +40,14 @@ int		ft_formater_p(t_output *output, int opt)
 	i = 0;
 	if (ft_strlen(output->str) < output->minsize)
 	{
-		result = ft_formater_with_option_p(output, size);		
-		if (output->option->min == 1 && output->minsize > ft_strlen(result))
-			result = ft_add_blank(output, result, 1);
+		output->str = ft_formater_with_option_p(output, size);		
+		if (output->option->min == 1 && output->minsize > ft_strlen(output->str))
+			output->str = ft_add_blank(output, output->str, 1);
 	}
 	else
-		result = ft_formater_with_option_p(output, ft_strlen(output->str));
-	if (output->minsize > ft_strlen(result) && !output->option->min)
-		result = ft_add_blank(output, result, 0);
-	send_char(result, opt, &i);
+		output->str = ft_formater_with_option_p(output, ft_strlen(output->str));
+	if (output->minsize > ft_strlen(output->str) && !output->option->min)
+		output->str = ft_add_blank(output, output->str, 0);
+	send_char(output->str, opt, &i);
 	return (i);
 }

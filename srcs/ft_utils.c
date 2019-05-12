@@ -17,12 +17,12 @@ char        *ft_add_blank(t_output *output, char *result, int opt)
 
 void        send_char(char *result, int opt, size_t *i)
 {
-    if (opt == 1 || !*result)
+    if (opt == 1 && !*result)
 		add_char(0, opt);
 	*i = -1;
 	while (result[++(*i)])
 		add_char(result[*i], opt);
-	ft_strdel(&result);
+    ft_strdel(&result);
 }
 
 void        ft_is_null(t_output *output)
@@ -30,8 +30,8 @@ void        ft_is_null(t_output *output)
     output->is_null = 1;
     if (!output->option->plus && !output->option->min && !output->option->point && !output->size_flag->no_prec)
         output->str = ft_strdup("(null)");
-    else
-        output->str = ft_strdup("");
+    else if (output->conv_type != 'f' && output->conv_type != 'x')
+        ft_strclr(output->str);
 }
 
 int        is_no_prec(const char *format, int i)
@@ -51,4 +51,11 @@ int        is_no_prec(const char *format, int i)
                                 || format[i + 2] == 's')))
         return (2);
     return(0);
+}
+
+int         one_option(t_output *out)
+{
+    return ((out->option->min || out->option->space
+                || out->option->plus || out->option->hash
+                || out->option->point || out->option->zero));
 }

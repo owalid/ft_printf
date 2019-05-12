@@ -36,5 +36,4 @@ int		ft_formater(t_output *output, int opt)
 		return (ft_formater_o(output, opt));
 	else
 		return (ft_formater_df(output, opt));
-	
 }

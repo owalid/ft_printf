@@ -6,7 +6,7 @@
 /*   By: owalid <owalid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 14:40:42 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/09 23:36:03 by owalid           ###   ########.fr       */
+/*   Updated: 2019/05/12 01:42:54 by owalid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static unsigned long long		is_neg(long long *nb, int *neg, int *size, int base)
 	}
 	else
 		nbr = *nb;
-	*size += nb_ofnb(nbr, base) + 1;
+	*size += nb_ofnb(nbr, base);
 	return (nbr);
 }
 
@@ -69,12 +69,9 @@ char					*ft_itoa_base(long long nb, int base)
 	size = 0;
 	if (!ft_verif_base(base))
 		return (ft_strdup(""));
-	// if (nb == LONG_MIN)
-	// 	return (strdup("-9223372036854775808"));
 	nbr = is_neg(&nb, &neg, &size, base);
-	if ((result = (char*)malloc(sizeof(char) * size)) == NULL)
+	if (!(result = ft_strnew(size)))
 		return (NULL);
-	result[--size] = '\0';
 	while (size--)
 	{
 		if (nbr % base > 9)

@@ -89,6 +89,7 @@ void		ft_is_option(char c, t_output *output);
 int			ft_is_conv(char c);
 int		ft_is_opt(char c);
 
+
 /*
 **	clean.c
 */
@@ -104,6 +105,7 @@ char        *ft_add_blank(t_output *output, char *result, int opt);
 void        send_char(char *result, int opt, size_t *i);
 int        	is_no_prec(const char *format, int i);
 void        ft_is_null(t_output *output);
+int         one_option(t_output *out);
 
 /*
 **	formater_df.c
