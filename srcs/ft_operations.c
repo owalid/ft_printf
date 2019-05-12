@@ -3,21 +3,21 @@
 char		*ft_printf_i_d(va_list ap, t_sizeflag *flag)
 {
 	char					*result;
-
+	
 	if (flag->ll)
-		result =  ft_itoa_base(va_arg(ap, long long), 10);
+		result = ft_itoa_base(va_arg(ap, long long), 10);
 	else if (flag->l)
-		result =  ft_itoa_base(va_arg(ap, long), 10);
+		result = ft_itoa_base(va_arg(ap, long), 10);
 	else if (flag->z)
-		result =  ft_itoa_base(va_arg(ap, ssize_t), 10);
+		result = ft_itoa_base(va_arg(ap, ssize_t), 10);
 	else if (flag->j)
-		result =  ft_itoa_base(va_arg(ap, intmax_t), 10);
+		result = ft_itoa_base(va_arg(ap, intmax_t), 10);
 	else if (flag->hh)
-		result =  ft_itoa_base((char)va_arg(ap, int), 10);
+		result = ft_itoa_base((char)va_arg(ap, int), 10);
 	else if (flag->h)
-		result =  ft_itoa_base((short)va_arg(ap, int), 10);
+		result = ft_itoa_base((short)va_arg(ap, int), 10);
 	else
-		result =  ft_itoa_base(va_arg(ap, int), 10);
+		result = ft_itoa_base(va_arg(ap, int), 10);
 	return (result);
 }
 

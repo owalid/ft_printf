@@ -22,7 +22,7 @@ void        send_char(char *result, int opt, size_t *i)
 	*i = -1;
 	while (result[++(*i)])
 		add_char(result[*i], opt);
-	ft_strdel(&result);
+    ft_strdel(&result);
 }
 
 void        ft_is_null(t_output *output)
@@ -51,4 +51,11 @@ int        is_no_prec(const char *format, int i)
                                 || format[i + 2] == 's')))
         return (2);
     return(0);
+}
+
+int         one_option(t_output *out)
+{
+    return ((out->option->min || out->option->space
+                || out->option->plus || out->option->hash
+                || out->option->point || out->option->zero));
 }

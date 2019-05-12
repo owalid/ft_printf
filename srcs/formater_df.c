@@ -6,6 +6,8 @@ char	*ft_formater_with_option_df(t_output *output, size_t size)
 	size_t	i;
 
 	i = 0;
+	if (!one_option(output))
+		return (output->str);
 	result = ft_strnew(size);
 	if (output->option->plus)
 		result = option_plus_df(output, output->minsize, result, &i);
@@ -21,17 +23,15 @@ char	*ft_formater_with_option_df(t_output *output, size_t size)
 	{
 		result = option_zero_df(output, size, result, &i);
 		if (output->str[0] == '-')
-			return(result);
+			return (result);
 	}
-	if (!*result)
-		return (output->str);
-	result = ft_strjoin(result, output->str);
-	return (result);
+	output->str = ft_strjoin(result, output->str);
+	ft_strdel(&result);
+	return (output->str);
 }
 
 int		ft_formater_df(t_output *output, int opt)
 {
-	char 	*result;
 	size_t	i;
 	int		size;
 	
@@ -41,16 +41,16 @@ int		ft_formater_df(t_output *output, int opt)
 	i = 0;
 	if (ft_strlen(output->str) < output->minsize)
 	{
-		result = ft_formater_with_option_df(output, size);		
-		if (output->option->min == 1 && output->minsize > ft_strlen(result))
-			result = ft_add_blank(output, result, 1);
+		output->str = ft_formater_with_option_df(output, size);		
+		if (output->option->min == 1 && output->minsize > ft_strlen(output->str))
+			output->str = ft_add_blank(output, output->str, 1);
 	}
 	else
-		result = ft_formater_with_option_df(output, ft_strlen(output->str));
+		output->str = ft_formater_with_option_df(output, ft_strlen(output->str));
 	if (output->option->space == 1 && !output->option->plus)
-		result = option_space_df(output, result);
-	if (output->minsize > ft_strlen(result))
-		result = ft_add_blank(output, result, 0);
-	send_char(result, opt, &i);
+		output->str = option_space_df(output, output->str);
+	if (output->minsize > ft_strlen(output->str))
+		output->str = ft_add_blank(output, output->str, 0);
+	send_char(output->str, opt, &i);
 	return (i);
 }

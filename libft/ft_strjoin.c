@@ -6,7 +6,7 @@
 /*   By: owalid <owalid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 13:16:24 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/11 22:08:34 by owalid           ###   ########.fr       */
+/*   Updated: 2019/05/12 03:06:13 by owalid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ char		*ft_strjoin(char const *s1, char const *s2)
 		i++;
 		j++;
 	}
+
 	j = 0;
 	while (s2[j])
 	{
@@ -35,6 +36,5 @@ char		*ft_strjoin(char const *s1, char const *s2)
 		i++;
 		j++;
 	}
-	result[i] = '\0';
 	return (result);
 }
