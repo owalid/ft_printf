@@ -32,8 +32,7 @@ char	*ft_formater_with_option_xX(t_output *output, size_t size)
 	}
 	if (!output->option->hash || output->option->zero)
 	{
-		output->str = ft_strjoin(result, output->str);
-		ft_strdel(&result);
+		output->str = ft_strjoin_free(result, output->str);
 		return (output->str);
 	}
 	return (result);

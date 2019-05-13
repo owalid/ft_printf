@@ -105,10 +105,12 @@ int         ft_printf(const char *format, ...)
 		output->minsize = 0;
 		ft_init_output(output);
 	}
+
 	ft_init_output(output);
 	output->str = ft_str_from_char(format[i]);
 	result += ft_formater(output, 1);
 	// ft_strdel(&(output->str));
 	va_end(ap);
+	// free(&ap);
 	return (result);
 }

@@ -36,7 +36,6 @@ typedef struct 		s_option
 
 typedef struct		s_output
 {
-	char		*taille;
 	char		*str;
 	t_option	*option;
 	t_sizeflag 	*size_flag;
@@ -54,7 +53,7 @@ typedef struct 		s_prtfop
 **	ft_printf.c
 */
 int			ft_printf(const char *format, ...);
-int		ft_formater(t_output *output, int opt);
+int			ft_formater(t_output *output, int opt);
 /*
 **	ft_print.c
 */
@@ -87,7 +86,7 @@ int			is_float(char c);
 */
 void		ft_is_option(char c, t_output *output);
 int			ft_is_conv(char c);
-int		ft_is_opt(char c);
+int			ft_is_opt(char c);
 
 
 /*

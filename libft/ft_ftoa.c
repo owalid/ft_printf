@@ -6,7 +6,7 @@
 /*   By: owalid <owalid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 17:20:54 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/12 22:41:13 by owalid           ###   ########.fr       */
+/*   Updated: 2019/05/13 02:47:17 by owalid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char			*ft_ftoa(double f, size_t precision)
 	{
 		result = ft_itoa(first_part);
 		if (is_neg == 2 && first_part == 0)
-			result = ft_strjoin("-", result);
+			result = ft_strjoin_free("-", result);
 		return (result);
 	}
 	second_part = f - (long double)first_part;

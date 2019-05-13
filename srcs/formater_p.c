@@ -3,10 +3,12 @@
 char	*ft_formater_with_option_p(t_output *output, size_t size)
 {
 	char 	*result;
+	char	*tmp;
 	
+	tmp = ft_strdup("0x");
 	if (!one_option(output))
 	{
-		output->str = ft_strjoin("0x", output->str);
+		output->str = ft_strjoin_free(tmp, output->str);
 		return (output->str);
 	}
 	result = ft_strnew(size);
@@ -26,9 +28,8 @@ char	*ft_formater_with_option_p(t_output *output, size_t size)
 		if (output->str[0] == '-')
 			return (result);
 	}
-	result = ft_strjoin("0x", result);
-	output->str = ft_strjoin(result, output->str);
-	ft_strdel(&result);
+	result = ft_strjoin(tmp, result);
+	output->str = ft_strjoin_free(result, output->str);
 	return (output->str);
 }
 

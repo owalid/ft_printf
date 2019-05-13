@@ -24,8 +24,7 @@ char	*ft_formater_with_option_u(t_output *output, size_t size)
 		if (output->str[0] == '-')
 			return(result);
 	}
-	output->str = ft_strjoin(result, output->str);
-	ft_strdel(&result);
+	output->str = ft_strjoin_free(result, output->str);
 	return (output->str);
 }
 

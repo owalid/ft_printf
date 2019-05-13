@@ -24,6 +24,7 @@ char		*ft_printf_i_d(va_list ap, t_sizeflag *flag)
 char		*ft_printf_s(va_list ap, t_sizeflag *flag)
 {
 	char	*result;
+	
 	(void)flag;
 	result = va_arg(ap, char*);
 	return (result);
@@ -50,7 +51,7 @@ char		*ft_printf_p(va_list ap, t_sizeflag *flag)
 	ptr = va_arg(ap, unsigned long long);
 	add = ft_itoa_base(ptr, 16);
 	result = ft_strlowcase(add);
-	return(result);
+	return (result);
 }
 
 char		*ft_printf_o(va_list ap, t_sizeflag *flag)
@@ -144,6 +145,5 @@ char		*ft_printf_f(va_list ap, t_sizeflag *flag)
 	else
 		result = ft_ftoa(nbr, 6);
 	flag->precision = 0;
-	// printf("\nresult  =>  %s\n", result);
 	return (result);
 }
