@@ -57,7 +57,6 @@ int		ft_formater_df(t_output *output, int opt)
 		output->str = option_space_df(output, output->str);
 	if (output->minsize > ft_strlen(output->str))
 		output->str = ft_add_blank(output, output->str, 0);
-
 	send_char(output->str, opt, &i);
 	return (i);
 }

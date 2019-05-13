@@ -12,7 +12,6 @@ char        *option_point_p(t_output *output, char *result, size_t size)
     {
         min = ft_strdup("-");
         tmp2 = ft_strdup("0x");
-        tmp = ft_strnew(size);
         while (i < size - (ft_strlen(output->str) - 1))
             result[i++] = '0';
         result = ft_strjoin_free(min, result);
