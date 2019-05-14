@@ -10,7 +10,7 @@ char		*ft_converter(va_list ap, int *i, const char *format
 	{
 		if (g_prtfop[o].id == format[*i])
 		{
-			out->str = g_prtfop[o].ft_transform(ap, out->size_flag);
+			out->str = g_prtfop[o].ft_transform(ap, out);
 			return (out->str);
 		}
 	}
