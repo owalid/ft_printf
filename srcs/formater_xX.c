@@ -11,7 +11,7 @@ char	*ft_formater_with_option_xX(t_output *output, size_t size)
 	{
 		result = option_point_df(output, result, &i);
 		if (output->str[0] == '-')
-			return(result);
+			return (result);
 	}
 
 	if (output->option->hash && ft_strcmp(output->str, "0") != 0 && !output->is_null)
@@ -23,12 +23,12 @@ char	*ft_formater_with_option_xX(t_output *output, size_t size)
 	{
 		result = option_zero_df(output, result, &i);
 		if (output->str[0] == '-')
-			return(result);
+			return (result);
 	}
 	if (!*result)
 	{
 		ft_strdel(&result);
-		return (ft_strdup(output->str));
+		return (output->str);
 	}
 	if (!output->option->hash || output->option->zero)
 	{
@@ -46,7 +46,7 @@ int		ft_formater_xX(t_output *output, int opt)
 	if (ft_strcmp(output->str, "0") == 0 && output->size_flag->no_prec)
 	{
 		output->is_null = 1;
-		output->str = ft_strdup("");
+		ft_strclr(output->str);
 	}
 	size = output->minsize + output->option->space + output->option->plus;
 	i = 0;

@@ -13,6 +13,6 @@ char        *option_hash_o(t_output *output, size_t size, char *result, size_t *
     if  (output->option->zero && !output->option->min && (ft_strlen(output->str) < size
                     || output->minsize > ft_strlen(output->str)) && !output->is_null)
         result = option_zero_df(output, result, &(*i));
-    result = ft_strjoin(result, output->str);
+    result = ft_strjoin_free(result, output->str);
     return (result);
 }
