@@ -6,7 +6,8 @@ char        *ft_add_blank(t_output *output, char *result, int opt)
     size_t     i;
 
     i = 0;
-    tmp = ft_strnew(output->minsize - ft_strlen(result));
+    if (output->minsize - ft_strlen(output->str) >= 1 )
+        tmp = ft_strnew(output->minsize - ft_strlen(result));
     while (i < output->minsize - ft_strlen(result))
         tmp[(i)++] = ' ';
     if (i != 0)
