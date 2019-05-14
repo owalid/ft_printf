@@ -56,64 +56,20 @@ int		ft_formater_sc(t_output *output, int opt)
 	output->option->space == 1 ? output->option->plus = 0 : 0;
 	size = output->minsize + output->option->space + output->option->plus;
 	i = 0;
-	if (output->conv_type == 'c')
+	if (ft_strlen(output->str) < size)
 	{
-		result = ft_formater_with_option_c(output, size);
-		i = ft_strlen(result);
+		output->str = ft_formater_with_option_sc(output, size);
+		if (output->option->min == 1 && output->minsize > ft_strlen(output->str))
+			output->str = ft_add_blank(output, output->str, 1);
 	}
-	if (ft_strlen(output->str) < output->minsize && output->conv_type != 'c')
-	{
-		result = ft_formater_with_option_s(output, size);
-		if (output->option->min == 1 && output->minsize > ft_strlen(result))
-		{
-			tmp = ft_strnew(output->minsize - ft_strlen(result));
-			while (i < output->minsize - ft_strlen(result))
-				tmp[i++] = ' ';
-			if (i != 0)
-				result = ft_strjoin(result, tmp);
-			ft_strdel(&tmp);	
-		}
-		else
-			result = ft_formater_with_option_s(output, ft_strlen(output->str));
-		if (output->option->space == 1)
-		{
-			if (output->minsize > ft_strlen(result))
-			{
-				i = 0;
-				tmp = ft_strnew(output->minsize - ft_strlen(result));
-				while (i < output->minsize - ft_strlen(result))
-					tmp[i++] = ' ';
-				if (i != 0)
-					result = ft_strjoin(tmp, result);
-				ft_strdel(&tmp);
-			}
-			else
-			{
-				tmp = ft_str_from_char(' ');
-				result = ft_strjoin(tmp, result);
-				ft_strdel(&tmp);
-			}
-		}
-		if (output->minsize > ft_strlen(result) && !output->option->min)
-		{
-			i = 0;
-			tmp = ft_strnew(output->minsize - ft_strlen(result));
-			while (i < output->minsize - ft_strlen(result))
-				tmp[i++] = ' ';
-			if (i != 0)
-				result = ft_strjoin(tmp, result);
-			ft_strdel(&tmp);
-		}
-		if (opt == 1 && !result[0])
-			add_char(0, opt);
-		i = -1;
-		while (result[++i])
-			add_char(result[i], opt);
-		ft_strdel(&result);
-		return (i);
-	}
-	i = -1;
-	while (result[++i])
-		add_char(result[i], opt);
+	else
+		output->str = ft_formater_with_option_sc(output, ft_strlen(output->str));
+	if (output->option->space == 1  && !output->option->plus)
+		output->str = ft_add_blank(output, output->str, 0);
+	if (output->minsize > ft_strlen(output->str))
+		output->str = ft_add_blank(output, output->str, 0);
+	send_char(output->str, opt, &i);
+	if (output->size_flag->no_prec)
+		i = 0;
 	return (i);
 }
