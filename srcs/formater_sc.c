@@ -34,7 +34,7 @@ int		ft_formater_sc(t_output *output, int opt)
 	}
 	output->minsize = (output->minsize <= 0 && !output->size_flag->precision) ? ft_strlen(output->str) : output->minsize;
 	size = output->minsize + output->option->space + output->option->plus;
-	if (size < 0)
+	if (size == 0)
 		size = 1;
 	i = 0;
 	if (ft_strlen(output->str) < size)
