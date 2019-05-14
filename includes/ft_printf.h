@@ -117,7 +117,7 @@ int		ft_formater_df(t_output *output, int opt);
 */
 char        *option_plus_df(t_output *output, size_t size, char *result, size_t *i);
 char        *option_point_df(t_output *output, char *result, size_t *i);
-char        *option_zero_df(t_output *output, size_t size, char *result, size_t *i);
+char        *option_zero_df(t_output *output, char *result, size_t *i);
 char        *option_space_df(t_output *output, char *result);
 
 /*

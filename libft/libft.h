@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: owalid <owalid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 11:12:24 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/13 02:31:21 by owalid           ###   ########.fr       */
+/*   Updated: 2019/05/14 07:45:02 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ char				*ft_strrev(char *str);
 char 				*ft_str_from_char(char c);
 char				*ft_ftoa(double f, size_t precision);
 char				*utoa_base(unsigned long long n, int b);
+char        		*ft_strjoin_char(char c, char *s1, int opt);
 
 char				**ft_strsplit(char const *s, char c);
 char				**ft_strsplit(char const *s, char c);

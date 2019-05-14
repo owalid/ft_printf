@@ -21,7 +21,7 @@ char	*ft_formater_with_option_xX(t_output *output, size_t size)
 	}
 	if (output->option->zero && !output->option->min && (ft_strlen(output->str) < size || output->minsize > ft_strlen(output->str)) && !output->is_null)
 	{
-		result = option_zero_df(output, size, result, &i);
+		result = option_zero_df(output, result, &i);
 		if (output->str[0] == '-')
 			return(result);
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ftoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: owalid <owalid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 17:20:54 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/13 16:06:55 by owalid           ###   ########.fr       */
+/*   Updated: 2019/05/14 07:45:39 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char			*ft_ftoa(double f, size_t precision)
 	{
 		result = ft_itoa(first_part);
 		if (is_neg == 2 && first_part == 0)
-			result = ft_strjoin("-", result);
+			result = ft_strjoin_char('-', result, 1);
 		return (result);
 	}
 	second_part = f - (long double)first_part;

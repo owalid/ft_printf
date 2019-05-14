@@ -137,6 +137,7 @@ char		*ft_printf_f(va_list ap, t_sizeflag *flag)
 	char		*result;
 	double		nbr;
 
+
 	nbr = va_arg(ap, double);
 	if (flag->no_prec == 1)
 		result = ft_ftoa(nbr, 0);
