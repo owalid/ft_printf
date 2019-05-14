@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin_char.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/08 15:56:34 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/14 08:58:12 by oel-ayad         ###   ########.fr       */
+/*   Created: 2019/05/14 07:44:29 by oel-ayad          #+#    #+#             */
+/*   Updated: 2019/05/14 07:46:13 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t		ft_strlen(const char *str)
+char        *ft_strjoin_char(char c, char *s1, int opt)
 {
-	int		i;
+    char        *tmp;
+    char        *result;
 
-	i = -1;
-	if (!str)
-		return (0);
-	while (str[++i])
-		;
-	return (i);
+    tmp = ft_str_from_char(c);
+    result = (opt == 1) ? ft_strjoin_free(tmp, s1) : ft_strjoin_free(s1, tmp);
+    return (result);
 }

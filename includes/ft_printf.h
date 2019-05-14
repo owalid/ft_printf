@@ -36,7 +36,6 @@ typedef struct 		s_option
 
 typedef struct		s_output
 {
-	char		*taille;
 	char		*str;
 	t_option	*option;
 	t_sizeflag 	*size_flag;
@@ -48,13 +47,13 @@ typedef struct		s_output
 typedef struct 		s_prtfop
 {
 	char 	id;
-	char	*(*ft_transform)(va_list argv, t_sizeflag *flag);
+	char	*(*ft_transform)(va_list argv, t_output *output);
 }					t_prtfop;
 /*
 **	ft_printf.c
 */
 int			ft_printf(const char *format, ...);
-int		ft_formater(t_output *output, int opt);
+int			ft_formater(t_output *output, int opt);
 /*
 **	ft_print.c
 */
@@ -63,16 +62,16 @@ void		add_char(char c, int opt);
 /*
 **	ft_operations.c
 */
-char		*ft_printf_i_d(va_list nbr, t_sizeflag *flag);
-char		*ft_printf_s(va_list str, t_sizeflag *flag);
-char		*ft_printf_c(va_list nbr, t_sizeflag *flag);
-char		*ft_printf_p(va_list ptr, t_sizeflag *flag);
-char		*ft_printf_o(va_list nbr, t_sizeflag *flag);
-char		*ft_printf_u(va_list nbr, t_sizeflag *flag);
-char		*ft_printf_U(va_list ap, t_sizeflag *flag);
-char		*ft_printf_X(va_list nbr, t_sizeflag *flag);
-char		*ft_printf_x(va_list nbr, t_sizeflag *flag);
-char		*ft_printf_f(va_list nbr, t_sizeflag *flag);
+char		*ft_printf_i_d(va_list nbr, t_output *output);
+char		*ft_printf_s(va_list str, t_output *output);
+char		*ft_printf_c(va_list nbr, t_output *output);
+char		*ft_printf_p(va_list ptr, t_output *output);
+char		*ft_printf_o(va_list nbr, t_output *output);
+char		*ft_printf_u(va_list nbr, t_output *output);
+char		*ft_printf_U(va_list ap, t_output *output);
+char		*ft_printf_X(va_list nbr, t_output *output);
+char		*ft_printf_x(va_list nbr, t_output *output);
+char		*ft_printf_f(va_list nbr, t_output *output);
 
 /*
 **	ft_get_type.c
@@ -87,7 +86,7 @@ int			is_float(char c);
 */
 void		ft_is_option(char c, t_output *output);
 int			ft_is_conv(char c);
-int		ft_is_opt(char c);
+int			ft_is_opt(char c);
 
 
 /*
@@ -118,7 +117,7 @@ int		ft_formater_df(t_output *output, int opt);
 */
 char        *option_plus_df(t_output *output, size_t size, char *result, size_t *i);
 char        *option_point_df(t_output *output, char *result, size_t *i);
-char        *option_zero_df(t_output *output, size_t size, char *result, size_t *i);
+char        *option_zero_df(t_output *output, char *result, size_t *i);
 char        *option_space_df(t_output *output, char *result);
 
 /*

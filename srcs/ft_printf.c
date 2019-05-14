@@ -10,7 +10,7 @@ char		*ft_converter(va_list ap, int *i, const char *format
 	{
 		if (g_prtfop[o].id == format[*i])
 		{
-			out->str = g_prtfop[o].ft_transform(ap, out->size_flag);
+			out->str = g_prtfop[o].ft_transform(ap, out);
 			return (out->str);
 		}
 	}
@@ -102,17 +102,16 @@ int         ft_printf(const char *format, ...)
 		else
 			output->str = ft_str_from_char(format[i]);
 		result += ft_formater(output, 0);
-<<<<<<< HEAD
-		// if (output->option->plus)
-=======
 		output->minsize = 0;
 		ft_init_output(output);
->>>>>>> origin/owalid
 	}
+
+	ft_init_output(output);
 	output->str = ft_str_from_char(format[i]);
 	ft_init_output(output);
 	result += ft_formater(output, 1);
 	// ft_strdel(&(output->str));
 	va_end(ap);
+	// free(&ap);
 	return (result);
 }

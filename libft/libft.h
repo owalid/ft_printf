@@ -6,7 +6,7 @@
 /*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 11:12:24 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/07 07:04:09 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/14 07:45:02 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ char				*ft_strmap(char const *s, char (*f)(char));
 char				*ft_strmapi(char const *s, char(*f)(unsigned int, char));
 char				*ft_strsub(char const *s, size_t start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
+char				*ft_strjoin_free(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				*ft_itoa(int nb);
 char				*ft_itoa_base(long long nb, int base);
@@ -84,6 +85,7 @@ char				*ft_strrev(char *str);
 char 				*ft_str_from_char(char c);
 char				*ft_ftoa(double f, size_t precision);
 char				*utoa_base(unsigned long long n, int b);
+char        		*ft_strjoin_char(char c, char *s1, int opt);
 
 char				**ft_strsplit(char const *s, char c);
 char				**ft_strsplit(char const *s, char c);
@@ -135,6 +137,6 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 t_list				*ft_lstget_at(t_list *begin_list, size_t nbr);
 t_list				*ft_lstfind(t_list *begin_list, void *data);
 
-unsigned long long	ft_pow(int nb, int power);
+long long	ft_pow(int nb, int power);
 
 #endif

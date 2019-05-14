@@ -3,7 +3,6 @@
 char        *option_plus_df(t_output *output, size_t size, char *result, size_t *i)
 {
     (void)size;
-   
     if (output->str[0] != '-')
     {
         result[(*i)++] = '+';
@@ -19,13 +18,11 @@ char        *option_point_df(t_output *output, char *result, size_t *i)
 
     if (output->str[0] == '-')
     {
-        tmp = ft_strnew(output->size_flag->precision);
         while (*i < output->size_flag->precision - (ft_strlen(output->str) - 1))
             result[(*i)++] = '0';
-        result = ft_strjoin("-", result);
-        tmp = ft_itoa(ft_atoi(output->str) * -1);
-        result = ft_strjoin(result, tmp);
-        ft_strdel(&tmp);
+        result = ft_strjoin_char('-', result, 1);
+        tmp = ft_itoa_base(ft_atoi(output->str) * -1, 10);
+        result = ft_strjoin_free(result, tmp);
     }
     else
     {
@@ -35,20 +32,17 @@ char        *option_point_df(t_output *output, char *result, size_t *i)
     return (result);
 }
 
-char        *option_zero_df(t_output *output, size_t size, char *result, size_t *i)
+char        *option_zero_df(t_output *output, char *result, size_t *i)
 {
     char    *tmp;
-        (void)size;
 
     if (output->str[0] == '-')
     {
-        tmp = ft_strnew(output->minsize);
         while (*i < output->minsize - (ft_strlen(output->str)))
             result[(*i)++] = '0';
-        result = ft_strjoin("-", result);
+        result = ft_strjoin_char('-', result, 1);
         tmp = ft_itoa(ft_atoi(output->str) * -1);
-        result = ft_strjoin(result, tmp);
-        ft_strdel(&tmp);
+        result = ft_strjoin_free(result, tmp);
     }
     else
     {
@@ -69,8 +63,7 @@ char        *option_space_df(t_output *output, char *result)
         else
         {
             tmp = ft_str_from_char(' ');
-            result = ft_strjoin(tmp, result);
-            ft_strdel(&tmp);
+            result = ft_strjoin_free(tmp, result);
         }
     }
     return (result);

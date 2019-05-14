@@ -20,7 +20,7 @@ char	*ft_formater_with_option_o(t_output *output, size_t size)
 	if (output->option->zero && !output->option->min && !output->is_null
 		&& (ft_strlen(output->str) < size || output->minsize > ft_strlen(output->str)))
 	{
-		result = option_zero_df(output, size, result, &i);
+		result = option_zero_df(output, result, &i);
 		if (output->str[0] == '-')
 			return (result);
 	}
@@ -29,8 +29,7 @@ char	*ft_formater_with_option_o(t_output *output, size_t size)
 		output->str = option_hash_o(output, size, result, &i);
 		return (output->str);
 	}
-	output->str = ft_strjoin(result, output->str);
-	ft_strdel(&result);
+	output->str = ft_strjoin_free(result, output->str);
 	return (output->str);
 }
 

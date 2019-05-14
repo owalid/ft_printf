@@ -3,19 +3,21 @@
 char        *option_point_p(t_output *output, char *result, size_t size)
 {
     char    *tmp;
+    char    *min;
+    char    *tmp2;
     size_t  i;
 
     i = 0;
     if (output->str[0] == '-')
     {
-        tmp = ft_strnew(size);
+        min = ft_strdup("-");
+        tmp2 = ft_strdup("0x");
         while (i < size - (ft_strlen(output->str) - 1))
             result[i++] = '0';
-        result = ft_strjoin("-", result);
+        result = ft_strjoin_free(min, result);
         tmp = ft_itoa(ft_atoi(output->str) * -1);
-        result = ft_strjoin("0x", result);
-        result = ft_strjoin(result, tmp);
-        ft_strdel(&tmp);
+        result = ft_strjoin_free(tmp2, result);
+        result = ft_strjoin_free(result, tmp);
     }
     else
     {

@@ -3,10 +3,12 @@
 char	*ft_formater_with_option_p(t_output *output, size_t size)
 {
 	char 	*result;
+	char	*tmp;
 	
+	tmp = ft_strdup("0x");
 	if (!one_option(output))
 	{
-		output->str = ft_strjoin("0x", output->str);
+		output->str = ft_strjoin_free(tmp, output->str);
 		return (output->str);
 	}
 	result = ft_strnew(size);
@@ -19,13 +21,15 @@ char	*ft_formater_with_option_p(t_output *output, size_t size)
 	}
 	if (output->option->zero && !output->option->min &&(ft_strlen(output->str) < size || output->minsize > ft_strlen(output->str)))
 	{
-		result = option_point_p(output, result, output->minsize - 2);
+		if (ft_strcmp(output->str, "0") == 0)
+			result = option_point_p(output, result, output->minsize - 2);
+		else
+		result = option_point_p(output, result, output->minsize - 1);
 		if (output->str[0] == '-')
 			return (result);
 	}
-	result = ft_strjoin("0x", result);
-	output->str = ft_strjoin(result, output->str);
-	ft_strdel(&result);
+	result = ft_strjoin_free(tmp, result);
+	output->str = ft_strjoin_free(result, output->str);
 	return (output->str);
 }
 
