@@ -43,11 +43,11 @@ int		ft_formater_sc(t_output *output, int opt)
 	}
 	else
 		output->str = ft_formater_with_option_sc(output, ft_strlen(output->str));
-	if (output->option->space == 1  && !output->option->plus)
+	if ((output->option->space == 1  && !output->option->plus) || (output->minsize > ft_strlen(output->str)))
 		output->str = ft_add_blank(output, output->str, 0);
-	if (output->minsize > ft_strlen(output->str))
-		output->str = ft_add_blank(output, output->str, 0);
+		// output->str = ft_add_blank(output, output->str, 0);
 	send_char(output->str, opt, &i);
 	i = (output->size_flag->no_prec) ? 0 : i;
+	exit(1);
 	return (i);
 }

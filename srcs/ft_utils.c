@@ -10,7 +10,7 @@ char        *ft_add_blank(t_output *output, char *result, int opt)
     while (i < output->minsize - ft_strlen(result))
         tmp[(i)++] = ' ';
     if (i != 0)
-            result = (opt == 1) ? ft_strjoin_free(result, tmp) : ft_strjoin_free(tmp, result);
+        result = (opt == 1) ? ft_strjoin_free(result, tmp) : ft_strjoin_free(tmp, result);
     return (result);
 }
 
