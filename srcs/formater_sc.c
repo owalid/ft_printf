@@ -17,9 +17,8 @@ char	*ft_formater_with_option_sc(t_output *output, size_t size)
 		while (i < output->minsize - ft_strlen(output->str))
 			result[i++] = '0';
 	}
-	output->str = ft_strjoin(result, output->str);
-	ft_strdel(&result);
-	return (output->str);
+	result = ft_strjoin_free(result, output->str);
+	return (result);
 }
 
 int		ft_formater_sc(t_output *output, int opt)
@@ -27,15 +26,14 @@ int		ft_formater_sc(t_output *output, int opt)
 	size_t	i;
 	size_t	size;
 	
-	if (!output->str || output->size_flag->no_prec)
+	if (output->size_flag->no_prec)
 	{
 		output->is_null = 1;
 		output->str = ft_strdup("(null)");
 	}
 	output->minsize = (output->minsize <= 0 && !output->size_flag->precision) ? ft_strlen(output->str) : output->minsize;
 	size = output->minsize + output->option->space + output->option->plus;
-	if (size == 0)
-		size = 1;
+	size = (size == 0) ? 1 : size;
 	i = 0;
 	if (ft_strlen(output->str) < size)
 	{
@@ -50,7 +48,6 @@ int		ft_formater_sc(t_output *output, int opt)
 	if (output->minsize > ft_strlen(output->str))
 		output->str = ft_add_blank(output, output->str, 0);
 	send_char(output->str, opt, &i);
-	if (output->size_flag->no_prec)
-		i = 0;
+	i = (output->size_flag->no_prec) ? 0 : i;
 	return (i);
 }
