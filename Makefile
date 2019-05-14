@@ -6,7 +6,7 @@
 #    By: owalid <owalid@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 20:29:21 by oel-ayad          #+#    #+#              #
-#    Updated: 2019/05/07 23:50:29 by owalid           ###   ########.fr        #
+#    Updated: 2019/05/13 17:56:12 by owalid           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,27 +39,27 @@ SRCDIR	= srcs/
 INCDIR	= includes/
 OBJDIR	= objs/
 
-CC		= gcc
+CC		= @gcc
 CFLAGS	= -I $(INCDIR) -I $(FT_INC) -Wall -Wextra -Werror
 
 all: $(NAME)
 
 $(OBJDIR)%.o:$(SRCDIR)%.c $(INCDIR)/ft_printf.h $(INCDIR)/ft_opprintf.h
-	mkdir -p $(OBJDIR)
+	@mkdir -p $(OBJDIR)
 	$(CC) $(CFLAGS) -c $< -o $@ 
 
 $(NAME): $(OBJ)
-	make -C $(FT_INC)
+	@make -C $(FT_INC)
 	cp $(FT_INC)libft.a $(NAME)
 	ar rc $(NAME) $(OBJ)
 
 clean:
 	rm -rf $(OBJDIR)
-	make -C $(FT_INC) clean
+	@make -C $(FT_INC) clean
 
 fclean: clean
 	rm -rf $(NAME)
-	make -C $(FT_INC) fclean
+	@make -C $(FT_INC) fclean
 
 re: fclean all
 

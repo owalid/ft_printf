@@ -6,11 +6,14 @@ char        *ft_add_blank(t_output *output, char *result, int opt)
     size_t     i;
 
     i = 0;
-    tmp = ft_strnew(output->minsize - ft_strlen(result));
-    while (i < output->minsize - ft_strlen(result))
-        tmp[(i)++] = ' ';
-    if (i != 0)
+    if (output->minsize - ft_strlen(result) > 1)
+    {
+        tmp = ft_strnew(output->minsize - ft_strlen(result));
+        while (i < output->minsize - ft_strlen(result))
+            tmp[(i)++] = ' ';
+        if (i != 0)
             result = (opt == 1) ? ft_strjoin_free(result, tmp) : ft_strjoin_free(tmp, result);
+    }
     return (result);
 }
 

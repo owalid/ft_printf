@@ -11,7 +11,6 @@ char	*ft_formater_with_option_df(t_output *output, size_t size)
 	result = ft_strnew(size);
 	if (output->option->plus)
 		result = option_plus_df(output, output->minsize, result, &i);
-
 	if (output->option->point && ft_strlen(output->str) <= output->size_flag->precision
 						&& (!output->is_null) && output->conv_type != 'y')
 	{
