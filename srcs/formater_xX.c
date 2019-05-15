@@ -13,7 +13,6 @@ char	*ft_formater_with_option_xX(t_output *output, size_t size)
 		if (output->str[0] == '-')
 			return (result);
 	}
-
 	if (output->option->hash && ft_strcmp(output->str, "0") != 0 && !output->is_null)
 	{
 		result = option_hash_o(output, size, result, &i);

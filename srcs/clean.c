@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   clean.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: owalid <owalid@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/14 22:50:53 by owalid            #+#    #+#             */
+/*   Updated: 2019/05/15 23:22:10 by owalid           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 void        ft_init_option(t_option *option)
@@ -26,10 +38,5 @@ void        ft_init_output(t_output *out)
     ft_init_sizeflag(out->size_flag);
     out->is_null = 0;
     out->minsize = 0;
-    out->conv_type = 0;
-}
-
-void        ft_clean_output(t_output *out)
-{
     out->conv_type = 0;
 }

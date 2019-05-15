@@ -9,8 +9,6 @@ char	*ft_formater_with_option_u(t_output *output, size_t size)
 	if (!one_option(output))
 		return (output->str);
 	result = ft_strnew(size);
-	// if (output->option->plus && ft_strlen(output->str) < size && !output->option->min)
-        // result = option_plus_df(output,  size, result, &i);
 	if (output->option->point && ft_strlen(output->str) < output->size_flag->precision && !output->size_flag->no_prec)
 	{
 		result = option_point_df(output, result, &i);

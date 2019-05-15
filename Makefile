@@ -6,7 +6,7 @@
 #    By: owalid <owalid@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 20:29:21 by oel-ayad          #+#    #+#              #
-#    Updated: 2019/05/14 22:02:52 by owalid           ###   ########.fr        #
+#    Updated: 2019/05/16 00:17:21 by owalid           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,6 @@ NAME	=  libftprintf.a
 
 SRC		=  	ft_print.c \
 			ft_printf.c \
-			ft_operations.c \
 			options.c \
 			ft_get_type.c \
 			clean.c \
@@ -28,6 +27,10 @@ SRC		=  	ft_print.c \
 			formater_o.c \
 			ft_utils_o.c \
 			ft_utils_p.c \
+			parser.c \
+			prepare.c \
+			ft_operations_idscpo.c \
+			ft_operations_uxf.c \
 
 
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))

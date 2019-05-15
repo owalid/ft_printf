@@ -37,8 +37,8 @@ typedef struct 		s_option
 typedef struct		s_output
 {
 	char		*str;
-	t_option	*option;
-	t_sizeflag 	*size_flag;
+	t_option	option[1];
+	t_sizeflag 	size_flag[1];
 	char 		conv_type;
 	int			is_null;
 	size_t		minsize;
@@ -54,19 +54,25 @@ typedef struct 		s_prtfop
 */
 int			ft_printf(const char *format, ...);
 int			ft_formater(t_output *output, int opt);
+char		*ft_converter(va_list ap, int *i, const char *format
+									, t_output *out);
 /*
 **	ft_print.c
 */
 void		add_char(char c, int opt);
 
 /*
-**	ft_operations.c
+**	ft_operations_idscpo.c
 */
 char		*ft_printf_i_d(va_list nbr, t_output *output);
 char		*ft_printf_s(va_list str, t_output *output);
 char		*ft_printf_c(va_list nbr, t_output *output);
 char		*ft_printf_p(va_list ptr, t_output *output);
 char		*ft_printf_o(va_list nbr, t_output *output);
+
+/*
+**	ft_operations_uxf.c
+*/
 char		*ft_printf_u(va_list nbr, t_output *output);
 char		*ft_printf_U(va_list ap, t_output *output);
 char		*ft_printf_X(va_list nbr, t_output *output);
@@ -160,5 +166,20 @@ char        *option_hash_o(t_output *output, size_t size, char *result, size_t *
 **	ft_utils_p.c
 */
 char        *option_point_p(t_output *output, char *result, size_t size);
+
+/*
+**	parser.c
+*/
+void        pf_digit_prec(t_output *output, const char *format, int *i);
+void        pf_digit(t_output *output,  const char *format, int *i);
+void    	pf_prec(t_output *output, const char *format, int *i);
+void        pf_conv(t_output *output, const char *format, int *i);
+
+
+/*
+**	prepare.c
+*/
+void        ft_prepare_for_y(t_output *output, const char *format, int i);
+void        ft_prepare(t_output *output, const char *format, int i, va_list ap);
 
 #endif
