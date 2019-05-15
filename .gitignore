@@ -6,3 +6,4 @@ libftprintf.a
 **/*.o
 ./a.out.dSYM
 **/*.gch
+.vscode
