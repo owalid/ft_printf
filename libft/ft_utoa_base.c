@@ -7,11 +7,6 @@ static int				ft_verif_base(int base)
 	return (0);
 }
 
-static int				get_second_nb(long long a)
-{
-	return (a % 10);
-}
-
 static int				nb_ofnb(unsigned long long nb, int base)
 {
 	int		i;
@@ -33,7 +28,7 @@ char				*utoa_base(unsigned long long n, int b)
     char                *result;
 
     i = nb_ofnb(n, b);
-	if (!(result = ft_strnew(i)))
+	if (!ft_verif_base(b) || !(result = ft_strnew(i)))
 		return (NULL);
 	while (i--)
 	{

@@ -6,7 +6,7 @@
 #    By: owalid <owalid@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/30 15:43:53 by oel-ayad          #+#    #+#              #
-#    Updated: 2019/05/14 22:01:28 by owalid           ###   ########.fr        #
+#    Updated: 2019/05/16 00:24:02 by owalid           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -122,6 +122,7 @@ FLAG = -Wall -Wextra -Werror -I .
 all: $(NAME)
 
 $(NAME): $(OBJ)
+	gcc $(FLAG) -c $(SRCS) -I libft.h
 	ar rc $(NAME) $(OBJ)
 
 clean:

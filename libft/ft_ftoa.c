@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ftoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: owalid <owalid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 17:20:54 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/14 07:45:39 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/16 00:25:19 by owalid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdio.h>
 //////////////////////
 
-long long		ft_cast_double_to_long(double nbr, int precision)
+long long		ft_cast_double_to_long(double nbr)
 {
 	long long	cast_long;
 
@@ -71,7 +71,7 @@ char			*ft_ftoa(double f, size_t precision)
 		result[i++] = '-';
 	result = ft_nitoa(result, first_part, get_size_nb(first_part), &i);
 	result[i++] = '.';
-	second_part = ft_cast_double_to_long(second_part, precision);
+	second_part = ft_cast_double_to_long(second_part);
 	result = ft_nitoa(result, second_part, precision, &i);
 	return (result);
 }
