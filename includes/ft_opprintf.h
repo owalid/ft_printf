@@ -6,7 +6,7 @@
 /*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 08:47:56 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/16 08:48:38 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/16 11:54:25 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FT_OPPRINTF_H
 
 # include "ft_printf.h"
-# include "libft.h"
+# include "../libft/libft.h"
 
 static t_prtfop g_prtfop[] =
 {

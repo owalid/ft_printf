@@ -6,7 +6,7 @@
 /*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 06:58:46 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/16 10:16:17 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/16 12:59:09 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,10 @@ char		*ft_printf_o(va_list ap, t_output *out)
 	unsigned long long	nbr;
 	char				*result;
 
-	if (out->size_flag->l)
-		nbr = va_arg(ap, unsigned long);
-	else if (out->size_flag->ll)
+	if (out->size_flag->ll)
 		nbr = va_arg(ap, unsigned long long);
+	else if (out->size_flag->l)
+		nbr = va_arg(ap, unsigned long);
 	else
 		nbr = va_arg(ap, unsigned int);
 	result = ft_itoa_base(nbr, 8);

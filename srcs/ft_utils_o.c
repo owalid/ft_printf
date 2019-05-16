@@ -6,7 +6,7 @@
 /*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 06:53:59 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/16 10:22:22 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/16 15:59:23 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,15 @@
 
 char		*option_hash_o(t_output *output, size_t size, char *res, size_t *i)
 {
-	if (output->conv_type == 'x' || output->conv_type == 'X')
+	if (output->conv_type == 'x')
 	{
 		res[*i] = '0';
 		res[++(*i)] = 'x';
+	}
+	else if (output->conv_type == 'X')
+	{
+		res[*i] = '0';
+		res[++(*i)] = 'X';
 	}
 	if (output->conv_type == 'o')
 		res[*i] = '0';
