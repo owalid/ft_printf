@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_operations_idscpo.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/16 06:58:46 by oel-ayad          #+#    #+#             */
+/*   Updated: 2019/05/16 07:20:40 by oel-ayad         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 char		*ft_printf_i_d(va_list ap, t_output *out)
 {
 	char					*result;
-	
+
 	if (out->size_flag->ll)
 		result = ft_itoa_base(va_arg(ap, long long), 10);
 	else if (out->size_flag->l)
@@ -24,7 +36,7 @@ char		*ft_printf_i_d(va_list ap, t_output *out)
 char		*ft_printf_s(va_list ap, t_output *out)
 {
 	char	*result;
-	
+
 	(void)out->size_flag;
 	result = va_arg(ap, char*);
 	if (!result)
@@ -42,7 +54,7 @@ char		*ft_printf_s(va_list ap, t_output *out)
 char		*ft_printf_c(va_list ap, t_output *out)
 {
 	char	*result;
-	
+
 	(void)out->size_flag;
 	result = ft_str_from_char(va_arg(ap, int));
 	return (result);
@@ -64,7 +76,7 @@ char		*ft_printf_p(va_list ap, t_output *out)
 }
 
 char		*ft_printf_o(va_list ap, t_output *out)
-{	
+{
 	unsigned long long	nbr;
 	char				*result;
 
@@ -72,7 +84,7 @@ char		*ft_printf_o(va_list ap, t_output *out)
 		nbr = va_arg(ap, unsigned long);
 	else if (out->size_flag->ll)
 		nbr = va_arg(ap, unsigned long long);
-	else	
+	else
 		nbr = va_arg(ap, unsigned int);
 	result = ft_itoa_base(nbr, 8);
 	return (result);

@@ -6,7 +6,7 @@
 /*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 06:38:58 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/16 06:41:59 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/16 08:44:37 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,12 @@ int			ft_printf(const char *format, ...)
 			pf_conv(output, format, &i);
 			if (format[i] == '\0')
 				break ;
-			else if (ft_is_conv(format[i]) && format[i] != '%')
-				ft_prepare(output, format, i, ap);
-			else
-				ft_prepare_for_y(output, format, i);
+			ft_prepare_cond(output, format, i, ap);
 		}
 		else
 			output->str = ft_str_from_char(format[i]);
 		result += ft_formater(output, 0);
 	}
-	ft_init_output(output);
-	output->str = ft_str_from_char(format[i]);
-	result += ft_formater(output, 1);
-	va_end(ap);
-	return (result);
+	end_parser(output, ap, format, i);
+	return (result + ft_formater(output, 1));
 }

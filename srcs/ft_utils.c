@@ -6,7 +6,7 @@
 /*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 06:56:12 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/16 06:58:08 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/16 08:09:17 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,20 @@ void		send_char(char *result, int opt, size_t *i)
 
 void		ft_is_null(t_output *output)
 {
-	output->is_null = 1;
-	if (!output->option->plus && !output->option->min
-		&& !output->option->point && !output->size_flag->no_prec)
-		output->str = ft_strdup("(null)");
-	else if (output->conv_type != 'f' && output->conv_type != 'x')
+	if (output->conv_type != 's')
+	{
+		output->is_null = 1;
+		if (!output->option->plus && !output->option->min
+			&& !output->option->point && !output->size_flag->no_prec)
+			output->str = ft_strdup("(null)");
+		else if (output->conv_type != 'f' && output->conv_type != 'x')
+			ft_strclr(output->str);
+	}
+	else
+	{
+		output->is_null = 1;
 		ft_strclr(output->str);
+	}
 }
 
 int			is_no_prec(const char *format, int i)

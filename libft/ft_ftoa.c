@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ftoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: owalid <owalid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 17:20:54 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/16 00:25:19 by owalid           ###   ########.fr       */
+/*   Updated: 2019/05/16 07:52:07 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//////////////////////
-#include <stdio.h>
-//////////////////////
 
 long long		ft_cast_double_to_long(double nbr)
 {
@@ -26,7 +23,7 @@ long long		ft_cast_double_to_long(double nbr)
 		return (cast_long);
 }
 
-char		*ft_nitoa(char *result, long long part, long long n, int *i)
+char			*ft_nitoa(char *result, long long part, long long n, int *i)
 {
 	long long		nb;
 
@@ -50,13 +47,6 @@ char			*ft_ftoa(double f, size_t precision)
 
 	is_neg = (f < 0) ? 2 : 1;
 	first_part = (long long)f;
-	if (precision <= 0)
-	{
-		result = ft_itoa(first_part);
-		if (is_neg == 2 && first_part == 0)
-			result = ft_strjoin_char('-', result, 1);
-		return (result);
-	}
 	second_part = f - (long double)first_part;
 	if (is_neg == 2)
 	{

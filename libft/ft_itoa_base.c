@@ -6,25 +6,25 @@
 /*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 14:40:42 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/14 12:31:13 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/16 07:53:21 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int				ft_verif_base(int base)
+static int						ft_verif_base(int base)
 {
 	if (base >= 2 && base <= 16)
 		return (1);
 	return (0);
 }
 
-static int				get_second_nb(unsigned long long a)
+static int						get_second_nb(unsigned long long a)
 {
 	return (a % 10);
 }
 
-static int				nb_ofnb(unsigned long long nb, int base)
+static int						nb_ofnb(unsigned long long nb, int base)
 {
 	int		i;
 
@@ -39,7 +39,8 @@ static int				nb_ofnb(unsigned long long nb, int base)
 	return (i);
 }
 
-static unsigned long long		is_neg(long long *nb, int *neg, int *size, int base)
+static unsigned long long		is_neg(long long *nb, int *neg,
+											int *size, int base)
 {
 	unsigned long long	nbr;
 
@@ -58,7 +59,7 @@ static unsigned long long		is_neg(long long *nb, int *neg, int *size, int base)
 	return (nbr);
 }
 
-char					*ft_itoa_base(long long nb, int base)
+char							*ft_itoa_base(long long nb, int base)
 {
 	char				*result;
 	int					size;

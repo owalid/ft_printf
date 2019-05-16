@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: owalid <owalid@student.42.fr>              +#+  +:+       +#+         #
+#    By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 20:29:21 by oel-ayad          #+#    #+#              #
-#    Updated: 2019/05/16 00:17:21 by owalid           ###   ########.fr        #
+#    Updated: 2019/05/16 08:32:37 by oel-ayad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,21 +14,20 @@ NAME	=  libftprintf.a
 
 SRC		=  	ft_print.c \
 			ft_printf.c \
-			options.c \
-			ft_get_type.c \
-			clean.c \
+			ft_options.c \
+			ft_init.c \
 			ft_utils.c \
-			formater_df.c \
 			ft_utils_df.c \
-			formater_sc.c \
-			formater_xX.c \
-			formater_p.c \
-			formater_u.c \
-			formater_o.c \
+			ft_formater_sc.c \
+			ft_formater_df.c \
+			ft_formater_xx.c \
+			ft_formater_p.c \
+			ft_formater_u.c \
+			ft_formater_o.c \
 			ft_utils_o.c \
 			ft_utils_p.c \
-			parser.c \
-			prepare.c \
+			ft_parser.c \
+			ft_prepare.c \
 			ft_operations_idscpo.c \
 			ft_operations_uxf.c \
 
