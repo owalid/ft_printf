@@ -6,16 +6,13 @@
 /*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 17:20:54 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/14 07:45:39 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/16 10:25:42 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//////////////////////
-#include <stdio.h>
-//////////////////////
 
-long long		ft_cast_double_to_long(double nbr, int precision)
+long long		ft_cast_double_to_long(double nbr)
 {
 	long long	cast_long;
 
@@ -26,7 +23,7 @@ long long		ft_cast_double_to_long(double nbr, int precision)
 		return (cast_long);
 }
 
-char		*ft_nitoa(char *result, long long part, long long n, int *i)
+char			*ft_nitoa(char *result, long long part, long long n, int *i)
 {
 	long long		nb;
 
@@ -50,13 +47,6 @@ char			*ft_ftoa(double f, size_t precision)
 
 	is_neg = (f < 0) ? 2 : 1;
 	first_part = (long long)f;
-	if (precision <= 0)
-	{
-		result = ft_itoa(first_part);
-		if (is_neg == 2 && first_part == 0)
-			result = ft_strjoin_char('-', result, 1);
-		return (result);
-	}
 	second_part = f - (long double)first_part;
 	if (is_neg == 2)
 	{
@@ -64,14 +54,14 @@ char			*ft_ftoa(double f, size_t precision)
 		second_part *= -1;
 	}
 	second_part *= ft_pow(10, precision);
-	result = ft_strnew(get_size_nb(first_part) + precision
-												+ is_neg);
+	if (!(result = ft_strnew(get_size_nb(first_part) + precision + is_neg)))
+		return (NULL);
 	i = 0;
 	if (f < 0)
 		result[i++] = '-';
 	result = ft_nitoa(result, first_part, get_size_nb(first_part), &i);
 	result[i++] = '.';
-	second_part = ft_cast_double_to_long(second_part, precision);
+	second_part = ft_cast_double_to_long(second_part);
 	result = ft_nitoa(result, second_part, precision, &i);
 	return (result);
 }

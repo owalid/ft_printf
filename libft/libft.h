@@ -6,7 +6,7 @@
 /*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 11:12:24 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/14 07:45:02 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/16 08:00:42 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void				*ft_memset(void *s, int c, size_t n);
 void				*ft_memchr(const void *s, int c, size_t n);
 void				*ft_memmove(void *dst, const void *src, size_t len);
 void				*ft_memcpy(void *restrict dst, const void *restrict src,
-size_t n);
+																	size_t n);
 
 char				*ft_strnew(size_t size);
 char				*ft_strmap(char const *s, char (*f)(char));
@@ -82,10 +82,10 @@ char				*ft_strlowcase(char *str);
 char				*ft_strnlowcase(char *str, size_t n);
 char				*ft_strndup(const char *str, size_t size);
 char				*ft_strrev(char *str);
-char 				*ft_str_from_char(char c);
+char				*ft_str_from_char(char c);
 char				*ft_ftoa(double f, size_t precision);
-char				*utoa_base(unsigned long long n, int b);
-char        		*ft_strjoin_char(char c, char *s1, int opt);
+char				*ft_utoa_base(unsigned long long n, int b);
+char				*ft_strjoin_char(char c, char *s1, int opt);
 
 char				**ft_strsplit(char const *s, char c);
 char				**ft_strsplit(char const *s, char c);
@@ -127,7 +127,6 @@ int					ft_supzero(int nb);
 int					get_digit_at(int nb, int rank);
 int					ft_supdigit(int nb, int size);
 
-
 size_t				ft_strlen(const char *str);
 size_t				ft_strlcat(char *dst, const char *src, size_t size);
 size_t				ft_tab_len(char **str);
@@ -137,6 +136,6 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 t_list				*ft_lstget_at(t_list *begin_list, size_t nbr);
 t_list				*ft_lstfind(t_list *begin_list, void *data);
 
-long long	ft_pow(int nb, int power);
+long long			ft_pow(int nb, int power);
 
 #endif

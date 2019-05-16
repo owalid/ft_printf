@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_utoa_base.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/16 07:54:00 by oel-ayad          #+#    #+#             */
+/*   Updated: 2019/05/16 08:00:01 by oel-ayad         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static int				ft_verif_base(int base)
@@ -5,11 +17,6 @@ static int				ft_verif_base(int base)
 	if (base >= 2 && base <= 16)
 		return (1);
 	return (0);
-}
-
-static int				get_second_nb(long long a)
-{
-	return (a % 10);
 }
 
 static int				nb_ofnb(unsigned long long nb, int base)
@@ -27,13 +34,13 @@ static int				nb_ofnb(unsigned long long nb, int base)
 	return (i);
 }
 
-char				*utoa_base(unsigned long long n, int b)
+char					*ft_utoa_base(unsigned long long n, int b)
 {
-	int					i;
-    char                *result;
+	int			i;
+	char		*result;
 
-    i = nb_ofnb(n, b);
-	if (!(result = ft_strnew(i)))
+	i = nb_ofnb(n, b);
+	if (!ft_verif_base(b) || !(result = ft_strnew(i)))
 		return (NULL);
 	while (i--)
 	{

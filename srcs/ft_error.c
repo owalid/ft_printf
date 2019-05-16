@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_size_nb.c                                      :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/08 17:36:49 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/14 12:31:26 by oel-ayad         ###   ########.fr       */
+/*   Created: 2019/05/16 10:05:51 by oel-ayad          #+#    #+#             */
+/*   Updated: 2019/05/16 10:07:58 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int			get_size_nb(int nb)
-{
-	int		size;
+#include "ft_printf.h"
 
-	size = 0;
-	if (nb == 0)
-		return (1);
-	if (nb < 0)
-		nb *= -1;
-	while (nb > 0)
+void		ft_err(int id)
+{
+	if (id == 1)
 	{
-		nb /= 10;
-		size++;
+		ft_putendl(ERR_MALLOC);
+		exit(1);
 	}
-	return (size);
+	else
+	{
+		ft_putendl(ERR);
+		exit(1);
+	}
 }
