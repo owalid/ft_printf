@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/16 06:53:42 by oel-ayad          #+#    #+#             */
+/*   Updated: 2019/05/16 06:55:08 by oel-ayad         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
@@ -121,10 +133,10 @@ int		ft_formater_df(t_output *output, int opt);
 /*
 **	ft_utils_df.c
 */
-char        *option_plus_df(t_output *output, size_t size, char *result, size_t *i);
-char        *option_point_df(t_output *output, char *result, size_t *i);
-char        *option_zero_df(t_output *output, char *result, size_t *i);
-char        *option_space_df(t_output *output, char *result);
+char        *option_plus_df(t_output *output, size_t size, char *res, size_t *i);
+char        *option_point_df(t_output *output, char *res, size_t *i);
+char        *option_zero_df(t_output *output, char *res, size_t *i);
+char        *option_space_df(t_output *output, char *res);
 
 /*
 **	formater_sc.c
@@ -160,7 +172,7 @@ int		ft_formater_o(t_output *output, int opt);
 /*
 **	ft_utils_o.c
 */
-char        *option_hash_o(t_output *output, size_t size, char *result, size_t *i);
+char        *option_hash_o(t_output *output, size_t size, char *res, size_t *i);
 
 /*
 **	ft_utils_p.c

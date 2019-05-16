@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/16 06:38:58 by oel-ayad          #+#    #+#             */
+/*   Updated: 2019/05/16 06:41:59 by oel-ayad         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_opprintf.h"
 
 char		*ft_converter(va_list ap, int *i, const char *format
@@ -18,11 +30,11 @@ char		*ft_converter(va_list ap, int *i, const char *format
 	return (out->str);
 }
 
-int         ft_printf(const char *format, ...)
+int			ft_printf(const char *format, ...)
 {
-	t_output 	output[1];
+	t_output	output[1];
 	va_list		ap;
-	int 		i;
+	int			i;
 	int			result;
 
 	va_start(ap, format);
@@ -36,7 +48,7 @@ int         ft_printf(const char *format, ...)
 			i++;
 			pf_conv(output, format, &i);
 			if (format[i] == '\0')
-				break;
+				break ;
 			else if (ft_is_conv(format[i]) && format[i] != '%')
 				ft_prepare(output, format, i, ap);
 			else
