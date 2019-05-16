@@ -6,7 +6,7 @@
 /*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 06:53:42 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/16 10:37:17 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/16 11:06:12 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdarg.h>
 # include <wchar.h>
-# include "libft.h"
+# include "../libft/libft.h"
 
 # define ERR_MALLOC "Printf: error malloc"
 # define ERR "Printf: error"

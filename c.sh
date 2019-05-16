@@ -1,1 +1,1 @@
-make && gcc libftprintf.a srcs/main.c
+make && gcc libftprintf.a main.c
