@@ -6,7 +6,7 @@
 #    By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 20:29:21 by oel-ayad          #+#    #+#              #
-#    Updated: 2019/05/16 08:32:37 by oel-ayad         ###   ########.fr        #
+#    Updated: 2019/05/16 10:10:42 by oel-ayad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRC		=  	ft_print.c \
 			ft_prepare.c \
 			ft_operations_idscpo.c \
 			ft_operations_uxf.c \
+			ft_error.c \
 
 
 OBJ		= $(addprefix $(OBJDIR),$(SRC:.c=.o))

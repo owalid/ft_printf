@@ -6,7 +6,7 @@
 /*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 06:53:59 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/16 06:54:59 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/16 10:22:22 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ char		*option_hash_o(t_output *output, size_t size, char *res, size_t *i)
 			&& (ft_strlen(output->str) < size
 			|| output->minsize > ft_strlen(output->str)) && !output->is_null)
 		res = option_zero_df(output, res, &(*i));
-	res = ft_strjoin_free(res, output->str);
+	if (!(res = ft_strjoin_free(res, output->str)))
+		ft_err(1);
 	return (res);
 }

@@ -6,7 +6,7 @@
 /*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 06:59:36 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/16 07:54:45 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/16 09:55:33 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ char		*ft_printf_x(va_list ap, t_output *out)
 	else
 		nbr = va_arg(ap, unsigned int);
 	result = ft_utoa_base(nbr, 16);
-	result = ft_strlowcase(result);
+	result = (result) ? ft_strlowcase(result) : result;
 	return (result);
 }
 

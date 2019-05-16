@@ -6,7 +6,7 @@
 /*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 17:20:54 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/16 07:52:07 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/16 10:25:42 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ char			*ft_ftoa(double f, size_t precision)
 		second_part *= -1;
 	}
 	second_part *= ft_pow(10, precision);
-	result = ft_strnew(get_size_nb(first_part) + precision
-												+ is_neg);
+	if (!(result = ft_strnew(get_size_nb(first_part) + precision + is_neg)))
+		return (NULL);
 	i = 0;
 	if (f < 0)
 		result[i++] = '-';

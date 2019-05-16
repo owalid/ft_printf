@@ -6,7 +6,7 @@
 /*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 06:43:56 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/16 08:22:28 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/16 10:21:55 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@ char		*option_point_df(t_output *output, char *res, size_t *i)
 	{
 		while (*i < output->size_flag->precision - (ft_strlen(output->str) - 1))
 			res[(*i)++] = '0';
-		res = ft_strjoin_char('-', res, 1);
-		tmp = ft_itoa_base(ft_atoi(output->str) * -1, 10);
-		res = ft_strjoin_free(res, tmp);
+		if (!(res = ft_strjoin_char('-', res, 1))
+				|| !(tmp = ft_itoa_base(ft_atoi(output->str) * -1, 10))
+				|| !(res = ft_strjoin_free(res, tmp)))
+			ft_err(1);
 	}
 	else
 	{
@@ -51,9 +52,10 @@ char		*option_zero_df(t_output *output, char *res, size_t *i)
 	{
 		while (*i < output->minsize - (ft_strlen(output->str)))
 			res[(*i)++] = '0';
-		res = ft_strjoin_char('-', res, 1);
-		tmp = ft_itoa(ft_atoi(output->str) * -1);
-		res = ft_strjoin_free(res, tmp);
+		if (!(res = ft_strjoin_char('-', res, 1))
+				|| !(tmp = ft_itoa_base(ft_atoi(output->str) * -1, 10))
+				|| !(res = ft_strjoin_free(res, tmp)))
+			ft_err(1);
 	}
 	else
 	{
@@ -73,8 +75,9 @@ char		*option_space_df(t_output *output, char *res)
 			res = ft_add_blank(output, res, 0);
 		else
 		{
-			tmp = ft_str_from_char(' ');
-			res = ft_strjoin_free(tmp, res);
+			if (!(tmp = ft_str_from_char(' '))
+					|| !(res = ft_strjoin_free(tmp, res)))
+				ft_err(1);
 		}
 	}
 	return (res);

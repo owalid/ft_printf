@@ -6,7 +6,7 @@
 /*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 07:26:41 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/16 08:33:49 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/16 10:14:52 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ char		*ft_formater_with_option_xx_bis(t_output *out, size_t size,
 	}
 	if (!out->option->hash || out->option->zero)
 	{
-		out->str = ft_strjoin_free(*result, out->str);
+		if (!(out->str = ft_strjoin_free(*result, out->str)))
+			ft_err(1);
 		return (out->str);
 	}
 	return (*result);
@@ -43,7 +44,8 @@ char		*ft_formater_with_option_xx(t_output *out, size_t size)
 	size_t	i;
 
 	i = 0;
-	result = ft_strnew(size);
+	if (!(result = ft_strnew(size)))
+		ft_err(1);
 	if (out->option->point && ft_strlen(out->str) <= out->size_flag->precision)
 	{
 		result = option_point_df(out, result, &i);

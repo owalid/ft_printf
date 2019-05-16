@@ -6,7 +6,7 @@
 /*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 06:58:46 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/16 07:20:40 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/16 10:16:17 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ char		*ft_printf_p(va_list ap, t_output *out)
 	i = -1;
 	ptr = va_arg(ap, unsigned long long);
 	add = ft_itoa_base(ptr, 16);
-	result = ft_strlowcase(add);
+	result = (add) ? ft_strlowcase(add) : add;
 	return (result);
 }
 

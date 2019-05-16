@@ -6,7 +6,7 @@
 /*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 06:38:58 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/16 08:44:37 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/16 10:18:38 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ char		*ft_converter(va_list ap, int *i, const char *format
 	{
 		if (g_prtfop[o].id == format[*i])
 		{
-			out->str = g_prtfop[o].ft_transform(ap, out);
+			if (!(out->str = g_prtfop[o].ft_transform(ap, out)))
+				ft_err(1);
 			return (out->str);
 		}
 	}

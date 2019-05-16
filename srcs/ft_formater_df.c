@@ -6,7 +6,7 @@
 /*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 06:39:54 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/16 08:22:58 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/16 10:12:47 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ char		*ft_formater_with_option_df_bis(t_output *out, size_t size,
 			return (*result);
 		}
 	}
-	out->str = ft_strjoin_free(*result, out->str);
+	if (!(out->str = ft_strjoin_free(*result, out->str)))
+		ft_err(1);
 	return (out->str);
 }
 
@@ -36,7 +37,10 @@ char		*ft_formater_with_option_df(t_output *out, size_t size)
 	size_t	i;
 
 	i = 0;
-	result = ft_strnew(size);
+	if (!one_option(out))
+		return (out->str);
+	if (!(result = ft_strnew(size)))
+		ft_err(1);
 	if (out->option->plus)
 		result = option_plus_df(out, out->minsize, result, &i);
 	if (out->option->point && ft_strlen(out->str) <= out->size_flag->precision
@@ -57,26 +61,22 @@ int			ft_formater_df(t_output *out, int opt)
 	size_t	i;
 	int		size;
 
-	if (ft_strcmp(out->str, "0") == 0 && out->size_flag->no_prec
-			&& !out->option->hash)
+	if (ft_strcmp(out->str, "0") == 0 && !out->option->hash
+				&& out->size_flag->no_prec)
 		ft_is_null(out);
 	size = out->minsize + out->option->space + out->option->plus;
 	i = 0;
-	if (one_option(out))
+	if (ft_strlen(out->str) < out->minsize)
 	{
-		if (ft_strlen(out->str) < out->minsize)
-		{
-			out->str = ft_formater_with_option_df(out, size);
-			if (out->option->min == 1 && out->minsize > ft_strlen(out->str))
-				out->str = ft_add_blank(out, out->str, 1);
-		}
-		else
-			out->str = ft_formater_with_option_df(out, ft_strlen(out->str));
+		out->str = ft_formater_with_option_df(out, size);
+		if (out->option->min == 1 && out->minsize > ft_strlen(out->str))
+			out->str = ft_add_blank(out, out->str, 1);
 	}
+	else
+		out->str = ft_formater_with_option_df(out, ft_strlen(out->str));
 	if (out->option->space == 1 && !out->option->plus)
 		out->str = option_space_df(out, out->str);
 	if (out->minsize > ft_strlen(out->str))
 		out->str = ft_add_blank(out, out->str, 0);
-	send_char(out->str, opt, &i);
-	return (i);
+	return (send_char(out->str, opt, &i));
 }

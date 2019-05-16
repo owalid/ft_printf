@@ -6,7 +6,7 @@
 /*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 06:53:42 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/16 09:01:06 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/16 10:37:17 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <stdarg.h>
 # include <wchar.h>
 # include "libft.h"
+
+# define ERR_MALLOC "Printf: error malloc"
+# define ERR "Printf: error"
 
 typedef struct	s_sizeflag
 {
@@ -112,7 +115,7 @@ void			ft_init_sizeflag(t_sizeflag *flag);
 **	ft_utils.c
 */
 char			*ft_add_blank(t_output *output, char *result, int opt);
-void			send_char(char *result, int opt, size_t *i);
+int				send_char(char *result, int opt, size_t *i);
 int				is_no_prec(const char *format, int i);
 void			ft_is_null(t_output *output);
 int				one_option(t_output *out);
@@ -191,5 +194,10 @@ void			ft_prepare(t_output *output, const char *format, int i,
 							va_list ap);
 void			ft_prepare_cond(t_output *output, const char *format, int i,
 							va_list ap);
+
+/*
+**	ft_error.c
+*/
+void			ft_err(int id);
 
 #endif

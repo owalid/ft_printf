@@ -6,7 +6,7 @@
 /*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 07:29:45 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/16 08:30:06 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/16 10:13:54 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ char	*ft_formater_with_option_u(t_output *out, size_t size)
 	i = 0;
 	if (!one_option(out))
 		return (out->str);
-	result = ft_strnew(size);
-	if (out->option->point
-			&& ft_strlen(out->str) < out->size_flag->precision
-			&& !out->size_flag->no_prec)
+	if (!(result = ft_strnew(size)))
+		ft_err(1);
+	if (out->option->point && !out->size_flag->no_prec
+			&& ft_strlen(out->str) < out->size_flag->precision)
 	{
 		result = option_point_df(out, result, &i);
 		if (out->str[0] == '-')
@@ -36,7 +36,8 @@ char	*ft_formater_with_option_u(t_output *out, size_t size)
 		if (out->str[0] == '-')
 			return (result);
 	}
-	out->str = ft_strjoin_free(result, out->str);
+	if (!(out->str = ft_strjoin_free(result, out->str)))
+		ft_err(1);
 	return (out->str);
 }
 

@@ -6,7 +6,7 @@
 /*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 07:23:57 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/16 08:25:06 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/16 10:12:52 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ char		*ft_formater_with_option_o_bis(t_output *out, size_t size,
 		out->str = option_hash_o(out, size, *result, i);
 		return (out->str);
 	}
-	out->str = ft_strjoin_free(*result, out->str);
+	if (!(out->str = ft_strjoin_free(*result, out->str)))
+		ft_err(1);
 	return (out->str);
 }
 
@@ -39,7 +40,8 @@ char		*ft_formater_with_option_o(t_output *out, size_t size)
 	i = 0;
 	if (!one_option(out))
 		return (out->str);
-	result = ft_strnew(size);
+	if (!(result = ft_strnew(size)))
+		ft_err(1);
 	if (out->option->point
 			&& ft_strlen(out->str) < out->size_flag->precision
 			&& !out->is_null)
@@ -71,6 +73,5 @@ int			ft_formater_o(t_output *out, int opt)
 		out->str = ft_formater_with_option_o(out, ft_strlen(out->str));
 	if (out->minsize > ft_strlen(out->str) && !out->option->min)
 		out->str = ft_add_blank(out, out->str, 0);
-	send_char(out->str, opt, &i);
-	return (i);
+	return (send_char(out->str, opt, &i));
 }
