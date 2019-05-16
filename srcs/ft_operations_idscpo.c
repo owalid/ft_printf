@@ -54,9 +54,13 @@ char		*ft_printf_s(va_list ap, t_output *out)
 char		*ft_printf_c(va_list ap, t_output *out)
 {
 	char	*result;
+	int		c;
 
 	(void)out->size_flag;
-	result = ft_str_from_char(va_arg(ap, int));
+	c = va_arg(ap, int);
+	if (c == 0)
+		out->is_null = 1;
+	result = ft_str_from_char(c);
 	return (result);
 }
 

@@ -24,6 +24,7 @@ SRC		=  	ft_print.c \
 			ft_formater_p.c \
 			ft_formater_u.c \
 			ft_formater_o.c \
+			ft_formater_c.c \
 			ft_utils_o.c \
 			ft_utils_p.c \
 			ft_parser.c \

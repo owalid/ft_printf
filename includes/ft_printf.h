@@ -136,6 +136,11 @@ char			*option_zero_df(t_output *output, char *res, size_t *i);
 char			*option_space_df(t_output *output, char *res);
 
 /*
+**	ft_formater_c.c
+*/
+int				ft_formater_c(t_output *out, int opt);
+
+/*
 **	ft_formater_sc.c
 */
 char			*ft_formater_with_option_sc(t_output *out, size_t size);
