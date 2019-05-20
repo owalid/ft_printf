@@ -3,26 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thdervil <thdervil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 07:02:04 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/16 07:35:48 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/20 13:21:18 by thdervil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		add_char(char c, int opt)
+void		add_char(char c, int opt, t_output *out)
 {
 	static char		str[4096];
 	static int		size;
 
 	if (ft_strlen(str) == 0)
 		size = 0;
-	if (size == 4096 || opt)
+	if ((size == 4096 || opt) && *str)
 	{
 		write(1, str, size);
 		str[0] = '\0';
+		size = 0;
+	}
+	else if (out->conv_type == 'c' && out->is_null)
+	{
+		if (*str)
+			write(1, str, size);
+		write(1, "\0", 1);
 		size = 0;
 	}
 	else

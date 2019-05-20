@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thdervil <thdervil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 06:53:42 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/16 11:06:12 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/20 11:39:24 by thdervil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char			*ft_converter(va_list ap, int *i, const char *format,
 /*
 **	ft_print.c
 */
-void			add_char(char c, int opt);
+void			add_char(char c, int opt, t_output *out);
 
 /*
 **	ft_operations_idscpo.c
@@ -115,7 +115,7 @@ void			ft_init_sizeflag(t_sizeflag *flag);
 **	ft_utils.c
 */
 char			*ft_add_blank(t_output *output, char *result, int opt);
-int				send_char(char *result, int opt, size_t *i);
+int				send_char(t_output *out, int opt, size_t *i);
 int				is_no_prec(const char *format, int i);
 void			ft_is_null(t_output *output);
 int				one_option(t_output *out);

@@ -6,7 +6,7 @@
 /*   By: thdervil <thdervil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 06:39:54 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/16 15:30:11 by thdervil         ###   ########.fr       */
+/*   Updated: 2019/05/20 11:26:24 by thdervil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,5 @@ int			ft_formater_df(t_output *out, int opt)
 		out->str = option_space_df(out, out->str);
 	if (out->minsize > ft_strlen(out->str))
 		out->str = ft_add_blank(out, out->str, 0);
-	return (send_char(out->str, opt, &i));
+	return (send_char(out, opt, &i));
 }
