@@ -6,7 +6,7 @@
 /*   By: thdervil <thdervil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 07:02:04 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/20 13:21:18 by thdervil         ###   ########.fr       */
+/*   Updated: 2019/05/21 15:43:04 by thdervil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,10 @@ void		add_char(char c, int opt, t_output *out)
 	}
 	else if (out->conv_type == 'c' && out->is_null)
 	{
-		if (*str)
+		if (out->str[0] != '\0')
 			write(1, str, size);
-		write(1, "\0", 1);
+		else
+			write(1, "\0", 1);
 		size = 0;
 	}
 	else

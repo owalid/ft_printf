@@ -6,7 +6,7 @@
 /*   By: thdervil <thdervil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 06:56:12 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/20 13:21:15 by thdervil         ###   ########.fr       */
+/*   Updated: 2019/05/21 15:01:35 by thdervil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,17 @@ char		*ft_add_blank(t_output *output, char *result, int opt)
 	if (output->minsize - ft_strlen(output->str) >= 1)
 		if (!(tmp = ft_strnew(output->minsize - ft_strlen(result))))
 			ft_err(1);
-	while (i < output->minsize - ft_strlen(result))
-		tmp[(i)++] = ' ';
+	if (result[0] != '\0')
+		while (i < output->minsize - ft_strlen(result))
+			tmp[(i)++] = ' ';
+	else
+		while (i < output->minsize - ft_strlen(result) - 1)
+			tmp[(i)++] = ' ';
 	if (i != 0)
-	{
-		if (result[0] == '\0')
-		{
-			ft_strcpy(result, tmp);
-			result[i - 1] = '\0';
-		}
-		else
-			result = (opt == 1) ? ft_strjoin_free(result, tmp)
-								: ft_strjoin_free(tmp, result);
-	}
+		result = (opt == 1) ? ft_strjoin_free(result, tmp)
+							: ft_strjoin_free(tmp, result);
 	if (!result)
 		ft_err(1);
-	printf("RESULT: |%s|\n", result);
 	return (result);
 }
 
