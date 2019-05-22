@@ -6,7 +6,7 @@
 /*   By: thdervil <thdervil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 06:56:12 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/21 15:01:35 by thdervil         ###   ########.fr       */
+/*   Updated: 2019/05/22 13:33:00 by thdervil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ char		*ft_add_blank(t_output *output, char *result, int opt)
 	if (output->minsize - ft_strlen(output->str) >= 1)
 		if (!(tmp = ft_strnew(output->minsize - ft_strlen(result))))
 			ft_err(1);
-	if (result[0] != '\0')
-		while (i < output->minsize - ft_strlen(result))
-			tmp[(i)++] = ' ';
+	if (output->conv_type == 'c' && output->is_null)
+		while (i < output->minsize - (ft_strlen(result) + 1))
+			tmp[i++] = ' ';
 	else
-		while (i < output->minsize - ft_strlen(result) - 1)
-			tmp[(i)++] = ' ';
+		while (i < output->minsize - ft_strlen(result))
+			tmp[i++] = ' ';
 	if (i != 0)
 		result = (opt == 1) ? ft_strjoin_free(result, tmp)
 							: ft_strjoin_free(tmp, result);
@@ -37,17 +37,16 @@ char		*ft_add_blank(t_output *output, char *result, int opt)
 
 int			send_char(t_output *out, int opt, size_t *i)
 {
-	if (out->conv_type == 'c' && out->is_null)
+	if (out->conv_type == 'c' && out->is_null && !out->is_null)
 		add_char(0, opt, out);
-	if ((opt == 1 && !*out->str))
+	if ((opt == 1 && !*out->str) && (out->conv_type != 'c' && !out->is_null))
 		add_char(0, opt, out);
 	*i = -1;
 	while (out->str[++(*i)])
-	{
 		add_char(out->str[*i], opt, out);
-	}
 	ft_strdel(&out->str);
-	return ((out->conv_type == 'c' && out->is_null) ? ((int)*i) + 1 : ((int)*i));
+	return ((out->conv_type == 'c' && out->is_null) ? ((int)*i) + 1
+													: ((int)*i));
 }
 
 void		ft_is_null(t_output *output)
