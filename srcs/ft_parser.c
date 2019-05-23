@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parser.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thdervil <thdervil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 07:39:03 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/16 09:31:11 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/16 15:33:48 by thdervil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void		pf_digit_prec(t_output *output, const char *format, int *i)
 	tmp = ft_strsub(format, *i, j);
 	output->size_flag->precision = (size_t)ft_atoi(tmp);
 	output->option->point = 1;
-	if (format[j] != 'f' && (format[j] != 's')
+	if (format[j] != 'f' && format[j] != 's' && format[j] != 'c'
 			&& format[j] != '%' && ft_is_conv(format[j])
 			&& output->minsize < output->size_flag->precision)
 		output->minsize = output->size_flag->precision;

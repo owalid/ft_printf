@@ -6,7 +6,7 @@
 /*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 06:58:46 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/16 12:59:09 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/23 12:58:40 by oel-ayad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,13 @@ char		*ft_printf_s(va_list ap, t_output *out)
 char		*ft_printf_c(va_list ap, t_output *out)
 {
 	char	*result;
+	int		c;
 
 	(void)out->size_flag;
-	result = ft_str_from_char(va_arg(ap, int));
+	c = va_arg(ap, int);
+	if (c == 0)
+		out->is_null = 1;
+	result = ft_str_from_char(c);
 	return (result);
 }
 

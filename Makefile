@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+         #
+#    By: thdervil <thdervil@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 20:29:21 by oel-ayad          #+#    #+#              #
-#    Updated: 2019/05/16 10:10:42 by oel-ayad         ###   ########.fr        #
+#    Updated: 2019/05/21 15:33:44 by thdervil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRC		=  	ft_print.c \
 			ft_formater_p.c \
 			ft_formater_u.c \
 			ft_formater_o.c \
+			ft_formater_c.c \
 			ft_utils_o.c \
 			ft_utils_p.c \
 			ft_parser.c \
@@ -43,7 +44,7 @@ INCDIR	= includes/
 OBJDIR	= objs/
 
 CC		= @gcc
-CFLAGS	= -I $(INCDIR) -I $(FT_INC) -Wall -Wextra -Werror
+CFLAGS	= -I $(INCDIR) -I $(FT_INC) -Wall -Wextra -Werror -g3
 
 all: $(NAME)
 

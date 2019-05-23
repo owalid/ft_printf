@@ -3,26 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thdervil <thdervil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 07:02:04 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/16 07:35:48 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/22 13:36:28 by thdervil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		add_char(char c, int opt)
+void		add_char(char c, int opt, t_output *out)
 {
 	static char		str[4096];
 	static int		size;
 
 	if (ft_strlen(str) == 0)
 		size = 0;
-	if (size == 4096 || opt)
+	if ((size == 4096 || opt) && *str)
 	{
 		write(1, str, size);
 		str[0] = '\0';
+		size = 0;
+	}
+	else if (out->conv_type == 'c' && out->is_null)
+	{
+		if (out->str[0] != '\0')
+			write(1, str, size);
+		else
+			write(1, "\0", 1);
 		size = 0;
 	}
 	else
@@ -37,7 +45,7 @@ int			ft_formater(t_output *output, int opt)
 	if (output->conv_type == 'd' || output->conv_type == 'f'
 			|| output->conv_type == 'i')
 		return (ft_formater_df(output, opt));
-	else if (output->conv_type == 's' || output->conv_type == 'c')
+	else if (output->conv_type == 's')
 		return (ft_formater_sc(output, opt));
 	else if (output->conv_type == 'x' || output->conv_type == 'X')
 		return (ft_formater_xx(output, opt));
@@ -47,6 +55,8 @@ int			ft_formater(t_output *output, int opt)
 		return (ft_formater_u(output, opt));
 	else if (output->conv_type == 'o')
 		return (ft_formater_o(output, opt));
+	else if (output->conv_type == 'c')
+		return (ft_formater_c(output, opt));
 	else
 		return (ft_formater_df(output, opt));
 }

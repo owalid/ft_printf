@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_formater_p.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thdervil <thdervil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 07:33:06 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/16 10:13:11 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/20 11:26:24 by thdervil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,5 @@ int			ft_formater_p(t_output *out, int opt)
 		out->str = ft_formater_with_option_p(out, ft_strlen(out->str));
 	if (out->minsize > ft_strlen(out->str) && !out->option->min)
 		out->str = ft_add_blank(out, out->str, 0);
-	return (send_char(out->str, opt, &i));
+	return (send_char(out, opt, &i));
 }

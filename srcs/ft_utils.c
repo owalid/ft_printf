@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thdervil <thdervil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 06:56:12 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/16 10:10:17 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/05/22 13:33:00 by thdervil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,12 @@ char		*ft_add_blank(t_output *output, char *result, int opt)
 	if (output->minsize - ft_strlen(output->str) >= 1)
 		if (!(tmp = ft_strnew(output->minsize - ft_strlen(result))))
 			ft_err(1);
-	while (i < output->minsize - ft_strlen(result))
-		tmp[(i)++] = ' ';
+	if (output->conv_type == 'c' && output->is_null)
+		while (i < output->minsize - (ft_strlen(result) + 1))
+			tmp[i++] = ' ';
+	else
+		while (i < output->minsize - ft_strlen(result))
+			tmp[i++] = ' ';
 	if (i != 0)
 		result = (opt == 1) ? ft_strjoin_free(result, tmp)
 							: ft_strjoin_free(tmp, result);
@@ -31,20 +35,23 @@ char		*ft_add_blank(t_output *output, char *result, int opt)
 	return (result);
 }
 
-int			send_char(char *result, int opt, size_t *i)
+int			send_char(t_output *out, int opt, size_t *i)
 {
-	if (opt == 1 && !*result)
-		add_char(0, opt);
+	if (out->conv_type == 'c' && out->is_null && !out->is_null)
+		add_char(0, opt, out);
+	if ((opt == 1 && !*out->str) && (out->conv_type != 'c' && !out->is_null))
+		add_char(0, opt, out);
 	*i = -1;
-	while (result[++(*i)])
-		add_char(result[*i], opt);
-	ft_strdel(&result);
-	return ((int)*i);
+	while (out->str[++(*i)])
+		add_char(out->str[*i], opt, out);
+	ft_strdel(&out->str);
+	return ((out->conv_type == 'c' && out->is_null) ? ((int)*i) + 1
+													: ((int)*i));
 }
 
 void		ft_is_null(t_output *output)
 {
-	if (output->conv_type != 's')
+	if (output->conv_type != 's' && output->conv_type != 'c')
 	{
 		output->is_null = 1;
 		if (!output->option->plus && !output->option->min
