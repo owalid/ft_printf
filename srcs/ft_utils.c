@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thdervil <thdervil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: owalid <owalid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 06:56:12 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/22 13:33:00 by thdervil         ###   ########.fr       */
+/*   Updated: 2019/06/12 23:58:12 by owalid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ char		*ft_add_blank(t_output *output, char *result, int opt)
 
 int			send_char(t_output *out, int opt, size_t *i)
 {
-	if (out->conv_type == 'c' && out->is_null && !out->is_null)
-		add_char(0, opt, out);
+	// if (out->conv_type == 'c' && out->is_null)
+	// 	add_char(0, opt, out);
 	if ((opt == 1 && !*out->str) && (out->conv_type != 'c' && !out->is_null))
 		add_char(0, opt, out);
 	*i = -1;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_operations_idscpo.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-ayad <oel-ayad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: owalid <owalid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/16 06:58:46 by oel-ayad          #+#    #+#             */
-/*   Updated: 2019/05/23 12:58:40 by oel-ayad         ###   ########.fr       */
+/*   Updated: 2019/06/12 23:30:38 by owalid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,13 @@ char		*ft_printf_c(va_list ap, t_output *out)
 	char	*result;
 	int		c;
 
-	(void)out->size_flag;
+	// (void)out->size_flag;
+		// printf("hello\n");
 	c = va_arg(ap, int);
 	if (c == 0)
+	{
 		out->is_null = 1;
+	}
 	result = ft_str_from_char(c);
 	return (result);
 }
